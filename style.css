@@ -223,19 +223,41 @@ a {
   border-right: 1px solid var(--line-light);
 }
 .story-right {
-  flex: 1;
+  padding: 5rem 4rem 5rem 0;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
 .story-card {
-  padding: 6rem 3rem;
-  border-bottom: 1px solid var(--line-light);
-  min-height: 50vh;
+  padding: 4rem 3rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.story-card:last-child { border-bottom: none; }
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 0%;
+  background: var(--accent-orange);
+  transition: height 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.story-card:hover::before {
+  height: 100%;
+}
+.story-card:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: -10px 20px 40px rgba(0,0,0,0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+}
 .story-icon {
   margin-bottom: 2rem;
   color: var(--line-light);
