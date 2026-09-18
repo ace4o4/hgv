@@ -9,8 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Lottie Web Player -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   </head>
   <body>
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="custom-cursor-follower"></div>
 
     <!-- Light Section: Journey Start -->
     <section class="section section-light">
@@ -18,11 +23,11 @@
         
         <!-- Navbar -->
         <nav class="nav reveal-up">
-          <div class="nav-logo">NEXUS</div>
+          <div class="nav-logo hover-magnetic">NEXUS</div>
           <div class="nav-links">
-            <a href="#">THE STORY</a>
-            <a href="#">TRACKS</a>
-            <a href="#">FAQ</a>
+            <a href="#" class="hover-magnetic">THE STORY</a>
+            <a href="#" class="hover-magnetic">TRACKS</a>
+            <a href="#" class="hover-magnetic">FAQ</a>
           </div>
         </nav>
 
@@ -37,7 +42,7 @@
           <h1 class="heading-massive text-reveal">
             FROM IDEA TO VERIFIED PROTOTYPE — ONE 48 HOUR ENGINEERING LOOP.
           </h1>
-          <a href="#register" class="btn btn-orange">
+          <a href="#register" class="btn btn-orange hover-magnetic">
             <svg class="btn-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             START YOUR JOURNEY
           </a>
@@ -51,40 +56,33 @@
             <h2 class="heading-massive text-reveal" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">
               PICK YOUR <br>BATTLEGROUND.
             </h2>
-            <p class="col-desc" style="max-width: 400px;">
+            <p class="col-desc" style="max-width: 400px; margin-bottom: 2rem;">
               We don't do generic problems. Nexus provides three highly specialized tracks curated by industry leaders. Choose your domain, assemble your team, and build something that matters.
             </p>
+            <!-- AI Generated Abstract Illustration -->
+            <img src="./hero_illustration.jpg" alt="Abstract Geometric 3D Shapes" class="hero-illustration" />
           </div>
           
           <div class="story-right stagger-group">
-            <div class="story-card stagger-item">
-              <div class="story-icon">
-                <svg width="64" height="64" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <rect x="20" y="20" width="60" height="60" rx="8" />
-                  <rect x="30" y="30" width="60" height="60" rx="8" />
-                </svg>
+            <div class="story-card stagger-item hover-trigger">
+              <div class="story-icon lottie-container" id="lottie-ai">
+                <!-- Lottie animation injected here -->
               </div>
               <h3 class="col-title" style="font-size: 2rem;">Artificial Intelligence</h3>
               <p class="col-desc">Train models, leverage LLMs, and build intelligent agents that solve real-world automation problems.</p>
             </div>
             
-            <div class="story-card stagger-item">
-              <div class="story-icon">
-                <svg width="64" height="64" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="50" cy="50" r="30" />
-                  <circle cx="50" cy="50" r="40" stroke-dasharray="4 4" />
-                </svg>
+            <div class="story-card stagger-item hover-trigger">
+              <div class="story-icon lottie-container" id="lottie-web3">
+                <!-- Lottie animation injected here -->
               </div>
               <h3 class="col-title" style="font-size: 2rem;">Web3 & Blockchain</h3>
               <p class="col-desc">Design decentralized protocols, smart contracts, and tokenomics that redefine trust and ownership.</p>
             </div>
             
-            <div class="story-card stagger-item">
-              <div class="story-icon">
-                <svg width="64" height="64" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <polygon points="50,15 90,50 50,85 10,50" />
-                  <polygon points="60,25 90,50 60,75 30,50" />
-                </svg>
+            <div class="story-card stagger-item hover-trigger">
+              <div class="story-icon lottie-container" id="lottie-fintech">
+                <!-- Lottie animation injected here -->
               </div>
               <h3 class="col-title" style="font-size: 2rem;">FinTech Disrupt</h3>
               <p class="col-desc">Create the next generation of financial rails, payment gateways, and algorithmic trading tools.</p>
@@ -101,28 +99,29 @@
         </div>
         
         <div class="grid-3 border-b stagger-group">
-          <div class="grid-col border-r interactive-col stagger-item">
-            <div class="wire-icon hover-draw">
-              <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="20" y="20" width="60" height="60" />
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
+            <div class="wire-icon hover-draw lottie-container" id="lottie-sprint">
+               <!-- SVG will be drawn on hover -->
+               <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="20" y="20" width="60" height="60" class="draw-path" />
               </svg>
             </div>
             <h3 class="col-title">THE SPRINT</h3>
             <p class="col-desc">We run the full cycle — ideation, coding, deployment, and pitching. No sleep, just builds.</p>
           </div>
-          <div class="grid-col border-r interactive-col stagger-item">
-            <div class="wire-icon hover-draw">
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
+            <div class="wire-icon hover-draw lottie-container" id="lottie-engineering">
                <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="50" cy="50" r="30" />
+                <circle cx="50" cy="50" r="30" class="draw-path" />
               </svg>
             </div>
             <h3 class="col-title">ENGINEERING</h3>
             <p class="col-desc">Get access to premium APIs and compute credits provided by our sponsors to power your stack.</p>
           </div>
-          <div class="grid-col interactive-col stagger-item">
-            <div class="wire-icon hover-draw">
+          <div class="grid-col interactive-col hover-trigger stagger-item">
+            <div class="wire-icon hover-draw lottie-container" id="lottie-mentorship">
               <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polygon points="50,20 80,80 20,80" />
+                <polygon points="50,20 80,80 20,80" class="draw-path" />
               </svg>
             </div>
             <h3 class="col-title">MENTORSHIP</h3>
@@ -133,9 +132,10 @@
       </div>
     </section>
 
-    <!-- Chapter 4: The Stakes (Dark Section) -->
-    <section class="section section-dark">
-      <div class="container border-x-dark">
+    <!-- Chapter 4: The Stakes (Dark Section with Canvas Background) -->
+    <section class="section section-dark canvas-wrapper">
+      <canvas id="particleCanvas"></canvas>
+      <div class="container border-x-dark content-over-canvas">
         <div class="hero-block border-b-dark reveal-up">
           <div class="label label-dark">[ WHAT'S ON THE LINE ]</div>
           <h2 class="heading-massive text-reveal text-white">
@@ -171,13 +171,13 @@
         </div>
         
         <div class="grid-3 border-b stagger-group">
-          <div class="grid-col border-r text-center interactive-col stagger-item">
+          <div class="grid-col border-r text-center interactive-col stagger-item hover-magnetic">
             <div class="sponsor-logo">ACME CORP</div>
           </div>
-          <div class="grid-col border-r text-center interactive-col stagger-item">
+          <div class="grid-col border-r text-center interactive-col stagger-item hover-magnetic">
             <div class="sponsor-logo">CYBERDYNE</div>
           </div>
-          <div class="grid-col text-center interactive-col stagger-item">
+          <div class="grid-col text-center interactive-col stagger-item hover-magnetic">
             <div class="sponsor-logo">WEYLAND</div>
           </div>
         </div>
@@ -188,19 +188,19 @@
         </div>
         
         <div class="grid-2 border-b stagger-group">
-          <div class="grid-col border-r interactive-col stagger-item">
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
             <h3 class="col-title">WHO CAN PARTICIPATE?</h3>
             <p class="col-desc">Anyone. Students, professionals, and hobbyists from anywhere in the world.</p>
           </div>
-          <div class="grid-col interactive-col stagger-item">
+          <div class="grid-col interactive-col hover-trigger stagger-item">
             <h3 class="col-title">IS IT FREE?</h3>
             <p class="col-desc">100% free. We provide the platform, the mentors, and the prizes.</p>
           </div>
-          <div class="grid-col border-r interactive-col stagger-item">
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
             <h3 class="col-title">TEAM SIZES?</h3>
             <p class="col-desc">Teams can be up to 4 members. You can also fly solo.</p>
           </div>
-          <div class="grid-col interactive-col stagger-item">
+          <div class="grid-col interactive-col hover-trigger stagger-item">
             <h3 class="col-title">IP OWNERSHIP?</h3>
             <p class="col-desc">You own what you build. Our sponsors are here to hire you, not steal your ideas.</p>
           </div>
@@ -209,8 +209,9 @@
     </section>
 
     <!-- Chapter 6: Final Call to Action -->
-    <section class="section section-dark">
-      <div class="container border-x-dark">
+    <section class="section section-dark canvas-wrapper">
+      <canvas id="particleCanvasFooter"></canvas>
+      <div class="container border-x-dark content-over-canvas">
         <div class="hero-block flex-center border-b-dark reveal-up">
           <div class="label label-dark">[ SYSTEM READY ]</div>
           <h2 class="heading-massive text-reveal text-white text-center">
@@ -219,7 +220,7 @@
           <p class="col-desc text-center" style="color: #aaa; margin: 0 auto 2rem auto; max-width: 500px;">
             Registration closes Oct 20th. Assemble your team and prepare for the engineering event of the year.
           </p>
-          <a href="#register" class="btn btn-orange btn-large">
+          <a href="#register" class="btn btn-orange btn-large hover-magnetic">
             <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             SUBMIT REGISTRATION
           </a>
@@ -228,8 +229,8 @@
         <footer class="footer">
           <div class="footer-logo">NEXUS 2026</div>
           <div class="footer-links">
-            <a href="#">TWITTER</a>
-            <a href="#">DISCORD</a>
+            <a href="#" class="hover-magnetic">TWITTER</a>
+            <a href="#" class="hover-magnetic">DISCORD</a>
           </div>
         </footer>
       </div>
