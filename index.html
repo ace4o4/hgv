@@ -18,34 +18,45 @@
     <div id="cursor-follower" class="custom-cursor-follower"></div>
 
     <!-- Light Section: Journey Start -->
-    <section class="section section-light">
-      <div class="container border-x">
+    <section class="section section-light-alt canvas-wrapper" style="position: relative;">
+      <!-- WebGL Cloud Shader Canvas moved here to cover Navbar -->
+      <canvas id="cloudCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);"></canvas>
+      
+      <div class="aurora-container">
+        <div class="aurora-blob orange"></div>
+        <div class="aurora-blob gray"></div>
+      </div>
+      <div class="container border-x content-over-canvas" style="position: relative; z-index: 2;">
         
         <!-- Navbar -->
-        <nav class="nav reveal-up">
+        <nav class="nav reveal-up blur-nav">
           <div class="nav-logo hover-magnetic">NEXUS</div>
           <div class="nav-links">
             <a href="#" class="hover-magnetic">THE STORY</a>
             <a href="#" class="hover-magnetic">TRACKS</a>
+            <a href="#" class="hover-magnetic">SCHEDULE</a>
             <a href="#" class="hover-magnetic">FAQ</a>
           </div>
         </nav>
 
-        <!-- Chapter 1: Hero with Geometric Parallax -->
-        <div class="hero-block border-b reveal-up">
+        <!-- Chapter 1: Hero with Cloud Shader -->
+        <div class="hero-block border-b reveal-up" style="padding-bottom: 12rem;">
+          
           <!-- Floating Background Elements -->
           <div class="parallax-shape p-1">+</div>
           <div class="parallax-shape p-2">○</div>
           <div class="parallax-shape p-3">/</div>
           
-          <div class="label">[ ABOUT THE EVENT ]</div>
-          <h1 class="heading-massive text-reveal">
-            FROM IDEA TO VERIFIED PROTOTYPE — ONE 48 HOUR ENGINEERING LOOP.
-          </h1>
-          <a href="#register" class="btn btn-orange hover-magnetic">
-            <svg class="btn-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            START YOUR JOURNEY
-          </a>
+          <div class="content-over-canvas">
+            <div class="label">[ ABOUT THE EVENT ]</div>
+            <h1 class="heading-massive text-reveal" style="max-width: 1000px;">
+              FROM IDEA TO VERIFIED PROTOTYPE — ONE 48 HOUR ENGINEERING LOOP.
+            </h1>
+            <a href="#register" class="btn btn-orange hover-magnetic">
+              <svg class="btn-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              START YOUR JOURNEY
+            </a>
+          </div>
         </div>
 
         <!-- Chapter 2: Sticky Storytelling (The Tracks) -->
@@ -56,33 +67,43 @@
             <h2 class="heading-massive text-reveal" style="font-size: clamp(2.5rem, 4vw, 3.5rem);">
               PICK YOUR <br>BATTLEGROUND.
             </h2>
-            <p class="col-desc" style="max-width: 400px; margin-bottom: 2rem;">
+            <p class="col-desc" style="max-width: 400px;">
               We don't do generic problems. Nexus provides three highly specialized tracks curated by industry leaders. Choose your domain, assemble your team, and build something that matters.
             </p>
-            <!-- AI Generated Abstract Illustration -->
-            <img src="./hero_illustration.jpg" alt="Abstract Geometric 3D Shapes" class="hero-illustration" />
           </div>
           
           <div class="story-right stagger-group">
             <div class="story-card stagger-item hover-trigger">
-              <div class="story-icon lottie-container" id="lottie-ai">
-                <!-- Lottie animation injected here -->
+              <div class="story-icon custom-anim-icon">
+                <svg width="64" height="64" viewBox="0 0 100 100" class="anim-ai">
+                  <circle cx="50" cy="50" r="30" fill="none" stroke="var(--accent-orange)" stroke-width="2" class="spin-slow" stroke-dasharray="20 10" />
+                  <circle cx="50" cy="50" r="15" fill="none" stroke="var(--text-dark)" stroke-width="2" class="spin-fast-reverse" stroke-dasharray="10 5" />
+                  <circle cx="50" cy="50" r="4" fill="var(--text-dark)" class="pulse" />
+                </svg>
               </div>
               <h3 class="col-title" style="font-size: 2rem;">Artificial Intelligence</h3>
               <p class="col-desc">Train models, leverage LLMs, and build intelligent agents that solve real-world automation problems.</p>
             </div>
             
             <div class="story-card stagger-item hover-trigger">
-              <div class="story-icon lottie-container" id="lottie-web3">
-                <!-- Lottie animation injected here -->
+              <div class="story-icon custom-anim-icon">
+                <svg width="64" height="64" viewBox="0 0 100 100" class="anim-web3">
+                  <polygon points="50,15 85,35 85,75 50,95 15,75 15,35" fill="none" stroke="var(--text-dark)" stroke-width="2" class="dash-draw loop-draw" />
+                  <polygon points="50,35 70,45 70,70 50,80 30,70 30,45" fill="none" stroke="var(--accent-orange)" stroke-width="2" class="spin-slow" />
+                </svg>
               </div>
               <h3 class="col-title" style="font-size: 2rem;">Web3 & Blockchain</h3>
               <p class="col-desc">Design decentralized protocols, smart contracts, and tokenomics that redefine trust and ownership.</p>
             </div>
             
             <div class="story-card stagger-item hover-trigger">
-              <div class="story-icon lottie-container" id="lottie-fintech">
-                <!-- Lottie animation injected here -->
+              <div class="story-icon custom-anim-icon">
+                <svg width="64" height="64" viewBox="0 0 100 100" class="anim-fintech">
+                  <line x1="20" y1="80" x2="80" y2="80" stroke="var(--text-dark)" stroke-width="2" />
+                  <line x1="20" y1="80" x2="20" y2="20" stroke="var(--text-dark)" stroke-width="2" />
+                  <polyline points="20,80 40,60 60,70 80,30" fill="none" stroke="var(--accent-orange)" stroke-width="3" class="dash-draw loop-draw-fast" />
+                  <circle cx="80" cy="30" r="4" fill="var(--text-dark)" class="pulse" />
+                </svg>
               </div>
               <h3 class="col-title" style="font-size: 2rem;">FinTech Disrupt</h3>
               <p class="col-desc">Create the next generation of financial rails, payment gateways, and algorithmic trading tools.</p>
@@ -131,9 +152,51 @@
 
       </div>
     </section>
+    <!-- Schedule Section to Extend Page -->
+    <section class="section section-light">
+      <div class="aurora-container">
+        <div class="aurora-blob orange"></div>
+        <div class="aurora-blob gray"></div>
+      </div>
+      <div class="container border-x">
+        <div class="hero-block border-b reveal-up">
+          <div class="label">[ TIMELINE ]</div>
+          <h2 class="heading-massive text-reveal">
+            THE EXECUTION SCHEDULE.
+          </h2>
+        </div>
+        
+        <div class="grid-2 border-b stagger-group">
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
+            <h3 class="col-title" style="font-size: 1.5rem; color: var(--accent-orange);">FRIDAY 18:00</h3>
+            <h4 class="col-title" style="font-size: 2rem;">INITIALIZATION</h4>
+            <p class="col-desc">Opening ceremony, team formation, and API key distribution. The clock starts.</p>
+          </div>
+          <div class="grid-col interactive-col hover-trigger stagger-item">
+            <h3 class="col-title" style="font-size: 1.5rem; color: var(--accent-orange);">SATURDAY 12:00</h3>
+            <h4 class="col-title" style="font-size: 2rem;">MENTORSHIP LOOP</h4>
+            <p class="col-desc">Venture capitalists and senior engineers provide brutally honest feedback on architectures.</p>
+          </div>
+          <div class="grid-col border-r interactive-col hover-trigger stagger-item">
+            <h3 class="col-title" style="font-size: 1.5rem; color: var(--accent-orange);">SUNDAY 08:00</h3>
+            <h4 class="col-title" style="font-size: 2rem;">CODE FREEZE</h4>
+            <p class="col-desc">All commits must be pushed. Deployment servers are locked. Preparation for judging begins.</p>
+          </div>
+          <div class="grid-col interactive-col hover-trigger stagger-item">
+            <h3 class="col-title" style="font-size: 1.5rem; color: var(--accent-orange);">SUNDAY 15:00</h3>
+            <h4 class="col-title" style="font-size: 2rem;">TERMINATION</h4>
+            <p class="col-desc">Final pitches, live demos, and award distribution. The loop ends.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Chapter 4: The Stakes (Dark Section with Canvas Background) -->
     <section class="section section-dark canvas-wrapper">
+      <div class="aurora-container">
+        <div class="aurora-blob orange"></div>
+        <div class="aurora-blob gray"></div>
+      </div>
       <canvas id="particleCanvas"></canvas>
       <div class="container border-x-dark content-over-canvas">
         <div class="hero-block border-b-dark reveal-up">
@@ -163,6 +226,10 @@
 
     <!-- Chapter 5: The Guild (Partners & FAQ) -->
     <section class="section section-light">
+      <div class="aurora-container">
+        <div class="aurora-blob orange"></div>
+        <div class="aurora-blob gray"></div>
+      </div>
       <div class="container border-x">
         
         <div class="hero-block border-b reveal-up">
@@ -210,6 +277,10 @@
 
     <!-- Chapter 6: Final Call to Action -->
     <section class="section section-dark canvas-wrapper">
+      <div class="aurora-container">
+        <div class="aurora-blob orange"></div>
+        <div class="aurora-blob gray"></div>
+      </div>
       <canvas id="particleCanvasFooter"></canvas>
       <div class="container border-x-dark content-over-canvas">
         <div class="hero-block flex-center border-b-dark reveal-up">

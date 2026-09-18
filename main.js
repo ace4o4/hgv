@@ -1,3 +1,121 @@
+// WebGL Fluid Cloud Shader
+const vertexShaderSource = `
+    attribute vec2 position;
+    void main() {
+        gl_Position = vec4(position, 0.0, 1.0);
+    }
+`;
+
+const fragmentShaderSource = `
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform float u_time;
+    uniform vec2 u_resolution;
+
+    float random (in vec2 st) { return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123); }
+    float noise (in vec2 st) {
+        vec2 i = floor(st);
+        vec2 f = fract(st);
+        float a = random(i);
+        float b = random(i + vec2(1.0, 0.0));
+        float c = random(i + vec2(0.0, 1.0));
+        float d = random(i + vec2(1.0, 1.0));
+        vec2 u = f*f*(3.0-2.0*f);
+        return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+    }
+    #define OCTAVES 6
+    float fbm (in vec2 st) {
+        float value = 0.0;
+        float amplitude = 0.5;
+        mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
+        for (int i = 0; i < OCTAVES; i++) {
+            value += amplitude * noise(st);
+            st = rot * st * 2.0;
+            amplitude *= 0.5;
+        }
+        return value;
+    }
+    void main() {
+        vec2 st = gl_FragCoord.xy/u_resolution.xy;
+        st.x *= u_resolution.x/u_resolution.y;
+
+        vec2 q = vec2(0.);
+        q.x = fbm( st + 0.01 * u_time);
+        q.y = fbm( st + vec2(1.0));
+
+        vec2 r = vec2(0.);
+        r.x = fbm( st + 1.0*q + vec2(1.7,9.2)+ 0.15*u_time );
+        r.y = fbm( st + 1.0*q + vec2(8.3,2.8)+ 0.126*u_time);
+
+        float f = fbm(st+r);
+
+        // Light Theme Cloud Colors (Visible but airy, no black)
+        vec3 baseColor = vec3(1.0, 1.0, 1.0); // Pure white
+        vec3 darkCloudColor = vec3(0.82, 0.85, 0.88); // Soft cool gray to show depth
+        vec3 orangeCloudColor = vec3(1.0, 0.85, 0.75); // Soft orange hint
+
+        // Mix between white and light gray based on noise density
+        vec3 color = mix(baseColor, darkCloudColor, clamp(f * 2.0, 0.0, 1.0));
+        
+        // Add subtle orange hints based on q
+        color = mix(color, orangeCloudColor, clamp(length(q) * 0.8, 0.0, 1.0));
+        
+        // Output final color
+        gl_FragColor = vec4(color, 1.0);
+    }
+`;
+
+function initCloudShader() {
+    const canvas = document.getElementById('cloudCanvas');
+    if (!canvas) return;
+    const gl = canvas.getContext('webgl');
+    if (!gl) return;
+
+    function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        return shader;
+    }
+
+    const program = gl.createProgram();
+    gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexShaderSource));
+    gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
+
+    const positionLocation = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+    const timeLocation = gl.getUniformLocation(program, "u_time");
+    const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+
+    function render(time) {
+        // Fix resolution
+        const width = canvas.parentElement.offsetWidth;
+        const height = canvas.parentElement.offsetHeight;
+        if (canvas.width !== width || canvas.height !== height) {
+            canvas.width = width;
+            canvas.height = height;
+            gl.viewport(0, 0, width, height);
+        }
+
+        gl.uniform1f(timeLocation, time * 0.001);
+        gl.uniform2f(resolutionLocation, width, height);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+}
+setTimeout(initCloudShader, 500);
+
 // 1. Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -51,34 +169,10 @@ document.querySelectorAll('.hover-magnetic').forEach(btn => {
     });
 });
 
-// 4. Lottie Animations
-// We use generic open source Lottie JSONs that fit the "tech" vibe
-const lottieUrls = {
-    ai: 'https://assets5.lottiefiles.com/packages/lf20_m6cuL6.json', // Server/Network
-    web3: 'https://assets2.lottiefiles.com/packages/lf20_yzoqyyqf.json', // Abstract Blockchain
-    fintech: 'https://assets9.lottiefiles.com/packages/lf20_vnikrcia.json' // Chart/Finance
-};
 
-if (typeof lottie !== 'undefined') {
-    lottie.loadAnimation({
-        container: document.getElementById('lottie-ai'),
-        renderer: 'svg', loop: true, autoplay: true,
-        path: 'https://assets3.lottiefiles.com/packages/lf20_UJNc2t.json' // Alternate tech abstract
-    });
-    lottie.loadAnimation({
-        container: document.getElementById('lottie-web3'),
-        renderer: 'svg', loop: true, autoplay: true,
-        path: 'https://assets1.lottiefiles.com/packages/lf20_1LhwiW.json' // Alternate polygon abstract
-    });
-    lottie.loadAnimation({
-        container: document.getElementById('lottie-fintech'),
-        renderer: 'svg', loop: true, autoplay: true,
-        path: 'https://assets8.lottiefiles.com/packages/lf20_4kji20Y93P.json' // Alternate finance abstract
-    });
-}
 
 // 5. Canvas Particle Engine (Constellation Background)
-function initCanvas(canvasId) {
+function initCanvas(canvasId, isDarkTheme = false) {
     const canvas = document.getElementById(canvasId);
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -103,8 +197,16 @@ function initCanvas(canvasId) {
 
     function draw() {
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        
+        // Use dark points on light backgrounds, light points on dark backgrounds
+        if(isDarkTheme) {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
+        } else {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+        }
+        
         ctx.lineWidth = 1;
 
         // Bounding rect for canvas to get mouse coords relative to it
@@ -157,8 +259,8 @@ function initCanvas(canvasId) {
 
 // Wait a bit for layout to settle before initing canvas
 setTimeout(() => {
-    initCanvas('particleCanvas');
-    initCanvas('particleCanvasFooter');
+    initCanvas('particleCanvas', false);
+    initCanvas('particleCanvasFooter', false);
 }, 500);
 
 
