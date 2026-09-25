@@ -13,7 +13,7 @@ export default function Footer() {
       borderTopLeftRadius: '60px',
       borderTopRightRadius: '60px',
       marginTop: '-40px', // Pulls it up over the previous section's bottom padding
-      paddingTop: '80px',
+      paddingTop: '60px', // Reduced height
       paddingBottom: '20px',
       zIndex: 11,
       overflow: 'hidden',
@@ -21,40 +21,42 @@ export default function Footer() {
     }}>
       
       {/* Decorative Technical Crosshairs (Premium Tech Aesthetic) */}
-      <div className="crosshair top-left" style={{ position: 'absolute', top: '40px', left: '40px', opacity: 0.2 }}><svg width="24" height="24"><path d="M12 0v24M0 12h24" stroke="#FFF" strokeWidth="1"/></svg></div>
-      <div className="crosshair top-right" style={{ position: 'absolute', top: '40px', right: '40px', opacity: 0.2 }}><svg width="24" height="24"><path d="M12 0v24M0 12h24" stroke="#FFF" strokeWidth="1"/></svg></div>
+      <div className="crosshair top-left" style={{ position: 'absolute', top: '60px', left: '60px', opacity: 0.2 }}><svg width="32" height="32"><path d="M16 0v32M0 16h32" stroke="#FFF" strokeWidth="1"/></svg></div>
+      <div className="crosshair top-right" style={{ position: 'absolute', top: '60px', right: '60px', opacity: 0.2 }}><svg width="32" height="32"><path d="M16 0v32M0 16h32" stroke="#FFF" strokeWidth="1"/></svg></div>
 
       {/* Premium Background Glow Effect & Grid */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none', zIndex: 0 }} />
-      <div style={{ position: 'absolute', top: '-20%', left: '30%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(147,51,234,0.15) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(47,128,255,0.1) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(100px)', zIndex: 0, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'absolute', top: '-10%', left: '20%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(147,51,234,0.12) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(47,128,255,0.08) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
 
-      {/* Abstract 3D CSS Illustration */}
-      <div style={{ position: 'absolute', top: '10%', right: '10%', zIndex: 0, opacity: 0.4, pointerEvents: 'none', perspective: '800px' }}>
-        <div className="abstract-shape">
-          <div className="shape-ring" />
-          <div className="shape-ring" style={{ animationDelay: '-1s', transform: 'rotateX(60deg) rotateY(60deg)' }} />
-          <div className="shape-ring" style={{ animationDelay: '-2s', transform: 'rotateX(120deg) rotateY(120deg)' }} />
-        </div>
-      </div>
-
-      <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', margin: '0 auto', padding: '0 5vw' }}>
-        <div className="footer-premium-grid">
+      <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', margin: '0 auto', padding: '0 4vw' }}>
+        
+        <div className="footer-bento-grid" style={{ position: 'relative', zIndex: 2 }}>
           
-          {/* Brand Column */}
-          <div className="footer-brand-col">
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '2.5rem', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+          {/* Card 1: Brand Column */}
+          <div className="footer-cutout-card" style={{ gridColumn: 'span 2' }}>
+            <div className="card-glow" style={{ background: 'radial-gradient(circle at 0% 0%, rgba(47,128,255,0.15) 0%, transparent 50%)' }} />
+            <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
               <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 HGV
               </span>
-              <div className="glow-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 10px #00F0FF, 0 0 20px #2F80FF' }} />
+              <div className="glow-dot" style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 15px #00F0FF, 0 0 30px #2F80FF' }} />
             </h2>
-            <p style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '0.5rem', color: '#E2E8F0' }}>{communityData.name}</p>
-            <p style={{ color: '#64748B', lineHeight: 1.6, maxWidth: '300px' }}>{communityData.tagline}</p>
+            <p style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', color: '#E2E8F0', position: 'relative', zIndex: 2 }}>{communityData.name}</p>
+            <p style={{ color: '#64748B', lineHeight: 1.6, maxWidth: '300px', fontSize: '1.05rem', position: 'relative', zIndex: 2 }}>{communityData.tagline}</p>
+            
+            {/* Abstract 3D CSS Illustration inside Brand Card */}
+            <div style={{ position: 'absolute', bottom: '-20%', right: '-5%', zIndex: 0, opacity: 0.15, pointerEvents: 'none', perspective: '800px' }}>
+              <div className="abstract-shape">
+                <div className="shape-ring" />
+                <div className="shape-ring" style={{ animationDelay: '-1s', transform: 'rotateX(60deg) rotateY(60deg)' }} />
+                <div className="shape-ring" style={{ animationDelay: '-2s', transform: 'rotateX(120deg) rotateY(120deg)' }} />
+              </div>
+            </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="footer-links-col">
+          {/* Card 2: Navigation Links */}
+          <div className="footer-cutout-card">
             <h3 className="footer-col-title">Navigation</h3>
             <ul className="footer-link-list">
               {navigationData.footer.map((link) => (
@@ -68,8 +70,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Community Links */}
-          <div className="footer-links-col">
+          {/* Card 3: Community Links */}
+          <div className="footer-cutout-card">
             <h3 className="footer-col-title">Community</h3>
             <ul className="footer-link-list">
               <li>
@@ -93,21 +95,24 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Events */}
-          <div className="footer-links-col">
-            <h3 className="footer-col-title">Contact</h3>
-            <ul className="footer-link-list">
-              <li>
+          {/* Card 4: Contact & Events */}
+          <div className="footer-cutout-card" style={{ gridColumn: '1 / -1' }}>
+            <div className="card-glow" style={{ background: 'radial-gradient(circle at 100% 100%, rgba(147,51,234,0.1) 0%, transparent 60%)' }} />
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '2rem', position: 'relative', zIndex: 2 }}>
+              <div>
+                <h3 className="footer-col-title">Contact Us</h3>
                 <a href={`mailto:${communityData.email}`} className="premium-footer-link">
-                  <span className="link-text">{communityData.email}</span>
+                  <span className="link-text" style={{ fontSize: '1.2rem' }}>{communityData.email}</span>
                 </a>
-              </li>
-            </ul>
-            <h3 className="footer-col-title" style={{ marginTop: '2rem' }}>Current Event</h3>
-            <Link href={`/events/${communityData.currentEventSlug}`} className="premium-event-link">
-              <div className="event-badge">LIVE</div>
-              <span>AHGV BUILDVERSE 2026</span>
-            </Link>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <h3 className="footer-col-title">Current Event</h3>
+                <Link href={`/events/${communityData.currentEventSlug}`} className="premium-event-link">
+                  <div className="event-badge">LIVE</div>
+                  <span>AHGV BUILDVERSE 2026</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -115,30 +120,33 @@ export default function Footer() {
         <div style={{ 
           width: '100%', 
           textAlign: 'center', 
-          marginTop: '6rem', 
+          marginTop: '4rem', 
           marginBottom: '2rem',
           borderBottom: '1px solid rgba(255,255,255,0.05)',
           paddingBottom: '2rem',
           position: 'relative'
         }}>
           <h1 className="huge-footer-text" style={{ 
-            fontSize: 'clamp(3rem, 12vw, 15rem)', 
+            fontSize: 'clamp(3rem, 10vw, 11rem)', 
             fontWeight: 900, 
-            letterSpacing: '-0.05em',
+            letterSpacing: '0.02em',
             margin: 0,
-            lineHeight: 0.8,
-            color: 'transparent',
-            WebkitTextStroke: '1px rgba(255,255,255,0.05)',
-            textTransform: 'uppercase',
-            cursor: 'crosshair'
+            lineHeight: 0.9,
+            cursor: 'crosshair',
+            display: 'flex',
+            justifyContent: 'center'
           }}>
-            HACKGYANVERSE
+            {"HACKGYANVERSE".split("").map((char, index) => (
+              <span key={index} className="footer-char" style={{ animationDelay: `${index * 0.05}s` }}>
+                {char}
+              </span>
+            ))}
           </h1>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', color: '#64748B', fontSize: '0.9rem', fontWeight: 500 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', color: '#64748B', fontSize: '1rem', fontWeight: 500 }}>
           <p>© {new Date().getFullYear()} {communityData.name}. All rights reserved.</p>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', gap: '2rem' }}>
             <Link href="/privacy" className="bottom-link">Privacy Policy</Link>
             <Link href="/terms" className="bottom-link">Terms of Service</Link>
           </div>
@@ -148,8 +156,8 @@ export default function Footer() {
       <style>{`
         /* 3D Abstract Shape Animation */
         .abstract-shape {
-          width: 200px;
-          height: 200px;
+          width: 250px;
+          height: 250px;
           position: relative;
           transform-style: preserve-3d;
           animation: spin3D 20s linear infinite;
@@ -157,7 +165,7 @@ export default function Footer() {
         .shape-ring {
           position: absolute;
           inset: 0;
-          border: 1px solid rgba(0, 240, 255, 0.3);
+          border: 1px solid rgba(0, 240, 255, 0.4);
           border-radius: 50%;
           animation: pulseRing 3s ease-in-out infinite alternate;
         }
@@ -170,26 +178,58 @@ export default function Footer() {
           100% { box-shadow: inset 0 0 30px rgba(147,51,234,0.3); }
         }
 
-        /* Footer Grid */
-        .footer-premium-grid {
+        /* Bento Box Grid Layout */
+        .footer-bento-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 4rem;
+          gap: 1.5rem;
         }
-        @media (min-width: 768px) {
-          .footer-premium-grid {
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2rem;
+        @media (min-width: 1024px) {
+          .footer-bento-grid {
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1.5rem;
           }
         }
 
+        /* Separate Filled Cutout Cards */
+        .footer-cutout-card {
+          background: #0A0C10; /* Deep filled premium color */
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 32px;
+          padding: 3rem;
+          position: relative;
+          overflow: hidden;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .footer-cutout-card:hover {
+          border-color: rgba(255, 255, 255, 0.15);
+          transform: translateY(-8px);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(47, 128, 255, 0.05);
+        }
+
+        .card-glow {
+          position: absolute;
+          inset: 0;
+          opacity: 0.5;
+          pointer-events: none;
+          transition: opacity 0.4s ease;
+        }
+        .footer-cutout-card:hover .card-glow {
+          opacity: 1;
+        }
+
         .footer-col-title {
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           text-transform: uppercase;
-          letter-spacing: 0.15em;
-          color: #94A3B8;
-          margin-bottom: 1.5rem;
-          font-weight: 700;
+          letter-spacing: 0.2em;
+          color: #64748B;
+          margin-bottom: 2rem;
+          font-weight: 800;
         }
 
         .footer-link-list {
@@ -198,16 +238,16 @@ export default function Footer() {
           margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          gap: 1.25rem;
         }
 
         .premium-footer-link {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          color: #CBD5E1;
+          color: #94A3B8;
           text-decoration: none;
-          font-size: 1.05rem;
+          font-size: 1.1rem;
           font-weight: 500;
           transition: all 0.3s ease;
           position: relative;
@@ -223,7 +263,7 @@ export default function Footer() {
         .premium-footer-link:hover {
           color: #FFFFFF;
           transform: translateX(5px);
-          text-shadow: 0 0 10px rgba(255,255,255,0.3);
+          text-shadow: 0 0 10px rgba(255,255,255,0.4);
         }
 
         .premium-footer-link:hover .link-arrow {
@@ -234,15 +274,15 @@ export default function Footer() {
         .premium-event-link {
           display: inline-flex;
           align-items: center;
-          gap: 0.75rem;
-          background: rgba(255,255,255,0.03);
+          gap: 1rem;
+          background: rgba(255,255,255,0.02);
           border: 1px solid rgba(255,255,255,0.1);
-          padding: 0.75rem 1rem;
-          border-radius: 12px;
+          padding: 1rem 1.25rem;
+          border-radius: 16px;
           color: #FFFFFF;
           text-decoration: none;
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: 1rem;
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
@@ -266,16 +306,16 @@ export default function Footer() {
           background: rgba(59,130,246,0.1);
           border-color: rgba(0,240,255,0.5);
           transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0,240,255,0.15);
+          box-shadow: 0 5px 20px rgba(0,240,255,0.2);
         }
 
         .event-badge {
           background: #EF4444;
           color: white;
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           font-weight: 800;
-          padding: 2px 6px;
-          border-radius: 4px;
+          padding: 3px 8px;
+          border-radius: 6px;
           letter-spacing: 0.05em;
           animation: pulse 2s infinite;
         }
@@ -291,31 +331,52 @@ export default function Footer() {
 
         @keyframes pulse {
           0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-          70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+          70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
           100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        /* Insane Neon Hover on Logo */
+        /* Fixed Clean Neon Hover on Logo */
         .huge-footer-text {
-          transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-          background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
-          WebkitBackgroundClip: text;
-        }
-        
-        .huge-footer-text:hover {
-          background-image: linear-gradient(90deg, #2F80FF, #00F0FF, #9333EA, #2F80FF);
-          background-size: 300% 100%;
-          -webkit-text-fill-color: transparent;
-          animation: bgPan 3s linear infinite;
-          text-shadow: 0 0 60px rgba(0, 240, 255, 0.5), 0 0 100px rgba(147, 51, 234, 0.3);
-          letter-spacing: 0.02em; /* Expands slightly */
-          transform: scale(1.02);
-          WebkitTextStroke: 0px; /* Remove stroke when filled */
+          perspective: 1000px;
         }
 
-        @keyframes bgPan {
-          0% { background-position: 0% 50%; }
-          100% { background-position: 300% 50%; }
+        .footer-char {
+          display: inline-block;
+          color: transparent;
+          -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          transform-origin: bottom center;
+        }
+        
+        .huge-footer-text:hover .footer-char {
+          animation: neonWave 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonWave {
+          0% {
+            transform: translateY(0) scale(1) rotateX(0deg);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            background-image: none;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 0px transparent);
+          }
+          50% {
+            transform: translateY(-15px) scale(1.1) rotateX(15deg);
+            background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0px;
+            filter: drop-shadow(0 10px 20px rgba(0, 240, 255, 0.6));
+          }
+          100% {
+            transform: translateY(-5px) scale(1.05) rotateX(5deg);
+            background-image: linear-gradient(90deg, #9333EA, #FF00E5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0px;
+            filter: drop-shadow(0 5px 15px rgba(255, 0, 229, 0.5));
+          }
         }
       `}</style>
     </footer>
