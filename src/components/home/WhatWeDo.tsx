@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { communityData } from '@/data/community';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Environment } from '@react-three/drei';
+import { Float, Environment, useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
 import { ArrowUpRight, Plus, Activity } from 'lucide-react';
 
@@ -13,34 +13,51 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// --- 3D Background Abstract Object ---
-function AbstractBackgroundShape() {
-  const meshRef = useRef<THREE.Mesh>(null);
+// --- 3D Phoenix Bird Model ---
+function PhoenixModel() {
+  const group = useRef<THREE.Group>(null);
+  // Load the model and its animations
+  const { scene, animations } = useGLTF('/models/phoenix_bird.glb');
+  const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    // Play the default flying animation if it exists
+    if (actions && Object.keys(actions).length > 0) {
+      const actionName = Object.keys(actions)[0];
+      const action = actions[actionName];
+      if (action) {
+        action.reset().fadeIn(0.5).play();
+      }
+    }
+  }, [actions]);
+
+  // Make the Phoenix roam the entire area majestically (Contained & Opposite Direction)
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.15;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.2;
+    const t = state.clock.getElapsedTime();
+    if (group.current) {
+      // Reduced amplitudes (3.2 and 1.5) so it stays completely inside the visible area
+      // Used negative time (-t) to reverse the travel direction
+      group.current.position.x = Math.sin(-t * 0.15) * 3.2; 
+      group.current.position.y = Math.cos(-t * 0.2) * 1.5;  
+      group.current.position.z = -1.5 + Math.sin(-t * 0.1) * 1.2; 
+
+      // Flipped base rotation (3 * PI / 4) so it faces the opposite direction
+      group.current.rotation.y = (3 * Math.PI / 4) + Math.cos(-t * 0.15) * 0.6; 
+      group.current.rotation.z = Math.sin(-t * 0.2) * 0.25; 
+      group.current.rotation.x = Math.cos(-t * 0.2) * 0.15; 
     }
   });
+
   return (
-    <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.5}>
-      {/* Reduced scale and shifted to the right so it acts as an accent rather than covering everything */}
-      <mesh ref={meshRef} scale={1.4} position={[1.5, 0.5, -1]}>
-        <sphereGeometry args={[1, 128, 128]} />
-        <MeshDistortMaterial 
-          color="#1A4A7C" // Rich, jewel-like premium blue
-          envMapIntensity={2.5} 
-          clearcoat={1} 
-          clearcoatRoughness={0.1} 
-          metalness={1} 
-          roughness={0.05} 
-          distort={0.3} 
-          speed={1.5} 
-        />
-      </mesh>
+    <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
+      <group ref={group} scale={0.007}>
+        <primitive object={scene} />
+      </group>
     </Float>
   );
 }
+// Preload for better performance
+useGLTF.preload('/models/phoenix_bird.glb');
 
 export default function WhatWeDo() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -82,33 +99,37 @@ export default function WhatWeDo() {
 
   }, []);
 
-  // Premium Glassmorphic styling base with micro-borders
+  // Apple-style Hard 3D Glass styling (Crystal / Acrylic look)
   const glassStyle = {
-    background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)',
-    backdropFilter: 'blur(30px)',
-    WebkitBackdropFilter: 'blur(30px)',
-    border: '1px solid rgba(255,255,255,0.05)',
-    boxShadow: '0 10px 40px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255,255,255,0.05)',
+    background: 'linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 30%, rgba(255,255,255,0.01) 70%, rgba(255,255,255,0.05) 100%)',
+    backdropFilter: 'blur(12px) saturate(160%) brightness(1.1)',
+    WebkitBackdropFilter: 'blur(12px) saturate(160%) brightness(1.1)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    borderTopColor: 'rgba(255,255,255,0.3)', // Sharp highlight on the top edge
+    borderLeftColor: 'rgba(255,255,255,0.2)', // Subtle highlight on the left edge
+    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(255, 255, 255, 0.05)', // Thick glass bevel simulation
     borderRadius: '24px',
     padding: '2.5vw',
     position: 'relative' as const,
     overflow: 'hidden' as const,
     display: 'flex',
     flexDirection: 'column' as const,
-    transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease'
+    transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease'
   };
 
   const pillStyle = {
     padding: '0.4vw 0.8vw',
-    border: '1px solid rgba(255,255,255,0.15)',
+    border: '1px solid rgba(255,255,255,0.2)',
     borderRadius: '20px',
     fontSize: '0.75rem',
     fontWeight: 600,
     letterSpacing: '0.05em',
-    color: '#819CB6',
+    color: '#FFFFFF',
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '6px'
+    gap: '6px',
+    background: 'rgba(255,255,255,0.05)',
+    boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.2)'
   };
 
   return (
@@ -129,7 +150,7 @@ export default function WhatWeDo() {
           <ambientLight intensity={0.6} />
           <directionalLight position={[2, 5, 2]} intensity={2.5} color="#FFF" />
           <directionalLight position={[-2, -5, -2]} intensity={1} color="#2F80FF" />
-          <AbstractBackgroundShape />
+          <PhoenixModel />
           <Environment preset="city" />
         </Canvas>
       </div>
