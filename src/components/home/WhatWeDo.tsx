@@ -16,12 +16,10 @@ if (typeof window !== 'undefined') {
 // --- 3D Phoenix Bird Model ---
 function PhoenixModel() {
   const group = useRef<THREE.Group>(null);
-  // Load the model and its animations
   const { scene, animations } = useGLTF('/models/phoenix_bird.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    // Play the default flying animation if it exists
     if (actions && Object.keys(actions).length > 0) {
       const actionName = Object.keys(actions)[0];
       const action = actions[actionName];
@@ -31,32 +29,53 @@ function PhoenixModel() {
     }
   }, [actions]);
 
-  // Make the Phoenix roam the entire area majestically (Contained & Opposite Direction)
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (group.current) {
-      // Reduced amplitudes (3.2 and 1.5) so it stays completely inside the visible area
-      // Used negative time (-t) to reverse the travel direction
-      group.current.position.x = Math.sin(-t * 0.15) * 3.2; 
-      group.current.position.y = Math.cos(-t * 0.2) * 1.5;  
-      group.current.position.z = -1.5 + Math.sin(-t * 0.1) * 1.2; 
+      // Helper to get position at any given time
+      const getPos = (time: number) => ({
+        // Spread X across the grid
+        x: Math.sin(-time * 0.15) * 4.5,
+        // Centered vertically in WhatWeDo
+        y: Math.cos(-time * 0.2) * 1.5,
+        // Push deep into the background so it stays behind the bento cards
+        z: -5 + Math.sin(-time * 0.1) * 2
+      });
 
-      // Flipped base rotation (3 * PI / 4) so it faces the opposite direction
-      group.current.rotation.y = (3 * Math.PI / 4) + Math.cos(-t * 0.15) * 0.6; 
-      group.current.rotation.z = Math.sin(-t * 0.2) * 0.25; 
-      group.current.rotation.x = Math.cos(-t * 0.2) * 0.15; 
+      const pos = getPos(t);
+      const nextPos = getPos(t + 0.1); // Look slightly ahead
+
+      // Set position
+      group.current.position.set(pos.x, pos.y, pos.z);
+
+      // Calculate path direction vector (velocity)
+      const dx = nextPos.x - pos.x;
+      const dy = nextPos.y - pos.y;
+      const dz = nextPos.z - pos.z;
+
+      // Calculate rotation angles to naturally follow the path
+      // Note: Math.PI offset added to align the bird's forward direction
+      const targetYaw = Math.atan2(dx, dz) + Math.PI; 
+      const targetPitch = Math.atan2(dy, Math.sqrt(dx * dx + dz * dz));
+      const targetRoll = dx * 1.5; // Natural banking when turning
+
+      // Apply smooth rotations
+      // Using lerp for even smoother transitions, though mathematical path is smooth anyway
+      group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetYaw, 0.1);
+      group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, targetPitch, 0.1);
+      group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, targetRoll, 0.1);
     }
   });
 
   return (
-    <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-      <group ref={group} scale={0.007}>
+    <Float speed={2} rotationIntensity={0.1} floatIntensity={0.2}>
+      {/* Scaled down 50% from 0.007 to 0.0035 */}
+      <group ref={group} scale={0.0035}>
         <primitive object={scene} />
       </group>
     </Float>
   );
 }
-// Preload for better performance
 useGLTF.preload('/models/phoenix_bird.glb');
 
 export default function WhatWeDo() {

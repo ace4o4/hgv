@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Environment } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Environment, useGLTF, useAnimations } from '@react-three/drei';
 import * as THREE from 'three';
 
 if (typeof window !== 'undefined') {
@@ -39,6 +39,36 @@ function AbstractBackgroundShape() {
     </Float>
   );
 }
+
+// --- 3D Mech Drone Model (Fresh Load) ---
+function MechDroneModel() {
+  const group = useRef<THREE.Group>(null);
+  // Fresh load trick with completely new filename (v3 is converted to modern Metal/Roughness standard)
+  const { scene, animations } = useGLTF('/models/mech_drone_v3.glb');
+  const { actions } = useAnimations(animations, group);
+
+  useEffect(() => {
+    // Just play the animation, absolutely no texture/material modification needed for standard models
+    if (actions && Object.keys(actions).length > 0) {
+      const actionName = Object.keys(actions)[0];
+      actions[actionName]?.reset().play();
+    }
+  }, [actions]);
+
+  useFrame((state) => {
+    if (group.current) {
+      group.current.rotation.y = -0.8 + Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
+      group.current.position.y = 1.5 + Math.sin(state.clock.elapsedTime * 1.5) * 0.5;
+    }
+  });
+
+  return (
+    <group ref={group} position={[7.5, -5.5, -7.2]} scale={15.0} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+useGLTF.preload('/models/mech_drone_v3.glb');
 
 export default function Partners() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -202,12 +232,13 @@ export default function Partners() {
       `}</style>
 
       {/* 3D Background Layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.6 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.6, pointerEvents: 'none' }}>
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[2, 5, 2]} intensity={2.5} color="#FFF" />
           <directionalLight position={[-2, -5, -2]} intensity={1} color="#2F80FF" />
           <AbstractBackgroundShape />
+          <MechDroneModel />
           <Environment preset="city" />
         </Canvas>
       </div>
