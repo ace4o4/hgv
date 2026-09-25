@@ -346,7 +346,11 @@ export default function Footer() {
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
           transform-origin: bottom center;
           padding: 0 2px;
-          animation: sweepWave 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          transition: all 0.3s ease;
+        }
+
+        .huge-footer-text:hover .footer-char {
+          animation: sweepWave 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
         
         @keyframes sweepWave {
