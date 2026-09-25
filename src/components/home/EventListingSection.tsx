@@ -38,22 +38,21 @@ export default function EventListingSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ position: 'relative', backgroundColor: '#FFFFFF', color: '#090A0B', zIndex: 10, overflow: 'hidden', fontFamily: "'Outfit', sans-serif" }}>
-      
-      {/* Top Cutout Transition from #EBEBEB */}
-      <div style={{
-        position: 'absolute',
-        top: '-4.9vw',
-        left: 0,
-        width: '100%',
-        height: '5vw',
-        backgroundColor: '#FFFFFF',
-        borderTopLeftRadius: '50% 100%',
-        borderTopRightRadius: '50% 100%',
-        zIndex: -1
-      }}></div>
+    <section ref={sectionRef} style={{ 
+      position: 'relative', 
+      backgroundColor: '#FFFFFF', 
+      color: '#090A0B', 
+      zIndex: 10, 
+      overflow: 'hidden', 
+      fontFamily: "'Outfit', sans-serif",
+      borderTopLeftRadius: '80px',
+      borderTopRightRadius: '80px',
+      marginTop: '-80px',
+      paddingTop: '80px',
+      boxShadow: '0 -20px 50px rgba(0,0,0,0.06)' // Premium soft shadow overlapping previous section
+    }}>
 
-      <div style={{ paddingTop: '8vw', paddingBottom: '8vw', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div style={{ paddingTop: '6vw', paddingBottom: '8vw', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Header Section */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '5vw' }}>
@@ -167,35 +166,86 @@ export default function EventListingSection() {
           {/* Main Card */}
           <div ref={mainCardRef} style={{
             width: '100%',
-            maxWidth: '960px',
-            backgroundColor: '#F4F5F6',
+            maxWidth: '1000px',
+            backgroundColor: '#F7F8F9',
             borderRadius: '48px',
-            padding: '1.5vw',
+            padding: '1.2vw',
             display: 'flex',
-            gap: '3vw',
+            gap: '4vw',
             position: 'relative',
             zIndex: 5,
-            boxShadow: '0 30px 60px rgba(0,0,0,0.08)'
+            boxShadow: '0 30px 60px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,0.8)',
+            border: '1px solid rgba(0,0,0,0.03)'
           }}>
             
-            {/* Left Huge Dark Image Cutout */}
+            {/* Left Huge Dark Cutout (Premium Matte) */}
             <div style={{
-              flex: '1.1',
-              backgroundColor: '#16181A',
+              flex: '1.2',
+              background: 'linear-gradient(145deg, #1C1E22 0%, #0A0B0C 100%)',
               borderRadius: '40px',
-              minHeight: '400px',
+              minHeight: '420px',
               position: 'relative',
               overflow: 'hidden',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)'
+              boxShadow: 'inset 0 4px 20px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05), 0 20px 40px rgba(0,0,0,0.15)'
             }}>
-              {/* Central Abstract 3D-like Element (mimicking the drop from the image) */}
-              <div style={{ position: 'relative', width: '200px', height: '200px' }}>
-                <div style={{ position: 'absolute', bottom: '20%', left: '50%', transform: 'translateX(-50%)', width: '160px', height: '60px', backgroundColor: '#000', borderRadius: '50%', filter: 'blur(10px)', opacity: 0.8 }}></div>
-                <div style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%, -50%)', width: '120px', height: '120px', background: 'radial-gradient(circle at 30% 30%, #4A5568, #1A1D20 70%)', borderRadius: '50%', boxShadow: 'inset -10px -10px 20px rgba(0,0,0,0.5), inset 10px 10px 20px rgba(255,255,255,0.1), 0 20px 40px rgba(0,0,0,0.5)' }}></div>
-                <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', width: '12px', height: '20px', background: 'linear-gradient(to bottom, #A0AEC0, #4A5568)', borderRadius: '50% 50% 40% 40%', boxShadow: '0 5px 10px rgba(0,0,0,0.3)' }}></div>
+              {/* Refined 3D Element (Abstract Glass Sphere / Liquid Drop) */}
+              <div style={{ position: 'relative', width: '240px', height: '240px' }}>
+                
+                {/* Base Ground Shadow */}
+                <div style={{ position: 'absolute', bottom: '10%', left: '50%', transform: 'translateX(-50%) scaleY(0.25)', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(10px)', zIndex: 1 }}></div>
+                
+                {/* Main 3D Liquid Pool / Base */}
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '25%', 
+                  left: '50%', 
+                  transform: 'translateX(-50%) scaleY(0.4)', 
+                  width: '180px', 
+                  height: '180px', 
+                  background: 'radial-gradient(circle at 40% 30%, #374151 0%, #0F1115 50%, #000000 100%)', 
+                  borderRadius: '50%', 
+                  boxShadow: 'inset -5px -5px 15px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.1)',
+                  zIndex: 2 
+                }}>
+                   {/* Ring Highlight on the pool */}
+                   <div style={{ position: 'absolute', top: '10%', left: '10%', width: '80%', height: '80%', borderTop: '2px solid rgba(255,255,255,0.15)', borderRadius: '50%' }}></div>
+                </div>
+
+                {/* Ascending Drop (The splash/pull up) */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '35%', 
+                  left: '50%', 
+                  transform: 'translate(-50%, 0)', 
+                  width: '60px', 
+                  height: '80px', 
+                  background: 'linear-gradient(180deg, #6B7280 0%, #111827 80%, #000000 100%)', 
+                  borderRadius: '50% 50% 45% 45% / 80% 80% 20% 20%', 
+                  boxShadow: 'inset -8px -5px 15px rgba(0,0,0,0.9), inset 5px 5px 15px rgba(255,255,255,0.25)',
+                  zIndex: 3 
+                }}>
+                   {/* Main specular highlight */}
+                   <div style={{ position: 'absolute', top: '10%', left: '15%', width: '20%', height: '60%', background: 'linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)', borderRadius: '50%', transform: 'rotate(-15deg)' }}></div>
+                </div>
+
+                {/* Top Tiny Separated Droplet */}
+                <div style={{ 
+                  position: 'absolute', 
+                  top: '20%', 
+                  left: '50%', 
+                  transform: 'translateX(-50%)', 
+                  width: '14px', 
+                  height: '22px', 
+                  background: 'radial-gradient(circle at 30% 30%, #D1D5DB 0%, #374151 50%, #030712 100%)', 
+                  borderRadius: '50% 50% 40% 40%', 
+                  boxShadow: '0 8px 10px rgba(0,0,0,0.6)',
+                  zIndex: 4 
+                }}>
+                  <div style={{ position: 'absolute', top: '2px', left: '2px', width: '3px', height: '6px', background: 'rgba(255,255,255,0.8)', borderRadius: '50%' }}></div>
+                </div>
               </div>
             </div>
 
@@ -204,50 +254,65 @@ export default function EventListingSection() {
               flex: '1',
               display: 'flex',
               flexDirection: 'column',
-              padding: '2.5vw 2.5vw 2.5vw 0',
-              justifyContent: 'space-between'
+              padding: '3vw 4vw 3vw 0',
+              justifyContent: 'center'
             }}>
               
-              <div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2vw' }}>
                 {/* Logo / Brand */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1.5vw' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <div style={{ display: 'flex', gap: '2px' }}>
                     <div style={{ width: '12px', height: '12px', backgroundColor: '#1A1D20', transform: 'skewX(-15deg)' }}></div>
                     <div style={{ width: '8px', height: '12px', backgroundColor: '#1A1D20', transform: 'skewX(-15deg)', opacity: 0.6 }}></div>
                     <div style={{ width: '4px', height: '12px', backgroundColor: '#1A1D20', transform: 'skewX(-15deg)', opacity: 0.3 }}></div>
                   </div>
-                  <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '0.05em', color: '#1A1D20' }}>HGV</span>
+                  <span style={{ fontSize: '1.3rem', fontWeight: 800, letterSpacing: '0.05em', color: '#1A1D20' }}>HGV</span>
                 </div>
 
-                <h3 style={{ fontSize: 'clamp(1.5rem, 2vw, 2.2rem)', fontWeight: 600, color: '#1A1D20', lineHeight: 1.1, marginBottom: '1vw', letterSpacing: '-0.02em' }}>
+                <h3 style={{ fontSize: 'clamp(1.8rem, 2.2vw, 2.5rem)', fontWeight: 600, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
                   {liveEvent.name}
                 </h3>
 
-                <p style={{ fontSize: '0.9rem', color: '#5F646B', lineHeight: 1.5, marginBottom: '1.5vw', fontWeight: 400, maxWidth: '90%' }}>
+                <p style={{ fontSize: '0.95rem', color: '#5F646B', lineHeight: 1.6, fontWeight: 400, maxWidth: '95%' }}>
                   We analyze your workflows, bottlenecks, and revenue opportunities to build meaningful solutions in this flagship event.
                 </p>
 
-                <Link href={`/events/${liveEvent.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', fontWeight: 600, color: '#1A1D20', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
-                  Read More
-                  <div style={{ width: '16px', height: '16px', backgroundColor: '#E2E8F0', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ArrowRight size={10} color="#1A1D20" />
-                  </div>
-                </Link>
+                <div style={{ marginTop: '0.5vw' }}>
+                  <Link href={`/events/${liveEvent.slug}`} style={{ 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '8px', 
+                    fontSize: '0.9rem', 
+                    fontWeight: 600, 
+                    color: '#1A1D20', 
+                    textDecoration: 'underline', 
+                    textUnderlineOffset: '6px',
+                    transition: 'opacity 0.3s'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
+                  onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                  >
+                    Read More
+                    <div style={{ width: '18px', height: '18px', backgroundColor: '#E2E8F0', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <ArrowRight size={10} color="#1A1D20" strokeWidth={3} />
+                    </div>
+                  </Link>
+                </div>
               </div>
 
               {/* Stats at bottom right */}
-              <div style={{ display: 'flex', gap: '3vw', marginTop: '2vw' }}>
+              <div style={{ display: 'flex', gap: '3.5vw', marginTop: '4vw' }}>
                 <div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em' }}>36<span style={{ fontSize: '1.2rem' }}>hr</span></div>
-                  <div style={{ fontSize: '0.7rem', color: '#5F646B', fontWeight: 500 }}>Duration</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em', lineHeight: 1 }}>+36<span style={{ fontSize: '1.2rem', marginLeft: '2px' }}>hr</span></div>
+                  <div style={{ fontSize: '0.75rem', color: '#5F646B', fontWeight: 500, marginTop: '8px' }}>Duration</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em' }}>500<span style={{ fontSize: '1.2rem' }}>+</span></div>
-                  <div style={{ fontSize: '0.7rem', color: '#5F646B', fontWeight: 500 }}>Hackers</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em', lineHeight: 1 }}>+500</div>
+                  <div style={{ fontSize: '0.75rem', color: '#5F646B', fontWeight: 500, marginTop: '8px' }}>Hackers</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em' }}>10<span style={{ fontSize: '1.2rem' }}>L</span></div>
-                  <div style={{ fontSize: '0.7rem', color: '#5F646B', fontWeight: 500 }}>Prize Pool</div>
+                  <div style={{ fontSize: '2rem', fontWeight: 700, color: '#1A1D20', letterSpacing: '-0.02em', lineHeight: 1 }}>10x</div>
+                  <div style={{ fontSize: '0.75rem', color: '#5F646B', fontWeight: 500, marginTop: '8px' }}>Prize Pool (L)</div>
                 </div>
               </div>
 

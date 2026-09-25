@@ -34,9 +34,9 @@ export default function CommunityIntro() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: '+=4000', // Massive scroll distance for slow scrub
-          scrub: 1.5, // 1.5s lag gives the overall springy feel to the scroll
+          start: 'top top', // Pins exactly when the dark content hits the top
+          end: '+=4000', 
+          scrub: 1.5,
           pin: true 
         }
       });
@@ -55,8 +55,7 @@ export default function CommunityIntro() {
       // Pause
       tl.to({}, { duration: 0.8 });
 
-      // 3. Expand outwards simultaneously (Top and Bottom pairs) with SPRING motion
-      // Top words animate to y: 0 from 80px (slide UP). Bottom words animate to y: 0 from -80px (slide DOWN).
+      // 3. Expand outwards simultaneously
       for (let i = 1; i <= 3; i++) {
         const topEl = wordsRef.current[3 - i];
         const bottomEl = wordsRef.current[3 + i];
@@ -68,12 +67,9 @@ export default function CommunityIntro() {
         if (bottomEl) {
           pairTimeline.to(bottomEl, { opacity: 1, scale: 1, filter: 'blur(0px)', y: 0, duration: 2, ease: 'back.out(1.5)' }, 0);
         }
-        
-        // Add pair animation to main timeline with a slight overlap
         tl.add(pairTimeline, `-=${1}`);
       }
       
-      // Hold at the end
       tl.to({}, { duration: 3 });
     }
 
@@ -84,31 +80,71 @@ export default function CommunityIntro() {
 
   return (
     <section 
-      ref={sectionRef}
       style={{
         backgroundColor: '#050505', 
-        height: '100vh',
         width: '100vw',
-        position: 'relative',
-        color: '#FFF',
-        fontFamily: "'Outfit', sans-serif",
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        zIndex: 20
+        position: 'relative'
       }}
     >
+      {/* Scrollable Cutout Overlay (Not pinned) */}
       <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        gap: '1.5vw',
-        fontSize: 'clamp(3rem, 7vw, 8rem)',
-        fontWeight: 800,
-        letterSpacing: '-0.05em',
-        width: '100%'
+        width: '100%', 
+        height: '10vw', 
+        position: 'relative',
+        zIndex: 10
       }}>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block' }}>
+          <path d="M0,0 L1440,0 L1440,120 L800,120 L600,0 Z" fill="#DEE3EA" />
+          <path d="M600,0 L800,120 L1440,120" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" />
+        </svg>
+
+        <div style={{
+          position: 'absolute',
+          right: '6vw',
+          top: '3vw',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '1vw'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1vw' }}>
+            <div style={{ width: '40px', height: '1px', backgroundColor: 'rgba(26,29,32,0.3)' }}></div>
+            <span style={{ fontSize: '0.85vw', fontWeight: 700, letterSpacing: '0.2em', color: '#1A1D20', textTransform: 'uppercase', opacity: 0.7 }}>
+              Dive into the Verse
+            </span>
+          </div>
+          <span style={{ 
+            fontSize: '4.5vw', 
+            fontWeight: 900, 
+            color: 'transparent', 
+            WebkitTextStroke: '1px rgba(26,29,32,0.15)', 
+            lineHeight: 0.8, 
+            letterSpacing: '-0.02em',
+            transform: 'translateX(1vw)' 
+          }}>
+            COMMUNITY
+          </span>
+        </div>
+      </div>
+
+      {/* Pinned Dark Content Area */}
+      <div 
+        ref={sectionRef}
+        style={{
+          height: '100vh',
+          width: '100%',
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          gap: '1.5vw',
+          fontSize: 'clamp(3rem, 7vw, 8rem)',
+          fontWeight: 800,
+          letterSpacing: '-0.05em',
+          color: '#FFF',
+          fontFamily: "'Outfit', sans-serif",
+          overflow: 'hidden'
+        }}
+      >
         
         {/* Left Fixed Text */}
         <div 

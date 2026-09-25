@@ -17,8 +17,6 @@ export default function Home() {
       <FeaturedEvent />
       <EventListingSection />
       <WhatWeDo />
-      <CommunityJourney />
-      <CommunityImpact />
       <Partners />
       <FinalCTA />
     </>
