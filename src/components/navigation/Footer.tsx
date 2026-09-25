@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { navigationData } from '@/data/navigation';
 import { communityData } from '@/data/community';
 
 export default function Footer() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <footer className="premium-dark-footer" style={{ 
       position: 'relative',
@@ -116,16 +119,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Massive Background Text with Insane Hover */}
-        <div style={{ 
-          width: '100%', 
-          textAlign: 'center', 
-          marginTop: '4rem', 
-          marginBottom: '2rem',
-          borderBottom: '1px solid rgba(255,255,255,0.05)',
-          paddingBottom: '2rem',
-          position: 'relative'
-        }}>
+        {/* Massive Background Text with Spring Hover */}
+        <div 
+          style={{ 
+            width: '100%', 
+            textAlign: 'center', 
+            marginTop: '4rem', 
+            marginBottom: '2rem',
+            borderBottom: '1px solid rgba(255,255,255,0.05)',
+            paddingBottom: '2rem',
+            position: 'relative'
+          }}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
           <h1 className="huge-footer-text" style={{ 
             fontSize: 'clamp(3rem, 10vw, 11rem)', 
             fontWeight: 900, 
@@ -136,11 +142,29 @@ export default function Footer() {
             display: 'flex',
             justifyContent: 'center'
           }}>
-            {"HACKGYANVERSE".split("").map((char, index) => (
-              <span key={index} className="footer-char" style={{ animationDelay: `${index * 0.05}s` }}>
-                {char}
-              </span>
-            ))}
+            {"HACKGYANVERSE".split("").map((char, index) => {
+              const distance = hoveredIndex !== null ? Math.abs(hoveredIndex - index) : 100;
+              let y = 0;
+              let scale = 1;
+              let rotateX = 0;
+              
+              if (distance === 0) { y = -24; scale = 1.15; rotateX = 15; }
+              else if (distance === 1) { y = -12; scale = 1.08; rotateX = 8; }
+              else if (distance === 2) { y = -4; scale = 1.03; rotateX = 3; }
+
+              return (
+                <span 
+                  key={index} 
+                  className="footer-char" 
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  style={{ 
+                    transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg)` 
+                  }}
+                >
+                  {char}
+                </span>
+              );
+            })}
           </h1>
         </div>
 
@@ -338,6 +362,20 @@ export default function Footer() {
         /* Fixed Clean Neon Hover on Logo */
         .huge-footer-text {
           perspective: 1000px;
+          transition: all 0.4s ease;
+        }
+
+        .huge-footer-text:hover {
+          background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA, #FF00E5);
+          -webkit-background-clip: text;
+          background-size: 200% auto;
+          animation: shineFlow 3s linear infinite;
+        }
+
+        @keyframes shineFlow {
+          to {
+            background-position: 200% center;
+          }
         }
 
         .footer-char {
@@ -346,32 +384,12 @@ export default function Footer() {
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
           transform-origin: bottom center;
           padding: 0 2px;
-          transition: all 0.3s ease;
-        }
-
-        .huge-footer-text:hover .footer-char {
-          animation: sweepWave 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring effect */
         }
         
-        @keyframes sweepWave {
-          0%, 15%, 100% {
-            transform: translateY(0) scale(1) rotateX(0deg);
-            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
-            background-image: none;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 0px transparent);
-            z-index: 1;
-          }
-          7.5% {
-            transform: translateY(-15px) scale(1.15) rotateX(10deg);
-            background-image: linear-gradient(135deg, #00F0FF, #9333EA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0px;
-            filter: drop-shadow(0 10px 20px rgba(0, 240, 255, 0.6));
-            z-index: 10;
-          }
+        .huge-footer-text:hover .footer-char {
+          -webkit-text-stroke: 0px;
+          filter: drop-shadow(0 10px 20px rgba(0, 240, 255, 0.3));
         }
       `}</style>
     </footer>
