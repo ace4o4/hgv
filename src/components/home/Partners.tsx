@@ -48,16 +48,29 @@ function MechDroneModel() {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    // Just play the animation, absolutely no texture/material modification needed for standard models
+    // Add ~10% luminance to make the model glow slightly without losing its textures
+    scene.traverse((child: any) => {
+      if (child.isMesh && child.material) {
+        // If it doesn't have an emissive map, we can give it a baseline emissive color and low intensity
+        if (!child.material.emissive) {
+          child.material.emissive = new THREE.Color(0xffffff);
+        }
+        child.material.emissiveIntensity = 0.2;
+        child.material.needsUpdate = true;
+      }
+    });
+
+    // Just play the animation
     if (actions && Object.keys(actions).length > 0) {
       const actionName = Object.keys(actions)[0];
       actions[actionName]?.reset().play();
     }
-  }, [actions]);
+  }, [actions, scene]);
 
   useFrame((state) => {
     if (group.current) {
-      group.current.rotation.y = -0.8 + Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
+      // Added Math.PI to rotate the drone 180 degrees so its face points towards the camera
+      group.current.rotation.y = Math.PI - 0.8 + Math.sin(state.clock.elapsedTime * 1.5) * 0.1;
       group.current.position.y = 1.5 + Math.sin(state.clock.elapsedTime * 1.5) * 0.5;
     }
   });
