@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { navigationData } from '@/data/navigation';
 import { communityData } from '@/data/community';
+import RollText from '@/components/animata/text/roll-text';
 
 export default function Footer() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -60,8 +61,8 @@ export default function Footer() {
             <ul className="footer-link-list">
               {navigationData.footer.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="premium-footer-link">
-                    <span className="link-text">{link.name}</span>
+                  <Link href={link.href} className="premium-footer-link" data-roll-group={true}>
+                    <span className="link-text"><RollText text={link.name} stagger="character" groupHover={true} /></span>
                     <span className="link-arrow">→</span>
                   </Link>
                 </li>
@@ -74,20 +75,20 @@ export default function Footer() {
             <h3 className="footer-col-title" style={{ position: 'relative', zIndex: 2 }}>Community</h3>
             <ul className="footer-link-list" style={{ position: 'relative', zIndex: 2 }}>
               <li>
-                <a href={communityData.whatsappLink} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Join WhatsApp</span>
+                <a href={communityData.whatsappLink} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="Join WhatsApp" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
               <li>
-                <a href={communityData.social.linkedin} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">LinkedIn</span>
+                <a href={communityData.social.linkedin} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="LinkedIn" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
               <li>
-                <a href={communityData.social.instagram} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Instagram</span>
+                <a href={communityData.social.instagram} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="Instagram" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
@@ -148,26 +149,47 @@ export default function Footer() {
               let y = 0;
               let scale = 1;
               let rotateX = 0;
+              let rotateY = 0;
               let glow = 0;
               
-              if (distance === 0) { y = -20; scale = 1.15; rotateX = 15; glow = 30; }
-              else if (distance === 1) { y = -10; scale = 1.08; rotateX = 8; glow = 15; }
-              else if (distance === 2) { y = -3; scale = 1.03; rotateX = 3; glow = 5; }
+              if (distance === 0) { 
+                y = -30; scale = 1.25; rotateX = 15; rotateY = 0; glow = 40; 
+              }
+              else if (distance === 1) { 
+                y = -15; scale = 1.12; rotateX = 8; glow = 20; 
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 30 : -30;
+              }
+              else if (distance === 2) { 
+                y = -5; scale = 1.05; rotateX = 4; glow = 10; 
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 15 : -15;
+              }
+              else if (isHovered) {
+                // Background letters push back slightly to emphasize depth
+                scale = 0.95;
+                y = 5;
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 5 : -5;
+                rotateX = -5;
+              }
 
               return (
-                <span 
-                  key={index} 
-                  data-char={char}
-                  className={`footer-char ${isHovered && distance <= 2 ? 'active' : ''}`}
+                <div 
+                  key={index}
                   onMouseEnter={() => setHoveredIndex(index)}
-                  style={{ 
-                    transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg)`,
-                    filter: isHovered && glow > 0 ? `drop-shadow(0 15px ${glow}px rgba(0, 240, 255, 0.4))` : 'none',
-                    zIndex: 10 - distance
-                  }}
+                  style={{ display: 'inline-block', cursor: 'crosshair', padding: 0 }}
                 >
-                  {char}
-                </span>
+                  <span 
+                    data-char={char}
+                    className={`footer-char ${isHovered && distance <= 2 ? 'active' : ''}`}
+                    style={{ 
+                      display: 'inline-block',
+                      transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+                      filter: isHovered && glow > 0 ? `drop-shadow(0 20px ${glow}px rgba(0, 240, 255, 0.5))` : 'none',
+                      zIndex: 20 - distance
+                    }}
+                  >
+                    {char}
+                  </span>
+                </div>
               );
             })}
           </h1>
@@ -298,10 +320,10 @@ export default function Footer() {
           text-decoration: none;
           font-size: 1.1rem;
           font-weight: 500;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
         }
-        
+
         .premium-footer-link .link-arrow {
           opacity: 0;
           transform: translateX(-10px);
@@ -394,7 +416,6 @@ export default function Footer() {
           color: transparent;
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
           transform-origin: bottom center;
-          padding: 0 2px;
           transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Cinematic smooth float */
           position: relative;
         }
