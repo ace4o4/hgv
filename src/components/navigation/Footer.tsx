@@ -150,18 +150,19 @@ export default function Footer() {
               let rotateX = 0;
               let glow = 0;
               
-              if (distance === 0) { y = -24; scale = 1.15; rotateX = 15; glow = 20; }
-              else if (distance === 1) { y = -12; scale = 1.08; rotateX = 8; glow = 10; }
-              else if (distance === 2) { y = -4; scale = 1.03; rotateX = 3; glow = 5; }
+              if (distance === 0) { y = -20; scale = 1.15; rotateX = 15; glow = 30; }
+              else if (distance === 1) { y = -10; scale = 1.08; rotateX = 8; glow = 15; }
+              else if (distance === 2) { y = -3; scale = 1.03; rotateX = 3; glow = 5; }
 
               return (
                 <span 
                   key={index} 
+                  data-char={char}
                   className={`footer-char ${isHovered && distance <= 2 ? 'active' : ''}`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   style={{ 
                     transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg)`,
-                    filter: isHovered && glow > 0 ? `drop-shadow(0 10px ${glow}px rgba(0, 240, 255, 0.4))` : 'none',
+                    filter: isHovered && glow > 0 ? `drop-shadow(0 15px ${glow}px rgba(0, 240, 255, 0.4))` : 'none',
                     zIndex: 10 - distance
                   }}
                 >
@@ -363,7 +364,7 @@ export default function Footer() {
           100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        /* Fixed Clean Neon Hover on Logo */
+        /* Cinematic Neon Hover on Logo */
         .huge-footer-text {
           perspective: 1000px;
         }
@@ -374,20 +375,35 @@ export default function Footer() {
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
           transform-origin: bottom center;
           padding: 0 2px;
-          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring effect */
+          transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Cinematic smooth float */
           position: relative;
         }
         
-        .footer-char.active {
+        .footer-char::before {
+          content: attr(data-char);
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          width: 100%; height: 100%;
           background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA, #FF00E5, #00F0FF);
           background-size: 300% 100%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           -webkit-text-stroke: 0px;
-          animation: bgPan 2s linear infinite;
+          opacity: 0;
+          transition: opacity 0.6s ease;
+          pointer-events: none;
+        }
+        
+        .footer-char.active::before {
+          opacity: 1;
+          animation: cinematicPan 3s linear infinite;
         }
 
-        @keyframes bgPan {
+        .footer-char.active {
+          -webkit-text-stroke: 0px;
+        }
+
+        @keyframes cinematicPan {
           0% { background-position: 0% 50%; }
           100% { background-position: 100% 50%; }
         }
