@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="footer-bento-grid" style={{ position: 'relative', zIndex: 2 }}>
           
           {/* Card 1: Brand Column */}
-          <div className="footer-cutout-card" style={{ gridColumn: 'span 2' }}>
+          <div className="footer-cutout-card" style={{ gridColumn: 'span 2', borderRadius: '40px 16px 40px 40px' }}>
             <div className="card-glow" style={{ background: 'radial-gradient(circle at 0% 0%, rgba(47,128,255,0.15) 0%, transparent 50%)' }} />
             <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
               <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
@@ -48,18 +48,14 @@ export default function Footer() {
             <p style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', color: '#E2E8F0', position: 'relative', zIndex: 2 }}>{communityData.name}</p>
             <p style={{ color: '#64748B', lineHeight: 1.6, maxWidth: '300px', fontSize: '1.05rem', position: 'relative', zIndex: 2 }}>{communityData.tagline}</p>
             
-            {/* Abstract 3D CSS Illustration inside Brand Card */}
-            <div style={{ position: 'absolute', bottom: '-20%', right: '-5%', zIndex: 0, opacity: 0.15, pointerEvents: 'none', perspective: '800px' }}>
-              <div className="abstract-shape">
-                <div className="shape-ring" />
-                <div className="shape-ring" style={{ animationDelay: '-1s', transform: 'rotateX(60deg) rotateY(60deg)' }} />
-                <div className="shape-ring" style={{ animationDelay: '-2s', transform: 'rotateX(120deg) rotateY(120deg)' }} />
-              </div>
+            {/* Animated Lottie / Tech Abstract inside Brand Card */}
+            <div style={{ position: 'absolute', bottom: '-20%', right: '-5%', zIndex: 0, opacity: 0.6, pointerEvents: 'none' }}>
+              <iframe src="https://lottie.host/embed/8b96917f-b673-42e7-91fb-db94285b0266/b6Y5Vp28R3.json" style={{ width: '350px', height: '350px', border: 'none' }}></iframe>
             </div>
           </div>
 
           {/* Card 2: Navigation Links */}
-          <div className="footer-cutout-card">
+          <div className="footer-cutout-card" style={{ borderRadius: '16px 40px 16px 16px' }}>
             <h3 className="footer-col-title">Navigation</h3>
             <ul className="footer-link-list">
               {navigationData.footer.map((link) => (
@@ -74,9 +70,9 @@ export default function Footer() {
           </div>
 
           {/* Card 3: Community Links */}
-          <div className="footer-cutout-card">
-            <h3 className="footer-col-title">Community</h3>
-            <ul className="footer-link-list">
+          <div className="footer-cutout-card" style={{ borderRadius: '16px 16px 40px 16px' }}>
+            <h3 className="footer-col-title" style={{ position: 'relative', zIndex: 2 }}>Community</h3>
+            <ul className="footer-link-list" style={{ position: 'relative', zIndex: 2 }}>
               <li>
                 <a href={communityData.whatsappLink} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
                   <span className="link-text">Join WhatsApp</span>
@@ -96,6 +92,10 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            {/* Lottie Animation for Community */}
+            <div style={{ position: 'absolute', bottom: '-10%', right: '-20%', zIndex: 0, opacity: 0.3, pointerEvents: 'none' }}>
+              <iframe src="https://lottie.host/embed/db11df13-ef3c-4a37-b4db-5509cbf2c8d2/Q0vL4gR4Nf.json" style={{ width: '250px', height: '250px', border: 'none' }}></iframe>
+            </div>
           </div>
 
           {/* Card 4: Contact & Events */}
@@ -212,33 +212,53 @@ export default function Footer() {
           display: grid;
           grid-template-columns: 1fr;
           gap: 1.5rem;
+          animation: bentoReveal 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
+        
+        @keyframes bentoReveal {
+          0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @media (min-width: 1024px) {
           .footer-bento-grid {
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
           }
         }
 
-        /* Separate Filled Cutout Cards */
+        /* Separate Smooth Skeuomorphic Glass Cards */
         .footer-cutout-card {
-          background: #0A0C10; /* Deep filled premium color */
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          border-radius: 32px;
+          background: linear-gradient(145deg, rgba(16, 20, 28, 0.7), rgba(10, 12, 16, 0.9)); /* Glassmorphic dark skeuo */
+          backdrop-filter: blur(30px);
+          -webkit-backdrop-filter: blur(30px);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 40px; /* Default */
           padding: 3rem;
           position: relative;
           overflow: hidden;
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5);
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          /* Skeuomorphic inner bevels and outer drop shadows */
+          box-shadow: 
+            10px 10px 30px rgba(0, 0, 0, 0.6), 
+            -4px -4px 15px rgba(255, 255, 255, 0.02),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+            inset -1px -1px 2px rgba(0, 0, 0, 0.5);
+          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
         .footer-cutout-card:hover {
-          border-color: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(145deg, rgba(20, 24, 34, 0.8), rgba(12, 14, 20, 1));
+          border-color: rgba(255, 255, 255, 0.1);
           transform: translateY(-8px);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(47, 128, 255, 0.05);
+          box-shadow: 
+            15px 15px 40px rgba(0, 0, 0, 0.8), 
+            -5px -5px 20px rgba(255, 255, 255, 0.03),
+            inset 1px 1px 3px rgba(255, 255, 255, 0.2),
+            inset -1px -1px 3px rgba(0, 0, 0, 0.6),
+            0 0 40px rgba(47, 128, 255, 0.1);
         }
 
         .card-glow {
