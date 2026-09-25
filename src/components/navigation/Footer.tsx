@@ -344,38 +344,29 @@ export default function Footer() {
           display: inline-block;
           color: transparent;
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
-          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
           transform-origin: bottom center;
+          padding: 0 2px;
+          animation: sweepWave 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
         
-        .huge-footer-text:hover .footer-char {
-          animation: neonWave 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes neonWave {
-          0% {
+        @keyframes sweepWave {
+          0%, 15%, 100% {
             transform: translateY(0) scale(1) rotateX(0deg);
             -webkit-text-stroke: 1px rgba(255,255,255,0.1);
             background-image: none;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 0px transparent);
+            z-index: 1;
           }
-          50% {
-            transform: translateY(-15px) scale(1.1) rotateX(15deg);
-            background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA);
+          7.5% {
+            transform: translateY(-15px) scale(1.15) rotateX(10deg);
+            background-image: linear-gradient(135deg, #00F0FF, #9333EA);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             -webkit-text-stroke: 0px;
             filter: drop-shadow(0 10px 20px rgba(0, 240, 255, 0.6));
-          }
-          100% {
-            transform: translateY(-5px) scale(1.05) rotateX(5deg);
-            background-image: linear-gradient(90deg, #9333EA, #FF00E5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 0px;
-            filter: drop-shadow(0 5px 15px rgba(255, 0, 229, 0.5));
+            z-index: 10;
           }
         }
       `}</style>
