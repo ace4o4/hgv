@@ -28,7 +28,7 @@ export default function Home() {
       <EventListingSection />
 
       {/* Wave down: white → dark ecosystem */}
-      <SectionDivider fromColor="#F5F5F5" toColor="#080A0C" outline={true} />
+      <SectionDivider fromColor="#F5F5F5" toColor="#080A0C" outline={true} ambientGlow="top" />
       <SwarmCursor color="#2F80FF" accentColor="#00F0FF" count={6} size={8} speed={1.5} spread={110} trail={0.5} opacity={0.9}>
         <WhatWeDo />
         <Partners />

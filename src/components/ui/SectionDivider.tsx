@@ -8,7 +8,7 @@ interface SectionDividerProps {
   flip?: boolean;   // flip=true → wave opening goes upward (dark section into white below)
   dots?: boolean;
   outline?: boolean;
-  ambientGlow?: boolean;
+  ambientGlow?: boolean | 'top' | 'bottom';
 }
 
 export default function SectionDivider({
@@ -46,7 +46,7 @@ export default function SectionDivider({
       >
         <defs>
           <filter id="ambient-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="25" result="blur" />
+            <feGaussianBlur stdDeviation="6" result="blur" />
           </filter>
           <linearGradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#5B21B6" />
@@ -55,37 +55,36 @@ export default function SectionDivider({
           </linearGradient>
         </defs>
 
-        {/* NO background rect — container backgroundColor handles it */}
         {/* Wave shape fills toColor from crest down to bottom */}
         {/* Layer 1: The solid background of the section below */}
         <path
-          d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75 L1440,160 L0,160 Z"
+          d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75 L1440,300 L0,300 Z"
           fill={toColor}
         />
         
-        {/* Layer 2: The gradient stroke shifted DOWN into the toColor area */}
+        {/* Layer 2: The glowing spread (15px spread) */}
         {ambientGlow && (
           <path
             d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
             fill="none"
             stroke="url(#glow-gradient)"
-            strokeWidth="30"
+            strokeWidth="15"
             filter="url(#ambient-glow)"
             opacity="1"
-            transform="translate(0, 10)"
+            transform={ambientGlow === 'top' ? "translate(0, -3)" : "translate(0, 3)"}
             style={{ mixBlendMode: 'multiply' }}
           />
         )}
         
-        {/* Layer 3: A solid sharp gradient rim just for good measure (inner edge) */}
+        {/* Layer 3: The solid gradient line (5px) */}
         {ambientGlow && (
           <path
             d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
             fill="none"
             stroke="url(#glow-gradient)"
-            strokeWidth="3"
-            opacity="0.7"
-            transform="translate(0, 3)"
+            strokeWidth="5"
+            opacity="1"
+            transform={ambientGlow === 'top' ? "translate(0, -2)" : "translate(0, 2)"}
             style={{ mixBlendMode: 'multiply' }}
           />
         )}
@@ -100,7 +99,7 @@ export default function SectionDivider({
         )}
         {/* Depth shadow layer */}
         <path
-          d="M0,115 C200,60 380,150 560,95 C740,38 900,150 1080,90 C1230,42 1370,118 1440,105 L1440,160 L0,160 Z"
+          d="M0,115 C200,60 380,150 560,95 C740,38 900,150 1080,90 C1230,42 1370,118 1440,105 L1440,300 L0,300 Z"
           fill={toColor}
           opacity="0.35"
         />
