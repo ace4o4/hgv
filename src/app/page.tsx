@@ -11,6 +11,8 @@ import FAQSection from '@/components/home/FAQSection';
 import FinalCTA from '@/components/home/FinalCTA';
 import '@/components/home/home.css';
 
+import SwarmCursor from '@/components/ui/SwarmCursor';
+
 export default function Home() {
   return (
     <>
@@ -19,8 +21,13 @@ export default function Home() {
       <AboutHackGyanVerse />
       <FeaturedEvent />
       <EventListingSection />
-      <WhatWeDo />
-      <Partners />
+      
+      {/* Unified Interactive Cursor Effect for Core Ecosystem Sections */}
+      <SwarmCursor color="#2F80FF" accentColor="#00F0FF" count={6} size={8} speed={1.5} spread={110} trail={0.5} opacity={0.9}>
+        <WhatWeDo />
+        <Partners />
+      </SwarmCursor>
+
       <FAQSection />
       <FinalCTA />
     </>
