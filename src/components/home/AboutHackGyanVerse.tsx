@@ -22,36 +22,37 @@ export default function AboutHackGyanVerse() {
   const [isToggled, setIsToggled] = useState(false);
   const [hoverTerminal, setHoverTerminal] = useState(false);
 
-  // Framer Motion Variants
+  // Framer Motion Variants - Cinematic Reveal
   const containerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 50, filter: 'blur(10px)', rotateX: -20 },
+    hidden: { opacity: 0, y: 80, filter: 'blur(25px)', rotateX: -30, scale: 0.9 },
     visible: { 
       opacity: 1, 
       y: 0, 
       filter: 'blur(0px)', 
       rotateX: 0,
-      transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } 
+      scale: 1,
+      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } 
     }
   };
 
   const shapeVariants = {
-    hidden: { opacity: 0, scale: 0.5, filter: 'blur(15px)', y: 20 },
+    hidden: { opacity: 0, scale: 0.3, filter: 'blur(30px)', y: 40 },
     visible: { 
       opacity: 1, 
       scale: 1, 
       filter: 'blur(0px)', 
       y: 0,
-      transition: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1] } 
+      transition: { duration: 2, ease: [0.16, 1, 0.3, 1] } 
     }
   };
 
