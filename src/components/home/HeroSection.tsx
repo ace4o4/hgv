@@ -5,7 +5,7 @@ import { navigationData } from '@/data/navigation';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Play, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Play, ArrowRight, Code2, Rocket, Cpu, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 
 // Mini Interactive Toggle Component for inline text
@@ -62,10 +62,25 @@ export default function HeroSection() {
         flexDirection: 'column',
         overflow: 'hidden',
         fontFamily: "'Outfit', sans-serif",
+        position: 'relative'
       }}>
         
+        {/* Premium Background Morphing Orbs (Framer Motion) */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
+          <motion.div 
+            animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }} 
+            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ position: 'absolute', top: '-10%', left: '-5%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(47,128,255,0.03) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(40px)' }} 
+          />
+          <motion.div 
+            animate={{ x: [0, -100, 0], y: [0, 50, 0], scale: [1, 1.3, 1] }} 
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(16,185,129,0.03) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(50px)' }} 
+          />
+        </div>
+
         {/* --- TOP NAVIGATION --- */}
-        <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2vw 4vw' }}>
+        <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2vw 4vw', position: 'relative', zIndex: 10 }}>
           
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6vw' }}>
@@ -164,7 +179,7 @@ export default function HeroSection() {
                 HackGyanVerse collaborates with professional-led organizations to foster the creation of innovative tech businesses.
               </p>
               
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2.5vw' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '2.5vw', position: 'relative' }}>
                 <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
                   <div style={{ width: '1vw', height: '1vw', backgroundColor: '#2F80FF', borderRadius: '4px' }} /> HGV Community
                 </span>
@@ -173,13 +188,18 @@ export default function HeroSection() {
                    Unstop
                 </span>
                 <span style={{ fontSize: '1.2vw', fontWeight: 900, color: '#1A1D20', fontStyle: 'italic' }}>Work2Hire</span>
+                
+                {/* Floating Tech Icon near logos */}
+                <motion.div animate={{ y: [-10, 10, -10], rotate: [0, 10, -10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', right: '-4vw', top: '-2vw', opacity: 0.15 }}>
+                  <Code2 size={48} color="#2F80FF" />
+                </motion.div>
               </div>
             </div>
             
           </div>
 
           {/* RIGHT SIDE: BENTO GRID COMPOSITION */}
-          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
+          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '1.5vw', position: 'relative', zIndex: 10 }}>
             
             {/* Top Card (Full width) */}
             <motion.div 
@@ -194,8 +214,20 @@ export default function HeroSection() {
                 Join a vibrant ecosystem of student developers, mentors, and open-source contributors.
               </p>
 
-              {/* 3D Glass Sphere Mock */}
-              <div style={{ position: 'absolute', right: '5%', top: '10%', width: '18vw', height: '18vw', borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.1) 40%, transparent 80%)', boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.1), inset 10px 10px 40px rgba(255,255,255,0.5)', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))', mixBlendMode: 'overlay', zIndex: 1 }} />
+              {/* Premium 3D Glass Sphere Illustration (Morphing & Rotating) */}
+              <motion.div 
+                animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                style={{ position: 'absolute', right: '5%', top: '10%', width: '18vw', height: '18vw', zIndex: 1, filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))' }}
+              >
+                {/* Main Sphere */}
+                <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.2) 40%, transparent 80%)', boxShadow: 'inset -20px -20px 40px rgba(0,0,0,0.1), inset 10px 10px 40px rgba(255,255,255,0.6)', mixBlendMode: 'overlay' }} />
+                {/* Inner glowing core */}
+                <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', inset: '20%', borderRadius: '50%', background: 'radial-gradient(circle, #FFF 0%, transparent 70%)', mixBlendMode: 'soft-light' }} />
+                {/* Orbiting Tech Sparkle */}
+                <motion.div animate={{ rotate: -360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', top: '-10%', left: '50%', transform: 'translateX(-50%)' }}>
+                  <Sparkles size={32} color="#FFF" />
+                </motion.div>
+              </motion.div>
               
               <div style={{ position: 'absolute', bottom: '2vw', right: '2vw', width: '3.5vw', height: '3.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 2, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
                 <ArrowUpRight size={24} color="#1A1D20" strokeWidth={2.5} />
