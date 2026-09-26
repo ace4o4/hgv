@@ -9,6 +9,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { Expand, Target, ArrowUpRight } from 'lucide-react';
+import DitherVeil from '@/components/reactbits/DitherVeil';
 
 // --- MAGNETIC WRAPPER FOR BUTTONS ---
 function MagneticWrap({ children, className, style, pull = 0.4 }: any) {
@@ -314,22 +315,27 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* 10. LOWER RIGHT EDITORIAL */}
-        <div className="hero-tile hero-text-anim" style={{ position: 'absolute', left: '44vw', top: '65vh', width: '28vw' }}>
-          <span style={{ fontSize: '0.75vw', fontWeight: 800, color: '#819CB6', textTransform: 'uppercase', letterSpacing: '0.15em' }}>NEW RELEASE</span>
-          <h2 style={{ fontSize: '2.4vw', fontWeight: 600, color: '#1A1D20', marginTop: '1vh', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
-            Get ready to embark<br/>on a new workroad
-          </h2>
-        </div>
-
-        {/* 11. BOTTOM RIGHT PURE BLACK CIRCLE */}
-        <div className="hero-tile" style={{ position: 'absolute', right: '5vw', top: '61vh', width: '18vw', height: '18vw', backgroundColor: '#050505', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 10px 30px rgba(0,0,0,0.8), 0 20px 50px rgba(0,0,0,0.15)' }}>
-          <div style={{ width: '100%', height: '100%', cursor: 'grab' }}>
-            <Canvas camera={{ position: [0, 0, 4] }}>
-              <ambientLight intensity={2} />
-              <directionalLight position={[2, 5, 3]} intensity={3} color="#FFF" />
-              <FloatingAppIcon />
-            </Canvas>
+        {/* 10. LOWER RIGHT DITHER VEIL INTERACTIVE PANEL */}
+        <div className="hero-tile interactive-tile" style={{ position: 'absolute', left: '42vw', top: '61vh', width: '53vw', height: '31vh', backgroundColor: '#F3F4F6', borderRadius: '40px', overflow: 'hidden', boxShadow: '0 15px 40px rgba(0,0,0,0.06)' }}>
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <DitherVeil
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1400&auto=format&fit=crop"
+              pattern="atkinson"
+              pixelSize={2}
+              inkColor="#090A0B"
+              paperColor="#E2E4E9"
+              revealRadius={180}
+              softness={0.55}
+              linger={1}
+              levels={4}
+            />
+          </div>
+          {/* Text Overlay matching previous editorial */}
+          <div style={{ position: 'absolute', inset: 0, padding: '2.5vw 3vw', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', background: 'linear-gradient(to top, rgba(243,244,246,0.9) 0%, transparent 70%)', pointerEvents: 'none' }}>
+            <span style={{ fontSize: '0.85vw', fontWeight: 800, color: '#2F80FF', textTransform: 'uppercase', letterSpacing: '0.15em' }}>NEW RELEASE</span>
+            <h2 style={{ fontSize: '2.2vw', fontWeight: 600, color: '#1A1D20', marginTop: '0.5vh', lineHeight: 1.1, letterSpacing: '-0.02em', textShadow: '0 2px 10px rgba(255,255,255,0.8)' }}>
+              Get ready to embark on a new workroad
+            </h2>
           </div>
         </div>
 
