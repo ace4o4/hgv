@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { navigationData } from '@/data/navigation';
 import { communityData } from '@/data/community';
 import RollText from '@/components/animata/text/roll-text';
+import WebThreads from '@/components/ui/WebThreads';
 
 export default function Footer() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -32,6 +33,32 @@ export default function Footer() {
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'absolute', top: '-10%', left: '20%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(147,51,234,0.12) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(47,128,255,0.08) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
+
+      {/* WebThreads Animated Background with 2px Blur */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'blur(2px)', pointerEvents: 'none', zIndex: 1, opacity: 0.8 }}>
+        <WebThreads
+          color1="#701dca"
+          color2="#00F0FF"
+          color3="#e8e8e8"
+          speed={0.25}
+          threadCount={7}
+          frequency={8}
+          spread={0.19}
+          taper={0.8}
+          position={0.65}
+          fanMode="center"
+          glow={0.022}
+          falloff={0.6}
+          thickness={1.5}
+          brightness={0.7}
+          opacity={0.9}
+          mirror={true}
+          shimmer={true}
+          grain={false}
+          mouseInteraction={true}
+          mouseStrength={0.4}
+        />
+      </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', margin: '0 auto', padding: '0 4vw' }}>
         
