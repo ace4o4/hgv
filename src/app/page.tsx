@@ -4,6 +4,7 @@ import CommunityIntro from '@/components/home/CommunityIntro';
 import WhatWeDo from '@/components/home/WhatWeDo';
 import CommunityJourney from '@/components/home/CommunityJourney';
 import CommunityImpact from '@/components/home/CommunityImpact';
+import AboutHackGyanVerse from '@/components/home/AboutHackGyanVerse';
 import EventListingSection from '@/components/home/EventListingSection';
 import Partners from '@/components/home/Partners';
 import FAQSection from '@/components/home/FAQSection';
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <HeroSection />
       <CommunityIntro />
+      <AboutHackGyanVerse />
       <FeaturedEvent />
       <EventListingSection />
       <WhatWeDo />
