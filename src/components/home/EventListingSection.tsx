@@ -60,16 +60,12 @@ export default function EventListingSection() {
   return (
     <section ref={sectionRef} style={{ 
       position: 'relative', 
-      backgroundColor: '#E4E7EB', // Slightly deeper Titanium Off-White Contrast Background
+      backgroundColor: '#F5F5F5', // Match FeaturedEvent background
       color: '#1A1D20', 
       zIndex: 10, 
       overflow: 'hidden', 
       fontFamily: "'Outfit', sans-serif",
-      borderTopLeftRadius: '80px',
-      borderTopRightRadius: '80px',
-      marginTop: '-80px',
       paddingTop: '80px',
-      boxShadow: '0 -30px 60px rgba(0,0,0,0.06)' 
     }}>
       {/* Animated Dynamic Background Gradients */}
       <motion.div 

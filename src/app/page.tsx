@@ -25,12 +25,10 @@ export default function Home() {
 
       <SectionDivider fromColor="#F8FAFC" toColor="#F5F5F5" outline={true} />
       <FeaturedEvent />
-
-      <SectionDivider fromColor="#F5F5F5" toColor="#FFFFFF" />
       <EventListingSection />
 
       {/* Wave down: white → dark ecosystem */}
-      <SectionDivider fromColor="#FFFFFF" toColor="#080A0C" />
+      <SectionDivider fromColor="#F5F5F5" toColor="#080A0C" outline={true} />
       <SwarmCursor color="#2F80FF" accentColor="#00F0FF" count={6} size={8} speed={1.5} spread={110} trail={0.5} opacity={0.9}>
         <WhatWeDo />
         <Partners />
@@ -39,7 +37,7 @@ export default function Home() {
       <FAQSection />
 
       {/* Wave down: dark FAQ → white FinalCTA */}
-      <SectionDivider fromColor="#050505" toColor="#FFFFFF" />
+      <SectionDivider fromColor="#050505" toColor="#FFFFFF" ambientGlow={true} />
       <FinalCTA />
     </>
   );

@@ -8,6 +8,7 @@ interface SectionDividerProps {
   flip?: boolean;   // flip=true → wave opening goes upward (dark section into white below)
   dots?: boolean;
   outline?: boolean;
+  ambientGlow?: boolean;
 }
 
 export default function SectionDivider({
@@ -16,6 +17,7 @@ export default function SectionDivider({
   flip = false,
   dots = true,
   outline = false,
+  ambientGlow = false,
 }: SectionDividerProps) {
   return (
     <div
@@ -23,8 +25,10 @@ export default function SectionDivider({
         position: 'relative',
         width: '100%',
         lineHeight: 0,
-        zIndex: 4,
+        zIndex: 20,
+        pointerEvents: 'none',
         overflow: 'visible',
+        marginBottom: '-2px', // Prevent 1px gaps that cause horizontal lines
         backgroundColor: fromColor,  // blends with the section above
         transform: flip ? 'scaleY(-1)' : undefined,
       }}
@@ -37,14 +41,54 @@ export default function SectionDivider({
           display: 'block',
           width: '100%',
           height: 'clamp(100px, 11vw, 170px)',
+          overflow: 'visible'
         }}
       >
+        <defs>
+          <filter id="ambient-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="25" result="blur" />
+          </filter>
+          <linearGradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#5B21B6" />
+            <stop offset="50%" stopColor="#1D4ED8" />
+            <stop offset="100%" stopColor="#BE123C" />
+          </linearGradient>
+        </defs>
+
         {/* NO background rect — container backgroundColor handles it */}
         {/* Wave shape fills toColor from crest down to bottom */}
+        {/* Layer 1: The solid background of the section below */}
         <path
           d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75 L1440,160 L0,160 Z"
           fill={toColor}
         />
+        
+        {/* Layer 2: The gradient stroke shifted DOWN into the toColor area */}
+        {ambientGlow && (
+          <path
+            d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
+            fill="none"
+            stroke="url(#glow-gradient)"
+            strokeWidth="30"
+            filter="url(#ambient-glow)"
+            opacity="1"
+            transform="translate(0, 10)"
+            style={{ mixBlendMode: 'multiply' }}
+          />
+        )}
+        
+        {/* Layer 3: A solid sharp gradient rim just for good measure (inner edge) */}
+        {ambientGlow && (
+          <path
+            d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
+            fill="none"
+            stroke="url(#glow-gradient)"
+            strokeWidth="3"
+            opacity="0.7"
+            transform="translate(0, 3)"
+            style={{ mixBlendMode: 'multiply' }}
+          />
+        )}
         {outline && (
           <path
             d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
