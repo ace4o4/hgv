@@ -7,10 +7,54 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Clock, Users, Trophy, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF, Environment, Float, useAnimations } from '@react-three/drei';
+import * as THREE from 'three';
 
-const Lottie = dynamic(() => import('lottie-react').then(mod => mod.default || (mod as any).Lottie || mod), { ssr: false });
+function HappyDrone() {
+  const droneRef = useRef<THREE.Group>(null);
+  const { scene, animations } = useGLTF('/models/happy_drone.glb');
+  const { actions } = useAnimations(animations, droneRef);
+  const [isRolling, setIsRolling] = useState(false);
 
+  useEffect(() => {
+    if (actions) {
+      // Play all available embedded animations
+      Object.values(actions).forEach(action => action?.play());
+    }
+  }, [actions]);
+
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    if (isRolling || !droneRef.current) return;
+    setIsRolling(true);
+    
+    // Barrel roll on Z axis
+    gsap.to(droneRef.current.rotation, {
+      z: droneRef.current.rotation.z + Math.PI * 2,
+      duration: 1.2,
+      ease: 'power2.inOut',
+      onComplete: () => setIsRolling(false)
+    });
+  };
+
+  return (
+    <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+      <primitive 
+        ref={droneRef}
+        object={scene} 
+        scale={8.4} 
+        position={[-0.5, -0.5, 1.2]}
+        rotation={[0, -Math.PI / -7, 0]}
+        onClick={handleClick}
+        onPointerOver={() => { document.body.style.cursor = 'pointer'; }}
+        onPointerOut={() => { document.body.style.cursor = 'default'; }}
+      />
+    </Float>
+  );
+}
+
+useGLTF.preload('/models/happy_drone.glb');
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -204,8 +248,18 @@ export default function FeaturedEvent() {
       <div style={{ width: '100%', maxWidth: '1400px', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
         
         {/* TOP ROW */}
-        <div style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap', position: 'relative' }}>
           
+          {/* 3D Happy Drone placed in the empty center space */}
+          <div style={{ position: 'absolute', top: '50%', left: '55%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', zIndex: 10, pointerEvents: 'none' }}>
+            <Canvas camera={{ position: [0, 0, 15], fov: 45 }} style={{ pointerEvents: 'auto' }}>
+              <ambientLight intensity={1} />
+              <directionalLight position={[10, 10, 5]} intensity={2} />
+              <Environment preset="city" />
+              <HappyDrone />
+            </Canvas>
+          </div>
+
           {/* Huge Typography Area */}
           <div style={{ flex: '1 1 60%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h2 style={{ 
