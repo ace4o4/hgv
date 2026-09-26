@@ -7,6 +7,7 @@ interface SectionDividerProps {
   toColor?: string;
   flip?: boolean;   // flip=true → wave opening goes upward (dark section into white below)
   dots?: boolean;
+  outline?: boolean;
 }
 
 export default function SectionDivider({
@@ -14,6 +15,7 @@ export default function SectionDivider({
   toColor = '#080A0C',
   flip = false,
   dots = true,
+  outline = false,
 }: SectionDividerProps) {
   return (
     <div
@@ -43,6 +45,15 @@ export default function SectionDivider({
           d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75 L1440,160 L0,160 Z"
           fill={toColor}
         />
+        {outline && (
+          <path
+            d="M0,90 C160,30 300,140 480,70 C660,5 820,140 1000,65 C1140,10 1280,110 1440,75"
+            fill="none"
+            stroke="#0F172A"
+            strokeWidth="3"
+            vectorEffect="non-scaling-stroke"
+          />
+        )}
         {/* Depth shadow layer */}
         <path
           d="M0,115 C200,60 380,150 560,95 C740,38 900,150 1080,90 C1230,42 1370,118 1440,105 L1440,160 L0,160 Z"
@@ -67,6 +78,7 @@ export default function SectionDivider({
               borderRadius: '50%',
               backgroundColor: toColor,
               pointerEvents: 'none',
+              border: outline ? '2px solid #0F172A' : undefined,
             }}
           />
           {/* Small dot — upper left */}
@@ -83,6 +95,7 @@ export default function SectionDivider({
               backgroundColor: toColor,
               opacity: 0.7,
               pointerEvents: 'none',
+              border: outline ? '2px solid #0F172A' : undefined,
             }}
           />
           {/* Medium dot — right side crest */}
@@ -99,6 +112,7 @@ export default function SectionDivider({
               backgroundColor: toColor,
               opacity: 0.85,
               pointerEvents: 'none',
+              border: outline ? '2px solid #0F172A' : undefined,
             }}
           />
         </>

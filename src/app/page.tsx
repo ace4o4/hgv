@@ -19,11 +19,11 @@ export default function Home() {
       <CommunityIntro />
 
       {/* Wave: dark CommunityIntro (#050505) → white AboutHackGyanVerse */}
-      <SectionDivider fromColor="#050505" toColor="#FFFFFF" />
+      <SectionDivider fromColor="#050505" toColor="#F8FAFC" />
 
       <AboutHackGyanVerse />
 
-      <SectionDivider fromColor="#FFFFFF" toColor="#F5F5F5" />
+      <SectionDivider fromColor="#F8FAFC" toColor="#F5F5F5" outline={true} />
       <FeaturedEvent />
 
       <SectionDivider fromColor="#F5F5F5" toColor="#FFFFFF" />
