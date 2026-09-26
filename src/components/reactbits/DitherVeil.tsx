@@ -450,8 +450,8 @@ const DitherVeil = ({
         width: w,
         height: h,
         depth: false,
-        type: floatMask ? gl.HALF_FLOAT : gl.UNSIGNED_BYTE,
-        internalFormat: floatMask ? gl.RGBA16F : gl.RGBA,
+        type: floatMask ? (gl as any).HALF_FLOAT : gl.UNSIGNED_BYTE,
+        internalFormat: floatMask ? (gl as any).RGBA16F : gl.RGBA,
         minFilter: gl.LINEAR,
         magFilter: gl.LINEAR
       });

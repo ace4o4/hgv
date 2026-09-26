@@ -55,7 +55,7 @@ export default function EventListingSection() {
   }, []);
 
   // Premium transition ease for Framer Motion
-  const transitionConfig = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+  const transitionConfig = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
   return (
     <section ref={sectionRef} style={{ 
@@ -196,7 +196,7 @@ export default function EventListingSection() {
                   
                   {/* Elegant Register Button */}
                   <motion.a 
-                    href={liveEvent.link || "#"}
+                    href={(liveEvent as any).registrationLink || (liveEvent as any).link || "#"}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     style={{ background: '#1A1D20', color: '#FFF', padding: '10px 20px', borderRadius: '100px', fontSize: '0.85rem', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', boxShadow: '0 10px 20px rgba(0,0,0,0.15)' }}

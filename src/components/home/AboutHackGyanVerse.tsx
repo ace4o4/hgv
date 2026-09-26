@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
 import { Sparkles, Globe, MapPin, MousePointer2, Star, Zap } from 'lucide-react';
 
 export default function AboutHackGyanVerse() {
@@ -33,7 +33,7 @@ export default function AboutHackGyanVerse() {
     }
   };
 
-  const wordVariants = {
+  const wordVariants: Variants = {
     hidden: { opacity: 0, y: 80, filter: 'blur(25px)', rotateX: -30, scale: 0.9 },
     visible: { 
       opacity: 1, 
@@ -41,18 +41,18 @@ export default function AboutHackGyanVerse() {
       filter: 'blur(0px)', 
       rotateX: 0,
       scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
     }
   };
 
-  const shapeVariants = {
+  const shapeVariants: Variants = {
     hidden: { opacity: 0, scale: 0.3, filter: 'blur(30px)', y: 40 },
     visible: { 
       opacity: 1, 
       scale: 1, 
       filter: 'blur(0px)', 
       y: 0,
-      transition: { duration: 2, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 2, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
     }
   };
 
