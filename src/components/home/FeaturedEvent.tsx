@@ -168,6 +168,39 @@ export default function FeaturedEvent() {
         alignItems: 'center'
       }}
     >
+      {/* Aesthetic Marquee Section (Minimal & Premium) */}
+      <div ref={marqueeRef} style={{ 
+        height: '90px', 
+        borderTop: '1px solid rgba(0,0,0,0.15)', 
+        borderBottom: '1px solid rgba(0,0,0,0.15)',
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        whiteSpace: 'nowrap',
+        backgroundColor: 'rgba(255,255,255,0.3)',
+        backdropFilter: 'blur(10px)',
+        marginBottom: '6vw',
+        zIndex: 2,
+        width: '100vw',
+        marginLeft: '-4vw', // counteract section padding
+        overflow: 'hidden'
+      }}>
+        <div className="marquee-content" style={{ display: 'flex', gap: '3vw', paddingLeft: '3vw', animation: 'marquee-scroll 35s linear infinite' }}>
+          {[...Array(4)].map((_, i) => (
+            <div key={i} style={{ display: 'flex', gap: '3vw' }}>
+              {marqueeWords.map((word, j) => (
+                <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '3vw' }}>
+                  <span style={{ fontSize: '1.2rem', fontWeight: 600, color: '#5F646B', letterSpacing: '0.15em' }}>
+                    {word}
+                  </span>
+                  <div style={{ width: '5px', height: '5px', backgroundColor: '#2F80FF', borderRadius: '50%', opacity: 0.6 }}></div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div style={{ width: '100%', maxWidth: '1400px', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
         
         {/* TOP ROW */}
@@ -215,20 +248,20 @@ export default function FeaturedEvent() {
             }}
           >
             {/* Wavy background lines (SVG) */}
-            <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, opacity: 0.2, zIndex: 0 }}>
-              <path d="M0,50 Q100,10 200,50 T400,50" stroke="#FFF" fill="none" strokeWidth="2" />
-              <path d="M0,100 Q100,60 200,100 T400,100" stroke="#FFF" fill="none" strokeWidth="2" />
-              <path d="M0,150 Q100,110 200,150 T400,150" stroke="#FFF" fill="none" strokeWidth="2" />
-              <path d="M0,200 Q100,160 200,200 T400,200" stroke="#FFF" fill="none" strokeWidth="2" />
+            <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, opacity: 0.15, zIndex: 0 }}>
+              <path d="M0,50 Q100,10 200,50 T400,50" stroke="#2F80FF" fill="none" strokeWidth="3" />
+              <path d="M0,100 Q100,60 200,100 T400,100" stroke="#2F80FF" fill="none" strokeWidth="3" />
+              <path d="M0,150 Q100,110 200,150 T400,150" stroke="#2F80FF" fill="none" strokeWidth="3" />
+              <path d="M0,200 Q100,160 200,200 T400,200" stroke="#2F80FF" fill="none" strokeWidth="3" />
             </svg>
 
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '30px', padding: '0.4vw 1.2vw', fontSize: '0.9rem' }}>Prize Pool</div>
-              <div style={{ fontSize: '3rem', lineHeight: 1 }}>✱</div>
+              <div style={{ fontSize: '3rem', lineHeight: 1, color: '#2F80FF' }}>✱</div>
             </div>
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 'clamp(3rem, 4vw, 5rem)', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1vw' }}>10 <span style={{ fontSize: '0.5em', color: '#D4F77B' }}>Lakh</span></div>
+              <div style={{ fontSize: 'clamp(3rem, 4vw, 5rem)', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1vw' }}>10 <span style={{ fontSize: '0.5em', color: '#2F80FF' }}>Lakh</span></div>
               <p style={{ fontSize: '1rem', color: '#A0A0A0', lineHeight: 1.5, margin: 0, maxWidth: '80%' }}>
                 {dataPoints[2].desc}
               </p>
@@ -263,11 +296,12 @@ export default function FeaturedEvent() {
                 transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                 style={{ position: 'absolute', top: '-10%', left: '-10%', width: '150px', height: '150px', border: '1px dashed #999', borderRadius: '50%' }}
               />
-              {lottieData && (
-                <div style={{ width: '80%', height: '80%', opacity: 0.7 }}>
-                  <Lottie animationData={lottieData} loop={true} />
-                </div>
-              )}
+              {/* Abstract Glass Geometric Shape to replace Lottie */}
+              <motion.div 
+                animate={{ rotate: -180, scale: [1, 1.05, 1] }} 
+                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #2F80FF 0%, rgba(47,128,255,0) 100%)', borderRadius: '16px', backdropFilter: 'blur(10px)' }}
+              />
             </motion.div>
 
             {/* Two Small Squares */}
@@ -290,12 +324,12 @@ export default function FeaturedEvent() {
             </div>
           </div>
           
-          {/* Bottom Right Lime Card */}
+          {/* Bottom Right Theme Blue Card */}
           <motion.div 
             whileHover={{ scale: 0.99 }}
             style={{ 
               flex: '1 1 60%', 
-              backgroundColor: '#DDF97C', // Vibrant lime green
+              backgroundColor: '#E6EFFF', // Theme soft blue
               borderRadius: '40px', 
               padding: '3vw',
               display: 'flex',
@@ -306,23 +340,23 @@ export default function FeaturedEvent() {
           >
             {/* Pill tags */}
             <div style={{ display: 'flex', gap: '0.8vw', flexWrap: 'wrap', marginBottom: '2vw' }}>
-              <span style={{ backgroundColor: '#111', color: '#FFF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>36 Hours</span>
-              <span style={{ border: '1px solid #111', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Hackathon</span>
-              <span style={{ border: '1px solid #111', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Innovation</span>
+              <span style={{ backgroundColor: '#2F80FF', color: '#FFF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>36 Hours</span>
+              <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Hackathon</span>
+              <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Innovation</span>
             </div>
 
             <div>
-              <h3 style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+              <h3 style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#090A0B' }}>
                 Non-stop
               </h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '2vw' }}>
-                <p style={{ margin: 0, fontSize: '1.1rem', color: '#333', maxWidth: '60%', lineHeight: 1.5, fontWeight: 500 }}>
+                <p style={{ margin: 0, fontSize: '1.1rem', color: '#475569', maxWidth: '60%', lineHeight: 1.5, fontWeight: 500 }}>
                   {dataPoints[0].desc} Experience the future of building today. Join forces with the brightest minds and create something extraordinary.
                 </p>
                 {/* Large Arrow Icon */}
-                <div style={{ padding: '1vw', border: '2px solid #111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease' }}
-                     onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#111'; e.currentTarget.style.color = '#FFF'; }}
-                     onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#111'; }}>
+                <div style={{ padding: '1vw', border: '2px solid #2F80FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', color: '#2F80FF' }}
+                     onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2F80FF'; e.currentTarget.style.color = '#FFF'; }}
+                     onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#2F80FF'; }}>
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="19" x2="19" y2="5"></line>
                     <polyline points="10 5 19 5 19 14"></polyline>
@@ -359,6 +393,12 @@ export default function FeaturedEvent() {
         </MagneticWrap>
       </div>
 
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}} />
     </section>
   );
 }
