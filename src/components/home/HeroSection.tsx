@@ -165,15 +165,14 @@ export default function HeroSection() {
               </p>
               
               <div style={{ display: 'flex', alignItems: 'center', gap: '2.5vw' }}>
-                {/* Brand Logos as Text for mock purposes */}
                 <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
-                  <div style={{ width: '1vw', height: '1vw', backgroundColor: '#1A1D20', borderRadius: '4px' }} /> Headway
+                  <div style={{ width: '1vw', height: '1vw', backgroundColor: '#2F80FF', borderRadius: '4px' }} /> HGV Community
                 </span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 400, color: '#1A1D20', fontFamily: 'serif' }}>brightline</span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
-                   hazel
+                <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', letterSpacing: '1px' }}>AVORITE</span>
+                <span style={{ fontSize: '1.2vw', fontWeight: 600, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
+                   Unstop
                 </span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 900, color: '#1A1D20' }}>G&STC</span>
+                <span style={{ fontSize: '1.2vw', fontWeight: 900, color: '#1A1D20', fontStyle: 'italic' }}>Work2Hire</span>
               </div>
             </div>
             
@@ -188,11 +187,11 @@ export default function HeroSection() {
               style={{ flex: '1.2', backgroundColor: '#2F80FF', borderRadius: '32px', padding: '3vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
             >
               <h2 style={{ fontSize: '2.8vw', fontWeight: 500, color: '#FFF', lineHeight: 1.1, maxWidth: '80%', position: 'relative', zIndex: 2 }}>
-                If you're ready to build your project, let's get in touch.
+                Build real-world projects and accelerate your tech career.
               </h2>
               
               <p style={{ fontSize: '0.9vw', color: 'rgba(255,255,255,0.8)', fontWeight: 500, maxWidth: '40%', position: 'relative', zIndex: 2 }}>
-                Our goal is to promote the creation of innovative applications in the tech industry.
+                Join a vibrant ecosystem of student developers, mentors, and open-source contributors.
               </p>
 
               {/* 3D Glass Sphere Mock */}
@@ -216,7 +215,7 @@ export default function HeroSection() {
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'auto', position: 'relative', zIndex: 2 }}>
                   <div style={{ padding: '0.4vw 1vw', backgroundColor: '#FFF', borderRadius: '100px', fontSize: '0.8vw', fontWeight: 700, color: '#1A1D20' }}>
-                    locations
+                    campuses
                   </div>
                   <div style={{ width: '2.5vw', height: '2.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowUpRight size={18} color="#1A1D20" strokeWidth={2.5} />
@@ -225,10 +224,10 @@ export default function HeroSection() {
 
                 <div style={{ position: 'relative', zIndex: 2, marginTop: '2vw' }}>
                   <h3 style={{ fontSize: '1.8vw', fontWeight: 500, color: '#FFF', lineHeight: 1.1, marginBottom: '1vw' }}>
-                    United tech- <br/>entrepreneurs
+                    Active Student<br/>Chapters
                   </h3>
                   <p style={{ fontSize: '0.8vw', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
-                    HGV unites developers globally through its worldwide chapters.
+                    Collaborating across campuses to build the next generation of tech leaders.
                   </p>
                 </div>
               </motion.div>
@@ -244,7 +243,7 @@ export default function HeroSection() {
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'auto', position: 'relative', zIndex: 2 }}>
                   <div style={{ padding: '0.4vw 1vw', backgroundColor: '#FFF', borderRadius: '100px', fontSize: '0.8vw', fontWeight: 700, color: '#1A1D20', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}>
-                    engineers
+                    members
                   </div>
                   <div style={{ display: 'flex' }}>
                     {[1,2,3].map(i => (
@@ -255,10 +254,10 @@ export default function HeroSection() {
 
                 <div style={{ position: 'relative', zIndex: 2, marginTop: '2vw' }}>
                   <h3 style={{ fontSize: '4vw', fontWeight: 500, color: '#1A1D20', lineHeight: 1, marginBottom: '0.5vw' }}>
-                    34
+                    5K+
                   </h3>
                   <p style={{ fontSize: '0.8vw', color: '#64748B', fontWeight: 500, lineHeight: 1.4 }}>
-                    Our advisors include visionary developers, pioneering investors, and iconic founders.
+                    Active members learning, building, and growing together in our community.
                   </p>
                 </div>
               </motion.div>

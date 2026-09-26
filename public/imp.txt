@@ -1,0 +1,92 @@
+1. Content
+
+“Can you check the entire website and make sure all content is final, correct, consistent and there is no placeholder, dummy or outdated content anywhere?”
+
+2. Links
+
+“Can you test every button, navigation link, social link, email link, WhatsApp link and event registration link and fix anything that doesn't work?”
+
+3. Navigation
+
+“Can you test the complete navigation on desktop and mobile and make sure every page can be reached properly and the mobile menu works perfectly?”
+
+4. Mobile
+
+“Can you fully test the website on mobile, tablet and desktop sizes and fix every layout, spacing, overflow, typography and interaction issue?”
+
+5. 3D / Spline
+
+“Can you make sure all Spline/3D scenes load correctly in production, don't block the UI, don't break on mobile, and have proper fallback behavior on slower devices?”
+
+6. Animations
+
+“Can you review all animations and make sure they are smooth, intentional and don't cause lag, broken transitions or overlapping content?”
+
+7. Performance
+
+“Can you optimize the entire website for production performance, especially images, 3D assets, JavaScript, fonts and animations, without reducing the visual quality?”
+
+8. SEO
+
+“Can you add complete SEO for every page, including proper titles, meta descriptions, canonical URLs, headings and structured page metadata?”
+
+9. Social sharing
+
+“Can you set up proper Open Graph and social preview metadata so that when the website link is shared on WhatsApp, LinkedIn or other platforms it shows the correct title, description and preview image?”
+
+10. Favicon / branding
+
+“Can you make sure there is no default React/Vite branding left anywhere and add the correct favicon, browser title, manifest and HackGyanVerse branding?”
+
+11. Error handling
+
+“Can you create a proper 404 page and make sure unexpected errors don't leave users with a broken or blank screen?”
+
+12. Accessibility
+
+“Can you check the entire website for accessibility, including keyboard navigation, focus states, contrast, alt text, buttons, links and reduced-motion support?”
+
+13. Security
+
+“Can you audit the project for exposed API keys, secrets, environment variables, unsafe frontend code and other production security issues?”
+
+14. Code cleanup
+
+“Can you remove unused components, unused packages, debug code, console logs, duplicate code and unnecessary assets without breaking anything?”
+
+15. Production build
+
+“Can you run the complete production build and fix every build warning and error before deployment?”
+
+16. Final testing
+
+“Can you do a complete pre-launch QA of every page and every important user flow and give me a list of anything that still needs fixing?”
+
+17. Hosting
+
+“Can you prepare this project for production deployment and tell me exactly what I need to configure on my hosting provider?”
+
+18. Domain
+
+“Can you tell me everything I need to configure for my custom domain, DNS, HTTPS/SSL and redirects?”
+
+19. Analytics
+
+“Can you add privacy-conscious analytics and track important actions like community joins, AHGV registration clicks and contact/social clicks?”
+
+20. Final launch check
+
+Last mein literally ye bol:
+
+“Pretend you are the final QA engineer before launch. Go through the entire website like a real visitor, test every page, button, link, animation and responsive layout, and tell me honestly whether it is production-ready. Fix everything you can automatically and only tell me what still requires my action.”
+
+
+
+
+
+#Links
+
+Whatsapp: https://wa.me/919531878028
+Instagram: https://instagram.com/hackgyanverse
+Youtube: https://youtube.com/@hackgyanverse
+GitHub: https://github.com/HackGyanVerse
