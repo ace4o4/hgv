@@ -97,5 +97,16 @@ export const teamData = [
       linkedin: "#"
     },
     order: 9
+  },
+  {
+    name: "Harish",
+    role: "UI/UX Lead",
+    organization: "HackGyanVerse Community",
+    image: "/team/harish.jpg",
+    categories: ["UI/UX Team"],
+    socialLinks: {
+      linkedin: "#"
+    },
+    order: 10
   }
 ];
