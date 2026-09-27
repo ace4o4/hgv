@@ -265,7 +265,7 @@ export default function Navbar() {
                 background: '#FFFFFF',
                 borderRadius: '40px',
                 zIndex: 101,
-                padding: '3rem',
+                padding: '2.5rem 2rem 2rem 2rem',
                 display: 'flex',
                 flexDirection: 'column',
                 boxShadow: '0 30px 60px rgba(0, 0, 0, 0.1)',
@@ -274,17 +274,17 @@ export default function Navbar() {
               }}
             >
               {/* Header Close Button */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '4rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1.5rem' }}>
                 <button 
                   onClick={() => setIsOpen(false)}
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem' }}
                 >
                   <div style={{ width: '28px', height: '3px', backgroundColor: '#333', borderRadius: '2px' }} />
                 </button>
               </div>
 
               {/* Main Animated Links */}
-              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, marginTop: '2rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, marginTop: '0.5rem' }}>
                 {navigationData.desktop.map((link) => (
                   <MenuItem 
                     key={link.name} 
@@ -296,23 +296,114 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Footer Pills */}
-              <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', marginTop: 'auto' }}>
-                <a href={communityData.whatsappLink} target="_blank" rel="noopener noreferrer" style={{ padding: '0.8rem 1.5rem', backgroundColor: '#F3F4F6', borderRadius: '100px', fontSize: '1rem', fontWeight: 500, color: '#333', textDecoration: 'none' }}>
-                  Community
-                </a>
-                <Link href={`/events/${communityData.currentEventSlug}`} onClick={() => setIsOpen(false)} style={{ padding: '0.8rem 1.5rem', backgroundColor: '#F3F4F6', borderRadius: '100px', fontSize: '1rem', fontWeight: 500, color: '#333', textDecoration: 'none' }}>
-                  Events
-                </Link>
-                
-                <div style={{ flex: 1 }} />
-                
-                <a href="#" style={{ width: '40px', height: '40px', backgroundColor: '#F3F4F6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: '#333', fontWeight: 700, fontSize: '0.9rem' }}>
-                  ig
-                </a>
-                <a href="#" style={{ width: '40px', height: '40px', backgroundColor: '#F3F4F6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: '#333', fontWeight: 700, fontSize: '0.9rem' }}>
-                  in
-                </a>
+              {/* Bottom Actions & Social */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto', paddingTop: '1.2rem' }}>
+                {/* Highlighted Primary Join Community Button */}
+                <motion.a 
+                  href={communityData.whatsappLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ 
+                    padding: '0.9rem 1.6rem', 
+                    backgroundColor: '#2F80FF', 
+                    borderRadius: '100px', 
+                    fontSize: '1rem', 
+                    fontWeight: 700, 
+                    color: '#FFFFFF', 
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.6rem',
+                    boxShadow: '0 8px 24px rgba(47, 128, 255, 0.35)',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  <span>Join Community</span>
+                  <ArrowRight size={18} color="#FFFFFF" strokeWidth={2.5} />
+                </motion.a>
+
+                {/* Subtler Events Button + Black Social Logos */}
+                <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+                  <Link 
+                    href="/events" 
+                    onClick={() => setIsOpen(false)} 
+                    style={{ 
+                      flex: 1,
+                      padding: '0.8rem 1.4rem', 
+                      backgroundColor: '#F3F4F6', 
+                      borderRadius: '100px', 
+                      fontSize: '0.95rem', 
+                      fontWeight: 600, 
+                      color: '#1A1D20', 
+                      textDecoration: 'none',
+                      textAlign: 'center',
+                      border: '1px solid rgba(0,0,0,0.06)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    Events
+                  </Link>
+                  
+                  {/* Instagram Logo (Real SVG in Black) */}
+                  <a 
+                    href={communityData.social.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="Instagram"
+                    style={{ 
+                      width: '44px', 
+                      height: '44px', 
+                      backgroundColor: '#F3F4F6', 
+                      borderRadius: '50%', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      textDecoration: 'none',
+                      flexShrink: 0,
+                      border: '1px solid rgba(0,0,0,0.06)',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                  </a>
+
+                  {/* LinkedIn Logo (Real SVG in Black) */}
+                  <a 
+                    href={communityData.social.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="LinkedIn"
+                    style={{ 
+                      width: '44px', 
+                      height: '44px', 
+                      backgroundColor: '#F3F4F6', 
+                      borderRadius: '50%', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      textDecoration: 'none',
+                      flexShrink: 0,
+                      border: '1px solid rgba(0,0,0,0.06)',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
