@@ -58,7 +58,8 @@ export default function AboutHackGyanVerse() {
 
   return (
     <section 
-      ref={containerRef} 
+      ref={containerRef}
+      className="about-container"
       style={{ 
         minHeight: '130vh', 
         backgroundColor: '#F8FAFC', 
@@ -85,7 +86,7 @@ export default function AboutHackGyanVerse() {
         </div>
       </motion.div>
       
-      <motion.div style={{ position: 'absolute', top: '55%', left: '10%', y: floatDown, zIndex: 3, rotate: -15 }}>
+      <motion.div className="float-item-mobile-hide" style={{ position: 'absolute', top: '55%', left: '10%', y: floatDown, zIndex: 3, rotate: -15 }}>
         <MousePointer2 size={40} fill="#10B981" color="#FFFFFF" strokeWidth={1.5} style={{ filter: 'drop-shadow(0 10px 15px rgba(16,185,129,0.4))' }} />
       </motion.div>
 
@@ -248,6 +249,7 @@ export default function AboutHackGyanVerse() {
 
       {/* Interactive Subtext Paragraph */}
       <motion.div 
+        className="about-subtext"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -257,8 +259,8 @@ export default function AboutHackGyanVerse() {
         <p style={{ fontSize: '1.2rem', color: '#64748B', lineHeight: 1.7 }}>
           Join the most active ecosystem of makers, creators, and innovators. We provide the platform, you bring the vision. Dive into the HackGyanVerse today. 🌟
         </p>
-        <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', marginTop: '2.5rem' }}>
-          <motion.a href="#events" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} style={{ padding: '16px 36px', backgroundColor: '#1A1D20', color: '#FFF', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, border: 'none', cursor: 'pointer', boxShadow: '0 15px 30px rgba(0,0,0,0.15)', textDecoration: 'none' }}>
+        <div className="about-buttons" style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', marginTop: '2.5rem' }}>
+          <motion.a href="#events" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block', padding: '16px 36px', backgroundColor: '#1A1D20', color: '#FFF', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, border: 'none', cursor: 'pointer', boxShadow: '0 15px 30px rgba(0,0,0,0.15)', textDecoration: 'none' }}>
             Start Building
           </motion.a>
           <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} style={{ padding: '16px 36px', backgroundColor: 'transparent', color: '#1A1D20', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, border: '2px solid rgba(0,0,0,0.1)', cursor: 'pointer', transition: 'border-color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#1A1D20'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.1)'}>
@@ -269,4 +271,42 @@ export default function AboutHackGyanVerse() {
 
     </section>
   );
+}
+
+// Mobile Responsive Overrides
+const globalStyles = `
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 6rem 1.5rem !important;
+      min-height: auto !important;
+    }
+    .about-text-container {
+      margin-top: 2rem !important;
+      gap: 1rem !important;
+      row-gap: 1.5rem !important;
+    }
+    .about-subtext {
+      margin-top: 4rem !important;
+      font-size: 1rem !important;
+      padding: 0 1rem !important;
+    }
+    .about-buttons {
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+    .about-buttons a, .about-buttons button {
+      width: 100% !important;
+      text-align: center !important;
+    }
+    /* Hide some floating elements on mobile to reduce noise and overflow */
+    .float-item-mobile-hide {
+      display: none !important;
+    }
+  }
+`;
+
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.innerHTML = globalStyles;
+  document.head.appendChild(style);
 }

@@ -26,10 +26,10 @@
   --spacing-96: 6rem;
   --spacing-128: 8rem;
 
-  /* Sections */
-  --desktop-padding: var(--spacing-96);
-  --tablet-padding: var(--spacing-64);
-  --mobile-padding: var(--spacing-48);
+  /* Sections & Containers */
+  --desktop-padding: var(--spacing-64);
+  --tablet-padding: var(--spacing-32); /* PRD: 24-32px */
+  --mobile-padding: var(--spacing-16); /* PRD: 16-20px */
 }
 
 * {
@@ -40,8 +40,10 @@
 
 html,
 body {
+  width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
+  position: relative;
   background-color: var(--background-white);
   color: var(--text-dark);
   font-family: var(--font-geist-sans), sans-serif;
@@ -140,5 +142,198 @@ button {
   .py-section {
     padding-top: var(--desktop-padding);
     padding-bottom: var(--desktop-padding);
+  }
+}
+
+/* ========================================================
+   GLOBAL MOBILE OVERRIDES (PRD COMPLIANCE)
+   Forces all inline-styled flex/grid layouts to stack
+   ======================================================== */
+@media (max-width: 768px) {
+  /* Normalize Section Paddings */
+  section {
+    padding: 4rem 1.5rem !important;
+    min-height: auto !important;
+  }
+  
+  .hero-root-section {
+    padding: 0 !important;
+  }
+  
+  .hero-inner-frame {
+    border-radius: 0 !important;
+  }
+
+  /* Force Grid to Single Column */
+  div[style*="display: grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* Force Grid Children to Span 1 */
+  div[style*="gridColumn: 'span 2'"],
+  div[style*="grid-column: span 2"] {
+    grid-column: span 1 !important;
+  }
+
+  /* Force flex side-by-side elements to stack */
+  .hero-content-stack,
+  .hero-bento-bottom-row,
+  div[style*="flex-direction: row"],
+  div[style*="flex: '1', display: 'flex'"],
+  div[style*="flex: '1.2', display: 'flex'"] {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+    width: 100% !important;
+  }
+
+  /* Navigation & Hamburger Mobile View */
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-links, .nav-login, .nav-join-btn {
+    display: none !important;
+  }
+  .hero-nav {
+    padding: 1.5rem !important;
+  }
+  .nav-logo-text {
+    font-size: 1.4rem !important;
+  }
+
+  /* Typography Scaling - Resized to fill screen naturally */
+  h1, h2, h3 {
+    font-size: clamp(2.8rem, 12vw, 3.5rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* General Text */
+  p, p[style*="vw"] {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Specifically fix the inline typography pills and animations inside the H1 */
+  h1 > div, h1 > motion\\.div, div[style*="inline-flex"] {
+    width: max-content !important;
+    height: auto !important;
+    padding: 0.5rem 1rem !important;
+    margin: 0.3rem 0.5rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* The animated activity graph SVG wrapper */
+  h1 > div > svg, h1 svg[viewBox="0 0 100 30"] {
+    width: 60px !important;
+    height: 20px !important;
+  }
+  
+  /* The </> Code span */
+  h1 > div > span, h1 span {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Mini Toggle */
+  h1 > div[onClick] {
+    width: 50px !important;
+    height: 26px !important;
+    padding: 2px !important;
+  }
+  h1 > div[onClick] > div {
+    width: 22px !important;
+    height: 22px !important;
+    transform: none !important;
+  }
+
+  /* Ensure buttons are full width and have breathing room */
+  a[style*="inline-flex"], button[style*="padding: '1vw"], .hero-buttons-row a {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 1.2rem !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Fix partner/logo rows with whitespace - FORCE ONE LINE COMPACT */
+  div[style*="gap: '2.5vw'"], div[style*="gap: 2.5vw"], .hero-logos-row {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.2rem !important;
+    padding-top: 1rem !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  div[style*="gap: '2.5vw'"] span, .hero-logos-row span {
+    font-size: 0.65rem !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.02em !important;
+  }
+  div[style*="gap: '2.5vw'"] svg, .hero-logos-row svg {
+    width: auto !important;
+    height: 12px !important;
+  }
+  /* Fix the blue dot next to HGV Community */
+  .hero-logos-row div[style*="width: '1vw'"] {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  
+  /* Avatars row fix */
+  div[style*="width: '2vw'"], img[style*="width: '2vw'"] {
+    width: 36px !important;
+    height: 36px !important;
+    margin-left: -12px !important;
+  }
+
+  /* 5K+ Text size */
+  h3[style*="4vw"] {
+    font-size: 3rem !important;
+  }
+
+  /* Simplify Bento Grids and Hide Extra Text */
+  .hero-bento-top-card p,
+  .hero-bento-bottom-row p {
+    display: none !important;
+  }
+  
+  .hero-bento-top-card, 
+  .hero-bento-bottom-row > div {
+    padding: 1.5rem !important;
+    min-height: auto !important;
+  }
+
+  /* 3D Canvas safety */
+  .three-canvas-container, div > canvas {
+    max-width: 100vw !important;
+    pointer-events: none !important;
+  }
+
+  /* Hide Community Cutout completely on mobile */
+  .community-cutout {
+    display: none !important;
+  }
+
+  /* Fix the Community Reveal Text (everyone's a learner...) */
+  .community-reveal-container {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+  .community-reveal-container > div {
+    align-items: center !important;
   }
 }

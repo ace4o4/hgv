@@ -4,8 +4,8 @@ import { communityData } from '@/data/community';
 import { navigationData } from '@/data/navigation';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Play, ArrowRight, Code2, Rocket, Cpu, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Play, ArrowRight, Code2, Rocket, Cpu, Sparkles, Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 
 // Mini Interactive Toggle Component for inline text
@@ -14,10 +14,10 @@ const MiniToggle = () => {
   return (
     <div 
       onClick={() => setIsOn(!isOn)}
-      style={{ display: 'inline-flex', verticalAlign: 'middle', width: '3.5vw', height: '1.8vw', borderRadius: '100px', backgroundColor: isOn ? '#10B981' : '#E2E8F0', padding: '0.2vw', cursor: 'pointer', transition: 'background-color 0.3s', margin: '0 0.8vw 0.5vw 0.8vw' }}
+      style={{ display: 'inline-flex', verticalAlign: 'middle', width: '3vw', height: '1.5vw', borderRadius: '100px', backgroundColor: isOn ? '#2F80FF' : '#E2E8F0', padding: '0.2vw', cursor: 'pointer', transition: 'background-color 0.3s', margin: '0 0.8vw 0.5vw 0.8vw' }}
     >
       <motion.div 
-        animate={{ x: isOn ? '1.7vw' : '0vw' }}
+        animate={{ x: isOn ? '1.5vw' : '0vw' }}
         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
         style={{ width: '1.4vw', height: '1.4vw', backgroundColor: '#FFF', borderRadius: '50%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
       />
@@ -27,6 +27,7 @@ const MiniToggle = () => {
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Basic font setup
@@ -39,6 +40,7 @@ export default function HeroSection() {
   return (
     <section 
       ref={containerRef}
+      className="hero-root-section"
       style={{
         backgroundColor: '#F1F5F9', // Light gray/blue outer background
         minHeight: '100vh',
@@ -51,18 +53,20 @@ export default function HeroSection() {
     >
       
       {/* Inner White Frame - Almost Full Screen */}
-      <div style={{
-        width: '100%',
-        height: '100%',
-        minHeight: '94vh',
-        borderRadius: '40px',
-        backgroundColor: '#FFFFFF',
-        boxShadow: '0 25px 50px rgba(0,0,0,0.05)',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-        fontFamily: "'Outfit', sans-serif",
-        position: 'relative'
+      <div 
+        className="hero-inner-frame"
+        style={{
+          width: '100%',
+          height: '100%',
+          minHeight: '94vh',
+          borderRadius: '40px',
+          backgroundColor: '#FFFFFF',
+          boxShadow: '0 25px 50px rgba(0,0,0,0.05)',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+          fontFamily: "'Outfit', sans-serif",
+          position: 'relative'
       }}>
         
         {/* Premium Background Morphing Orbs (Framer Motion) */}
@@ -80,7 +84,7 @@ export default function HeroSection() {
         </div>
 
         {/* --- TOP NAVIGATION --- */}
-        <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2vw 4vw', position: 'relative', zIndex: 10 }}>
+        <nav className="hero-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2vw 4vw', position: 'relative', zIndex: 100 }}>
           
           {/* Logo */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6vw' }}>
@@ -90,11 +94,11 @@ export default function HeroSection() {
               <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
               <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
             </div>
-            <span style={{ fontSize: '1.4vw', fontWeight: 800, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
+            <span className="nav-logo-text" style={{ fontSize: '1.4vw', fontWeight: 800, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
           </div>
 
           {/* Links Center */}
-          <div style={{ display: 'flex', gap: '3vw', alignItems: 'center' }}>
+          <div className="nav-links" style={{ display: 'flex', gap: '3vw', alignItems: 'center' }}>
             {navigationData.desktop.map(link => (
               <div key={link.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3vw', cursor: 'pointer' }}>
                 <Link href={link.href} style={{ fontSize: '0.9vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'none' }}>
@@ -106,44 +110,83 @@ export default function HeroSection() {
           </div>
 
           {/* Right Actions */}
-          <div style={{ display: 'flex', gap: '1.5vw', alignItems: 'center' }}>
-            <a href="#" style={{ fontSize: '0.9vw', fontWeight: 700, color: '#1A1D20', textDecoration: 'none' }}>Log in</a>
-            <a href={communityData.whatsappLink} style={{ padding: '0.6vw 1.5vw', backgroundColor: '#2F80FF', borderRadius: '100px', fontSize: '0.9vw', fontWeight: 600, color: '#FFF', textDecoration: 'none' }}>
+          <div className="nav-actions" style={{ display: 'flex', gap: '1.5vw', alignItems: 'center' }}>
+            <a href="#" className="nav-login" style={{ fontSize: '0.9vw', fontWeight: 700, color: '#1A1D20', textDecoration: 'none' }}>Log in</a>
+            <a href={communityData.whatsappLink} className="nav-join-btn" style={{ padding: '0.6vw 1.5vw', backgroundColor: '#2F80FF', borderRadius: '100px', fontSize: '0.9vw', fontWeight: 600, color: '#FFF', textDecoration: 'none' }}>
               Join us
             </a>
+            
+            {/* Hamburger Button (Mobile Only) */}
+            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu size={24} color="#1A1D20" />
+            </button>
           </div>
         </nav>
 
+        {/* Mobile Full Screen Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(255,255,255,0.98)', zIndex: 999, display: 'flex', flexDirection: 'column', padding: '1.5rem' }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
+                    <div style={{ width: '8px', height: '8px', backgroundColor: '#2F80FF', borderRadius: '50%' }} />
+                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
+                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
+                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
+                  </div>
+                  <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
+                </div>
+                <button onClick={() => setIsMobileMenuOpen(false)} style={{ padding: '8px', background: '#F1F5F9', borderRadius: '50%', border: 'none', cursor: 'pointer' }}>
+                  <X size={24} color="#1A1D20" />
+                </button>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                {navigationData.desktop.map(link => (
+                  <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: '#1A1D20', textDecoration: 'none', borderBottom: '1px solid #E2E8F0', paddingBottom: '1rem' }}>
+                    {link.name}
+                  </Link>
+                ))}
+                <a href={communityData.whatsappLink} onClick={() => setIsMobileMenuOpen(false)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', marginTop: '1rem' }}>
+                  Join Community
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* --- MAIN HERO CONTENT --- */}
-        <div style={{ flex: 1, display: 'flex', padding: '0 4vw 3vw 4vw', gap: '4vw' }}>
+        <div className="hero-content-stack" style={{ flex: 1, display: 'flex', padding: '0 4vw 3vw 4vw', gap: '4vw' }}>
           
           {/* LEFT SIDE: TEXT CONTENT */}
-          <div style={{ flex: '1', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+          <div style={{ flex: '1', minWidth: 0, display: 'flex', flexDirection: 'column', position: 'relative' }}>
             
-            <h1 style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.03em', marginTop: '1vw' }}>
+            <h1 style={{ fontSize: 'clamp(3rem, 4.5vw, 6rem)', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.03em', marginTop: '1vw' }}>
               
               {/* Interactive Mini Toggle */}
               <MiniToggle />
               
-              Empowering 
-              <br />
+              Empowering your 
               
               {/* Code Brackets Badge */}
-              <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} style={{ display: 'inline-flex', verticalAlign: 'middle', width: '2.5vw', height: '2.5vw', borderRadius: '8px', backgroundColor: '#F1F5F9', alignItems: 'center', justifyContent: 'center', margin: '0 0.8vw 0.5vw 0.8vw', border: '1px solid #E2E8F0' }}>
+              <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} style={{ display: 'inline-flex', verticalAlign: 'middle', width: '2.5vw', height: '2.5vw', borderRadius: '8px', backgroundColor: '#F1F5F9', alignItems: 'center', justifyContent: 'center', margin: '0 0.8vw 0.5vw 0.8vw', border: '1px solid #E2E8F0', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}>
                 <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#2F80FF' }}>{`</>`}</span>
               </motion.div>
 
-              your journey from 
-              <br />
-              classroom to 
+              journey 
               
-              {/* Inline Button "Community" */}
               <motion.div whileHover={{ scale: 1.05 }} animate={{ y: [0, -4, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '0.5vw 1vw', border: '1px solid #1A1D20', borderRadius: '100px', fontSize: '1vw', verticalAlign: 'middle', margin: '0 1vw 0.5vw 1vw', cursor: 'pointer', backgroundColor: '#FFF' }}>
                 <Play size={12} fill="#1A1D20" /> Community
               </motion.div>
-              
-              <br />
-              tech career
+
+              from classroom to tech career
 
               {/* Mini Animated Activity Graph */}
               <motion.div style={{ display: 'inline-flex', verticalAlign: 'middle', width: '4vw', height: '2vw', backgroundColor: '#1A1D20', borderRadius: '8px', margin: '0 0.8vw 0.5vw 0.8vw', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
@@ -161,10 +204,18 @@ export default function HeroSection() {
                   />
                 </svg>
               </motion.div>
+
             </h1>
             
+            {/* Subtext Paragraph */}
+            <div style={{ marginTop: '2vw', paddingBottom: '1vw' }}>
+              <p style={{ fontSize: '0.9vw', color: '#1A1D20', fontWeight: 500, maxWidth: '80%', lineHeight: 1.5, marginBottom: '2vw' }}>
+                HackGyanVerse collaborates with professional-led organizations to foster the creation of innovative tech businesses.
+              </p>
+            </div>
+
             {/* Buttons Row */}
-            <div style={{ marginTop: '2vw', display: 'flex', alignItems: 'center', gap: '2vw' }}>
+            <div className="hero-buttons-row" style={{ marginTop: '1vw', display: 'flex', alignItems: 'center', gap: '2vw' }}>
               <a href={communityData.whatsappLink} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '1vw 2vw', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1vw', fontWeight: 600, textDecoration: 'none' }}>
                 Join community <ArrowUpRight size={16} />
               </a>
@@ -173,13 +224,9 @@ export default function HeroSection() {
               </a>
             </div>
 
-            {/* Bottom Left Paragraph & Logos */}
+            {/* Bottom Logos */}
             <div style={{ marginTop: 'auto', paddingBottom: '1vw' }}>
-              <p style={{ fontSize: '0.9vw', color: '#1A1D20', fontWeight: 500, maxWidth: '80%', lineHeight: 1.5, marginBottom: '2vw' }}>
-                HackGyanVerse collaborates with professional-led organizations to foster the creation of innovative tech businesses.
-              </p>
-              
-              <div style={{ display: 'flex', alignItems: 'center', gap: '2.5vw', position: 'relative' }}>
+              <div className="hero-logos-row" style={{ display: 'flex', alignItems: 'center', gap: '2.5vw', position: 'relative', marginTop: '2vw' }}>
                 <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
                   <div style={{ width: '1vw', height: '1vw', backgroundColor: '#2F80FF', borderRadius: '4px' }} /> HGV Community
                 </span>
@@ -235,7 +282,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Bottom Row */}
-            <div style={{ flex: '1', display: 'flex', gap: '1.5vw' }}>
+            <div className="hero-bento-bottom-row" style={{ flex: '1', display: 'flex', gap: '1.5vw' }}>
               
               {/* Bottom Left Card */}
               <motion.div 

@@ -1,0 +1,209 @@
+/* HeroSection.module.css */
+
+.heroWrapper {
+  background-color: var(--background-soft, #F1F5F9);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.heroInner {
+  width: 100%;
+  height: 100%;
+  min-height: 94vh;
+  border-radius: 40px;
+  background-color: #FFFFFF;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+}
+
+.heroNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.navLinks {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.mobileMenuBtn {
+  display: none;
+}
+
+.heroContent {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  padding: 0 4rem 3rem 4rem;
+  gap: 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.heroLeft {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.heroRight {
+  flex: 1.2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.heroRightBottomRow {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.bentoCard {
+  flex: 1;
+  border-radius: 32px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bentoCardTop {
+  flex: 1.2;
+  background-color: #2F80FF;
+  justify-content: space-between;
+}
+
+.bentoCardBottomLeft {
+  background-color: #1A1D20;
+}
+
+.bentoCardBottomRight {
+  background-color: #FDF2F8;
+}
+
+/* Typography Fluid Scaling */
+.mainHeading {
+  font-size: clamp(2.5rem, 4.5vw, 5.5rem);
+  font-weight: 500;
+  color: #1A1D20;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-top: 1rem;
+  max-width: 90%;
+}
+
+.buttonsRow {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.descText {
+  font-size: 1rem;
+  color: #1A1D20;
+  font-weight: 500;
+  max-width: 80%;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.logosRow {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE RULES (Max 1024px)
+   ========================================= */
+@media (max-width: 1024px) {
+  .heroNav {
+    padding: 1.5rem 2rem;
+  }
+  .navLinks {
+    display: none;
+  }
+  .mobileMenuBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: #F1F5F9;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .joinUsDesktop {
+    display: none !important;
+  }
+  
+  .heroContent {
+    flex-direction: column;
+    padding: 0 2rem 3rem 2rem;
+    gap: 3rem;
+  }
+  .mainHeading {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    max-width: 100%;
+  }
+  .heroRightBottomRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .bentoCard {
+    padding: 2rem;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroWrapper {
+    padding: 0;
+  }
+  .heroInner {
+    border-radius: 0;
+  }
+  .heroNav {
+    padding: 1rem 1.5rem;
+  }
+  .heroContent {
+    padding: 0 1.5rem 2rem 1.5rem;
+  }
+  .buttonsRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .buttonsRow > a {
+    justify-content: center;
+    text-align: center;
+  }
+  .logosRow {
+    gap: 1.5rem;
+  }
+}
