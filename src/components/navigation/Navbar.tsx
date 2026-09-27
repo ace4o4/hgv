@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, ArrowRight } from 'lucide-react';
 import { navigationData } from '@/data/navigation';
@@ -139,19 +139,35 @@ const MenuItem = ({ name, href, isActive, onClick }: { name: string, href: strin
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > window.innerHeight * 0.8);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > window.innerHeight * 0.8);
+
+      if (currentScrollY <= 40) {
+        // Near the top: always show
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 8) {
+        // Scrolling down: slide up & hide
+        setVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 8) {
+        // Scrolling up: slide down & show
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
     
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
     
     handleScroll();
@@ -163,6 +179,9 @@ export default function Navbar() {
     };
   }, []);
 
+  // When drawer is open, keep navbar visible
+  const isNavbarVisible = visible || isOpen;
+
   // Show toggle globally, or if scrolled past hero, or ALWAYS if on mobile
   const shouldShow = pathname !== '/' || scrolled || isMobile;
 
@@ -173,10 +192,12 @@ export default function Navbar() {
           {/* ── Logo lockup — top left ── */}
           <motion.div
             className="fixed-logo-lockup"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ 
+              opacity: isNavbarVisible ? 1 : 0, 
+              y: isNavbarVisible ? 0 : -80,
+            }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'fixed',
               top: '1.4rem',
@@ -186,7 +207,7 @@ export default function Navbar() {
               alignItems: 'center',
               gap: '10px',
               textDecoration: 'none',
-              pointerEvents: 'auto',
+              pointerEvents: isNavbarVisible ? 'auto' : 'none',
             }}
           >
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
@@ -224,9 +245,13 @@ export default function Navbar() {
           {/* Floating Toggle Button */}
           <motion.button
             className="floating-menu-btn"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0, opacity: 0, y: -40 }}
+            animate={{ 
+              scale: isNavbarVisible ? 1 : 0.85, 
+              opacity: isNavbarVisible ? 1 : 0,
+              y: isNavbarVisible ? 0 : -80,
+            }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => setIsOpen(true)}
             style={{
               position: 'fixed',
@@ -242,7 +267,8 @@ export default function Navbar() {
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+              pointerEvents: isNavbarVisible ? 'auto' : 'none',
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
