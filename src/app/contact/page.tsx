@@ -16,13 +16,14 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '120px 0 100px 0', minHeight: '100vh', background: '#F1F5F9', fontFamily: "'Outfit', sans-serif" }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem 2.5rem 100px 2.5rem', minHeight: '100vh', background: '#F1F5F9', fontFamily: "'Outfit', sans-serif" }}>
       <style dangerouslySetInnerHTML={{ __html: `
         .contact-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
           width: 95vw;
-          height: 95vh;
+          height: calc(100vh - 10rem);
+          min-height: 700px;
           background: #0A0C10;
           border-radius: 40px;
           overflow: hidden;
@@ -128,6 +129,27 @@ export default function ContactPage() {
         }
       `}} />
 
+      {/* Top Branding & Heading (Outside card) */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', width: '95vw' }}
+      >
+        {/* Logo and Name */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ width: '48px', height: '48px', background: 'linear-gradient(135deg, #00F0FF, #9333EA)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}>
+            <span style={{ color: '#FFF', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.5px' }}>HGV</span>
+          </div>
+          <span style={{ color: '#1A1D20', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.02em' }}>HackGyanVerse</span>
+        </div>
+        
+        {/* Contact Us Badge */}
+        <div style={{ padding: '0.6rem 1.5rem', borderRadius: '100px', border: '1px solid rgba(0,0,0,0.1)', background: '#FFFFFF', color: '#1A1D20', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', marginRight: '5rem' }}>
+          Contact Us
+        </div>
+      </motion.div>
+
       <motion.div 
         className="contact-layout"
         initial={{ opacity: 0, y: 50 }}
@@ -136,22 +158,6 @@ export default function ContactPage() {
       >
         {/* Left Side: Info */}
         <div className="contact-left">
-          
-          {/* Top Branding & Heading */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4rem', width: '100%' }}>
-            {/* Logo and Name */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-              <div style={{ width: '40px', height: '40px', background: 'linear-gradient(135deg, #00F0FF, #9333EA)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}>
-                <span style={{ color: '#FFF', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.5px' }}>HGV</span>
-              </div>
-              <span style={{ color: '#FFF', fontWeight: 600, fontSize: '1.3rem', letterSpacing: '-0.02em' }}>HackGyanVerse</span>
-            </div>
-            
-            {/* Contact Us Badge */}
-            <div style={{ padding: '0.5rem 1.2rem', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.03)', color: '#9CA3AF', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Contact Us
-            </div>
-          </div>
 
           <h1 className="title-text" style={{ fontSize: '5.5rem', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '5rem' }}>
             Ready?<br/>Let's talk

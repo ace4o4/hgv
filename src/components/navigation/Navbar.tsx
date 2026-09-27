@@ -139,19 +139,31 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > window.innerHeight * 0.8);
     };
     
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleResize();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // Only hide completely if on homepage and NOT scrolled past hero
-  const shouldShow = pathname !== '/' || scrolled;
+  // Show toggle globally, or if scrolled past hero, or ALWAYS if on mobile
+  const shouldShow = pathname !== '/' || scrolled || isMobile;
 
   return (
     <AnimatePresence>
@@ -196,7 +208,8 @@ export default function Navbar() {
                 position: 'fixed',
                 top: '1rem',
                 right: '1rem',
-                width: '400px',
+                width: 'calc(100vw - 2rem)',
+                maxWidth: '400px',
                 height: 'calc(100vh - 2rem)',
                 background: '#FFFFFF',
                 borderRadius: '40px',
