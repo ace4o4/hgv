@@ -183,8 +183,14 @@ button {
   div[style*="flex: '1', display: 'flex'"],
   div[style*="flex: '1.2', display: 'flex'"] {
     flex-direction: column !important;
-    gap: 2.5rem !important;
+    gap: 1.5rem !important;
     width: 100% !important;
+  }
+
+  /* Increase top section height by roughly 2rem to push grids down */
+  .hero-content-stack > div:first-child {
+    padding-bottom: 2rem !important;
+    padding-top: 1rem !important;
   }
 
   /* Navigation & Hamburger Mobile View */
@@ -212,6 +218,18 @@ button {
     line-height: 1.15 !important;
     letter-spacing: -0.02em !important;
     margin-bottom: 1rem !important;
+  }
+  
+  /* Reduce Bento Grid Text Size by ~15% */
+  .hero-content-stack > div:last-child h2 {
+    font-size: clamp(2.2rem, 9vw, 2.8rem) !important;
+  }
+  .hero-content-stack > div:last-child h3 {
+    font-size: 2.2rem !important;
+  }
+  .hero-content-stack > div:last-child p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
   }
 
   /* General Text */
