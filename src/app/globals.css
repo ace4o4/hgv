@@ -38,6 +38,13 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Improve font rendering */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 html,
 body {
   width: 100%;
@@ -47,9 +54,45 @@ body {
   background-color: var(--background-white);
   color: var(--text-dark);
   font-family: var(--font-geist-sans), sans-serif;
+
+  /* Premium text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /* GPU layer for the scroll container */
+  -webkit-overflow-scrolling: touch;
 }
+
+/* Lenis smooth scroll — let it control overflow */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 
 a {
   color: inherit;
@@ -66,6 +109,82 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─────────────────────────────────────────── */
+/*  PERFORMANCE: GPU COMPOSITING HINTS         */
+/* ─────────────────────────────────────────── */
+
+/* Promote animated SVG/motion elements to their own GPU layer */
+[data-framer-motion],
+.motion-element,
+[style*="transform"],
+[style*="opacity"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Remove will-change after animation settles */
+@media (hover: none) {
+  [data-framer-motion],
+  .motion-element {
+    will-change: auto;
+  }
+}
+
+/* ─────────────────────────────────────────── */
+/*  PREMIUM SCROLL BEHAVIOUR                   */
+/* ─────────────────────────────────────────── */
+
+/* Custom scrollbar — thin & minimal on desktop */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(47, 128, 255, 0.25);
+    border-radius: 100px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(47, 128, 255, 0.5);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(47, 128, 255, 0.25) transparent;
+  }
+}
+
+/* Overscroll bounce only on iOS */
+html {
+  overscroll-behavior-y: none;
+}
+
+/* ─────────────────────────────────────────── */
+/*  SELECTION & FOCUS                          */
+/* ─────────────────────────────────────────── */
+
+::selection {
+  background: rgba(47, 128, 255, 0.18);
+  color: #0A0C10;
+}
+
+:focus-visible {
+  outline: 2px solid #2F80FF;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
 
 /* Base Utility Classes */
 .container {

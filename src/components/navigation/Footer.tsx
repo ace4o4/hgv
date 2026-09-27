@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { navigationData } from '@/data/navigation';
 import { communityData } from '@/data/community';
 import RollText from '@/components/animata/text/roll-text';
@@ -54,12 +55,32 @@ export default function Footer() {
           {/* Card 1: Brand Column */}
           <div className="footer-cutout-card" style={{ gridColumn: 'span 2', borderRadius: '40px 16px 40px 40px' }}>
             <div className="card-glow" style={{ background: 'radial-gradient(circle at 0% 0%, rgba(47,128,255,0.15) 0%, transparent 50%)' }} />
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
-              <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                HGV
-              </span>
-              <div className="glow-dot" style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 15px #00F0FF, 0 0 30px #2F80FF' }} />
-            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.2rem', position: 'relative', zIndex: 2 }}>
+              <div style={{
+                width: 52,
+                height: 52,
+                borderRadius: 14,
+                overflow: 'hidden',
+                flexShrink: 0,
+                boxShadow: '0 4px 20px rgba(0,240,255,0.25)',
+                border: '1.5px solid rgba(0,240,255,0.3)',
+                background: '#fff'
+              }}>
+                <Image
+                  src="/logos/hgv-og.png"
+                  alt="HackGyanVerse Logo"
+                  width={52}
+                  height={52}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
+              </div>
+              <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '2.6rem', fontWeight: 900, letterSpacing: '-0.02em', margin: 0 }}>
+                <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  HGV
+                </span>
+                <div className="glow-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 15px #00F0FF, 0 0 30px #2F80FF' }} />
+              </h2>
+            </div>
             <p style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', color: '#E2E8F0', position: 'relative', zIndex: 2 }}>{communityData.name}</p>
             <p style={{ color: '#64748B', lineHeight: 1.6, maxWidth: '300px', fontSize: '1.05rem', position: 'relative', zIndex: 2 }}>{communityData.tagline}</p>
             

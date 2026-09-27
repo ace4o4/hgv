@@ -3,6 +3,7 @@
 import { communityData } from '@/data/community';
 import { navigationData } from '@/data/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -89,15 +90,28 @@ export default function HeroSection() {
         <nav className="hero-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2vw 4vw', position: 'relative', zIndex: 100 }}>
           
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6vw' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
-              <div style={{ width: '8px', height: '8px', backgroundColor: '#2F80FF', borderRadius: '50%' }} />
-              <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
-              <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
-              <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8vw', textDecoration: 'none' }}>
+            <div style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              flexShrink: 0,
+              boxShadow: '0 4px 14px rgba(47,128,255,0.18)',
+              border: '1.5px solid rgba(47,128,255,0.15)',
+              background: '#fff',
+            }}>
+              <Image
+                src="/logos/hgv-og.png"
+                alt="HackGyanVerse logo"
+                width={40}
+                height={40}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                priority
+              />
             </div>
             <span className="nav-logo-text" style={{ fontSize: '1.4vw', fontWeight: 800, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
-          </div>
+          </Link>
 
           {/* Links Center */}
           <div className="nav-links" style={{ display: 'flex', gap: '3vw', alignItems: 'center' }}>

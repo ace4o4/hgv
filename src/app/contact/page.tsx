@@ -4,6 +4,8 @@ import { communityData } from '@/data/community';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ContactPage() {
 
@@ -137,12 +139,27 @@ export default function ContactPage() {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', width: '95vw' }}
       >
         {/* Logo and Name */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div style={{ width: '48px', height: '48px', background: 'linear-gradient(135deg, #00F0FF, #9333EA)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 15px rgba(0,240,255,0.3)' }}>
-            <span style={{ color: '#FFF', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.5px' }}>HGV</span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none' }}>
+          <div style={{
+            width: 44,
+            height: 44,
+            borderRadius: 12,
+            overflow: 'hidden',
+            boxShadow: '0 4px 14px rgba(47,128,255,0.2)',
+            border: '1.5px solid rgba(47,128,255,0.15)',
+            background: '#fff',
+            flexShrink: 0
+          }}>
+            <Image
+              src="/logos/hgv-og.png"
+              alt="HackGyanVerse Logo"
+              width={44}
+              height={44}
+              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            />
           </div>
-          <span style={{ color: '#1A1D20', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.02em' }}>HackGyanVerse</span>
-        </div>
+          <span style={{ color: '#1A1D20', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.02em' }}>HackGyanVerse</span>
+        </Link>
         
         {/* Contact Us Badge */}
         <div style={{ padding: '0.6rem 1.5rem', borderRadius: '100px', border: '1px solid rgba(0,0,0,0.1)', background: '#FFFFFF', color: '#1A1D20', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', marginRight: '5rem' }}>
