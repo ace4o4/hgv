@@ -36,12 +36,213 @@ const whoWeArePills = ['Build', 'Learn', 'Collaborate', 'Participate', 'Lead', '
 const whoWeAreTags  = ['Student-driven', 'Innovation-first', 'Community-led', 'Classroom to career'];
 
 const journeySteps = [
-  { emoji: '📚', label: 'Learn', num: '01' },
-  { emoji: '🛠️', label: 'Build', num: '02' },
-  { emoji: '🤝', label: 'Collaborate', num: '03' },
-  { emoji: '🏆', label: 'Lead', num: '04' },
-  { emoji: '🌟', label: 'Grow', num: '05' },
+  { label: 'Learn',       num: '01', IllusComponent: JLearnIllus },
+  { label: 'Build',       num: '02', IllusComponent: JBuildIllus },
+  { label: 'Collaborate', num: '03', IllusComponent: JCollabIllus },
+  { label: 'Lead',        num: '04', IllusComponent: JLeadIllus },
+  { label: 'Grow',        num: '05', IllusComponent: JGrowIllus },
 ];
+
+/* ─── Journey step SVG illustrations ─── */
+
+/** Learn — open book with animated page-turn line */
+function JLearnIllus({ active }: { active: boolean }) {
+  return (
+    <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 72, height: 62 }}>
+      {/* Left page */}
+      <motion.path d="M40 10 L12 16 L12 58 L40 52 Z"
+        fill={active ? 'rgba(255,255,255,0.15)' : '#EFF6FF'}
+        stroke={active ? 'rgba(255,255,255,0.5)' : '#BFDBFE'} strokeWidth="1.5"
+        animate={{ rotateY: [0, -8, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ transformOrigin: '40px 34px' }}
+      />
+      {/* Right page */}
+      <motion.path d="M40 10 L68 16 L68 58 L40 52 Z"
+        fill={active ? 'rgba(255,255,255,0.1)' : '#DBEAFE'}
+        stroke={active ? 'rgba(255,255,255,0.4)' : '#93C5FD'} strokeWidth="1.5"
+        animate={{ rotateY: [0, 8, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.15 }}
+        style={{ transformOrigin: '40px 34px' }}
+      />
+      {/* Spine */}
+      <line x1="40" y1="10" x2="40" y2="52" stroke={active ? 'rgba(255,255,255,0.4)' : '#94A3B8'} strokeWidth="2" strokeLinecap="round" />
+      {/* Text lines left */}
+      <line x1="17" y1="26" x2="35" y2="24" stroke={active ? 'rgba(255,255,255,0.3)' : '#BFDBFE'} strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="17" y1="33" x2="34" y2="31" stroke={active ? 'rgba(255,255,255,0.2)' : '#BFDBFE'} strokeWidth="1" strokeLinecap="round" />
+      <line x1="17" y1="40" x2="33" y2="38" stroke={active ? 'rgba(255,255,255,0.2)' : '#BFDBFE'} strokeWidth="1" strokeLinecap="round" />
+      {/* Progress bar right */}
+      <rect x="44" y="24" width="20" height="4" rx="2" fill={active ? 'rgba(255,255,255,0.15)' : '#DBEAFE'} />
+      <motion.rect x="44" y="24" height="4" rx="2" fill={active ? 'rgba(255,255,255,0.6)' : '#2F80FF'}
+        animate={{ width: [4, 18, 4] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <rect x="44" y="32" width="20" height="4" rx="2" fill={active ? 'rgba(255,255,255,0.15)' : '#DBEAFE'} />
+      <motion.rect x="44" y="32" height="4" rx="2" fill={active ? 'rgba(255,255,255,0.6)' : '#60A5FA'}
+        animate={{ width: [14, 8, 14] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+      />
+    </svg>
+  );
+}
+
+/** Build — gear with orbiting bolt */
+function JBuildIllus({ active }: { active: boolean }) {
+  const stroke = active ? 'rgba(255,255,255,0.7)' : '#94A3B8';
+  const fill   = active ? 'rgba(255,255,255,0.12)' : '#F1F5F9';
+  const accent = active ? 'rgba(255,255,255,0.9)' : '#2F80FF';
+  return (
+    <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 72, height: 62 }}>
+      {/* Gear outer */}
+      <motion.g animate={{ rotate: [0, 360] }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '40px 36px' }}>
+        {[0,45,90,135,180,225,270,315].map((deg, i) => (
+          <rect key={i}
+            x={40 + 22 * Math.cos((deg * Math.PI) / 180) - 3}
+            y={36 + 22 * Math.sin((deg * Math.PI) / 180) - 5}
+            width="6" height="10" rx="2"
+            fill={fill} stroke={stroke} strokeWidth="1.2"
+            transform={`rotate(${deg} ${40 + 22 * Math.cos((deg * Math.PI) / 180)} ${36 + 22 * Math.sin((deg * Math.PI) / 180)})`}
+          />
+        ))}
+        <circle cx="40" cy="36" r="18" fill={fill} stroke={stroke} strokeWidth="1.8" />
+        <circle cx="40" cy="36" r="8" fill={active ? 'rgba(255,255,255,0.2)' : '#E2E8F0'} stroke={stroke} strokeWidth="1.5" />
+      </motion.g>
+      {/* Code brackets inside gear */}
+      <text x="40" y="40" textAnchor="middle" fontSize="10" fontWeight="900" fill={accent}>{'{}'}</text>
+      {/* Orbiting bolt */}
+      <motion.g animate={{ rotate: [0, -360] }} transition={{ duration: 4, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '40px 36px' }}>
+        <text x="65" y="14" fontSize="12" fill="#FBBF24">⚡</text>
+      </motion.g>
+    </svg>
+  );
+}
+
+/** Collaborate — 3 nodes connecting with animated edges */
+function JCollabIllus({ active }: { active: boolean }) {
+  const nodes = [
+    { cx: 40, cy: 16, r: 10 },
+    { cx: 14, cy: 54, r: 9 },
+    { cx: 66, cy: 54, r: 9 },
+  ];
+  const edges = [[0,1],[0,2],[1,2]];
+  return (
+    <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 72, height: 62 }}>
+      {edges.map(([a, b], i) => (
+        <motion.line key={i}
+          x1={nodes[a].cx} y1={nodes[a].cy} x2={nodes[b].cx} y2={nodes[b].cy}
+          stroke={active ? 'rgba(255,255,255,0.5)' : '#BFDBFE'} strokeWidth="2" strokeDasharray="4 3"
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.4 }}
+        />
+      ))}
+      {nodes.map((n, i) => (
+        <motion.g key={i}
+          animate={{ y: [0, i === 0 ? -5 : 4, 0] }}
+          transition={{ duration: 2.2 + i * 0.4, repeat: Infinity, ease: 'easeInOut', delay: i * 0.3 }}
+          style={{ transformOrigin: `${n.cx}px ${n.cy}px` }}
+        >
+          <circle cx={n.cx} cy={n.cy} r={n.r}
+            fill={i === 0 ? (active ? 'rgba(255,255,255,0.3)' : '#2F80FF') : (active ? 'rgba(255,255,255,0.15)' : '#EFF6FF')}
+            stroke={active ? 'rgba(255,255,255,0.6)' : (i === 0 ? '#2F80FF' : '#BFDBFE')}
+            strokeWidth="1.8"
+          />
+          <text x={n.cx} y={n.cy + 4} textAnchor="middle" fontSize="9" fill={active ? 'white' : (i === 0 ? 'white' : '#64748B')} fontWeight="700">
+            {['♥','✓','✓'][i]}
+          </text>
+        </motion.g>
+      ))}
+      {/* Ping wave from top node */}
+      <motion.circle cx="40" cy="16" r="10"
+        stroke={active ? 'rgba(255,255,255,0.4)' : '#BFDBFE'} strokeWidth="1.5" fill="none"
+        animate={{ r: [10, 28, 10], opacity: [0.6, 0, 0.6] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+      />
+    </svg>
+  );
+}
+
+/** Lead — podium with animated rising bars */
+function JLeadIllus({ active }: { active: boolean }) {
+  const bars = [
+    { x: 8,  h: 28, color: '#60A5FA', activeColor: 'rgba(255,255,255,0.5)', place: '2' },
+    { x: 28, h: 42, color: '#FBBF24', activeColor: 'rgba(255,255,255,0.9)', place: '1' },
+    { x: 48, h: 20, color: '#34D399', activeColor: 'rgba(255,255,255,0.4)', place: '3' },
+  ];
+  return (
+    <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 72, height: 62 }}>
+      {/* Base line */}
+      <line x1="4" y1="62" x2="76" y2="62" stroke={active ? 'rgba(255,255,255,0.3)' : '#E2E8F0'} strokeWidth="2" strokeLinecap="round" />
+      {bars.map((b, i) => (
+        <g key={i}>
+          {/* Bar */}
+          <motion.rect
+            x={b.x} y={62 - b.h} width="22" height={b.h} rx="4"
+            fill={active ? b.activeColor : b.color}
+            animate={{ height: [b.h * 0.6, b.h, b.h * 0.8, b.h] }}
+            transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+            style={{ transformOrigin: `${b.x + 11}px 62px` }}
+          />
+          {/* Place label */}
+          <text x={b.x + 11} y={62 - b.h - 6} textAnchor="middle" fontSize="11" fontWeight="900"
+            fill={active ? 'rgba(255,255,255,0.8)' : (b.place === '1' ? '#F59E0B' : '#64748B')}>
+            {b.place === '1' ? '★' : b.place}
+          </text>
+        </g>
+      ))}
+      {/* Crown above 1st bar */}
+      <motion.text x="39" y="12" textAnchor="middle" fontSize="14"
+        animate={{ y: [12, 6, 12], scale: [1, 1.2, 1] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ transformOrigin: '39px 10px' } as React.CSSProperties}
+      >👑</motion.text>
+    </svg>
+  );
+}
+
+/** Grow — upward arrow with star burst */
+function JGrowIllus({ active }: { active: boolean }) {
+  const rays = [0, 45, 90, 135, 180, 225, 270, 315];
+  return (
+    <svg viewBox="0 0 80 70" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 72, height: 62 }}>
+      {/* Star burst rays */}
+      {rays.map((deg, i) => (
+        <motion.line key={i}
+          x1={40 + 14 * Math.cos((deg * Math.PI) / 180)}
+          y1={32 + 14 * Math.sin((deg * Math.PI) / 180)}
+          x2={40 + 26 * Math.cos((deg * Math.PI) / 180)}
+          y2={32 + 26 * Math.sin((deg * Math.PI) / 180)}
+          stroke={active ? 'rgba(255,255,255,0.7)' : '#FBBF24'} strokeWidth="2" strokeLinecap="round"
+          animate={{ opacity: [1, 0.2, 1], scale: [1, 1.3, 1] }}
+          transition={{ duration: 1.4, repeat: Infinity, delay: i * 0.18 }}
+          style={{ transformOrigin: '40px 32px' } as React.CSSProperties}
+        />
+      ))}
+      {/* Central glow circle */}
+      <motion.circle cx="40" cy="32" r="14"
+        fill={active ? 'rgba(255,255,255,0.2)' : '#FEF9C3'}
+        stroke={active ? 'rgba(255,255,255,0.6)' : '#FBBF24'} strokeWidth="2"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 1.8, repeat: Infinity }}
+        style={{ transformOrigin: '40px 32px' }}
+      />
+      {/* Upward arrow */}
+      <motion.path d="M40 42 L40 18 M33 26 L40 18 L47 26"
+        stroke={active ? 'rgba(255,255,255,0.9)' : '#F59E0B'} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+        animate={{ y: [0, -4, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      {/* Sparkles */}
+      {[[12, 12], [64, 18], [16, 54], [62, 55]].map(([x, y], i) => (
+        <motion.circle key={i} cx={x} cy={y} r="3"
+          fill={['#2F80FF','#A78BFA','#34D399','#FB923C'][i]}
+          animate={{ scale: [1, 1.6, 1], opacity: [0.8, 0.2, 0.8] }}
+          transition={{ duration: 1.5 + i * 0.3, repeat: Infinity, delay: i * 0.25 }}
+          style={{ transformOrigin: `${x}px ${y}px` }}
+        />
+      ))}
+    </svg>
+  );
+}
 
 const whatWeDo = [
   { title: 'Innovation',    desc: 'Students get a platform to explore ideas and turn them into real projects.', color: 'c1', IllusComponent: InnovationIllus },
@@ -708,25 +909,29 @@ export default function AboutPage() {
               variants={stagger(0.1)}
               initial="hidden" whileInView="visible" viewport={inView}
             >
-              {journeySteps.map((step, i) => (
-                <motion.div
-                  key={step.label}
-                  className={`about-journey-step${hoveredJourney === i ? ' active' : i === journeySteps.length - 1 && hoveredJourney === null ? ' active' : ''}`}
-                  variants={fadeUp()}
-                  onHoverStart={() => setHoveredJourney(i)}
-                  onHoverEnd={() => setHoveredJourney(null)}
-                >
-                  <motion.span
-                    className="about-journey-step-emoji"
-                    animate={hoveredJourney === i ? { scale: [1, 1.4, 1], rotate: [0, 15, -15, 0] } : { scale: 1 }}
-                    transition={{ duration: 0.5 }}
+              {journeySteps.map((step, i) => {
+                const isActive = hoveredJourney === i || (i === journeySteps.length - 1 && hoveredJourney === null);
+                const Illus = step.IllusComponent;
+                return (
+                  <motion.div
+                    key={step.label}
+                    className={`about-journey-step${isActive ? ' active' : ''}`}
+                    variants={fadeUp()}
+                    onHoverStart={() => setHoveredJourney(i)}
+                    onHoverEnd={() => setHoveredJourney(null)}
                   >
-                    {step.emoji}
-                  </motion.span>
-                  <span className="about-journey-step-num">{step.num}</span>
-                  <span className="about-journey-step-label">{step.label}</span>
-                </motion.div>
-              ))}
+                    <motion.div
+                      className="about-journey-step-illus"
+                      animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Illus active={isActive} />
+                    </motion.div>
+                    <span className="about-journey-step-num">{step.num}</span>
+                    <span className="about-journey-step-label">{step.label}</span>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
         </section>

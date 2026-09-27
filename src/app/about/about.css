@@ -555,8 +555,13 @@
   color: rgba(255,255,255,0.3);
 }
 
-.about-journey-step-emoji {
-  font-size: 2rem;
+.about-journey-step-illus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 68px;
+  flex-shrink: 0;
 }
 
 .about-journey-step-num {
