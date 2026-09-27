@@ -597,16 +597,6 @@ export default function EventsPage() {
                   </motion.div>
 
                   {/* Floating stat chip — mid left */}
-                  <motion.div className="events-fv-chip events-fv-chip-2"
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-                  >
-                    <span className="events-fv-chip-icon">🏆</span>
-                    <div>
-                      <div className="events-fv-chip-num">₹15K</div>
-                      <div className="events-fv-chip-label">Cash Prize</div>
-                    </div>
-                  </motion.div>
 
                   {/* Date tag bottom-right */}
                   <div className="events-featured-date-tag">
@@ -661,9 +651,6 @@ export default function EventsPage() {
                         Register Free →
                       </a>
                     )}
-                    <Link href={`/events/${featuredEvent.slug}`} className="events-btn-primary">
-                      Explore Event
-                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -741,9 +728,6 @@ export default function EventsPage() {
                     Register Free — It&apos;s Free →
                   </a>
                 )}
-                <Link href={`/events/${featuredEvent?.slug}`} className="events-btn-primary">
-                  Explore Event Details
-                </Link>
               </motion.div>
             </motion.div>
           </div>

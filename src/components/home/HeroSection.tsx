@@ -126,9 +126,12 @@ export default function HeroSection() {
 
           {/* Right Actions */}
           <div className="nav-actions" style={{ display: 'flex', gap: '1.5vw', alignItems: 'center' }}>
-            <motion.a whileHover={{ scale: 1.05, backgroundColor: '#1E40AF', boxShadow: '0 10px 20px rgba(47, 128, 255, 0.4)' }} whileTap={{ scale: 0.95 }} href={communityData.whatsappLink} className="nav-join-btn" style={{ padding: '0.6vw 1.5vw', backgroundColor: '#2F80FF', borderRadius: '100px', fontSize: '0.9vw', fontWeight: 600, color: '#FFF', textDecoration: 'none', display: 'inline-block' }}>
+            <a href={communityData.whatsappLink} className="hgv-explore-btn" style={{ padding: '0.5vw 1vw', fontSize: '0.9vw' }}>
               Join us
-            </motion.a>
+              <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg" style={{ width: '1.5vw', height: '1.5vw', padding: '0.2vw' }}>
+                <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"></path>
+              </svg>
+            </a>
             
           </div>
         </nav>
@@ -187,12 +190,17 @@ export default function HeroSection() {
 
             {/* Buttons Row */}
             <div className="hero-buttons-row" style={{ marginTop: '1vw', display: 'flex', alignItems: 'center', gap: '2vw' }}>
-              <motion.a whileHover={{ scale: 1.05, backgroundColor: '#1E40AF', boxShadow: '0 10px 20px rgba(47, 128, 255, 0.4)' }} whileTap={{ scale: 0.95 }} href={communityData.whatsappLink} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '1vw 2vw', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1vw', fontWeight: 600, textDecoration: 'none' }}>
-                Join community <ArrowUpRight size={16} />
-              </motion.a>
-              <motion.a whileHover={{ scale: 1.05, color: '#2F80FF' }} whileTap={{ scale: 0.95 }} href="#" style={{ fontSize: '1vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'underline', textUnderlineOffset: '4px', display: 'inline-block' }}>
-                Live events
-              </motion.a>
+              <a href={communityData.whatsappLink} className="hgv-explore-btn" style={{ padding: '0.75vw 1.5vw', fontSize: '1.2vw' }}>
+                Join community
+                <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"></path>
+                </svg>
+              </a>
+              <motion.div whileHover={{ scale: 1.05, color: '#2F80FF' }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
+                <Link href="/events" style={{ fontSize: '1vw', fontWeight: 600, color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '4px', display: 'inline-block' }}>
+                  Live events
+                </Link>
+              </motion.div>
             </div>
 
             {/* Bottom Logos */}

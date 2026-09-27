@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, type Variants } from 'framer-motion';
 import { Sparkles, Globe, MapPin, MousePointer2, Star, Zap } from 'lucide-react';
+import { communityData } from '@/data/community';
 
 export default function AboutHackGyanVerse() {
   const containerRef = useRef<HTMLElement>(null);
@@ -260,12 +261,20 @@ export default function AboutHackGyanVerse() {
           Join the most active ecosystem of makers, creators, and innovators. We provide the platform, you bring the vision. Dive into the HackGyanVerse today. 🌟
         </p>
         <div className="about-buttons" style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', marginTop: '2.5rem' }}>
-          <motion.a href="#events" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block', padding: '16px 36px', backgroundColor: '#1A1D20', color: '#FFF', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, border: 'none', cursor: 'pointer', boxShadow: '0 15px 30px rgba(0,0,0,0.15)', textDecoration: 'none' }}>
+          <a href="#events" className="start-building-btn">
             Start Building
-          </motion.a>
-          <motion.button whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }} style={{ padding: '16px 36px', backgroundColor: 'transparent', color: '#1A1D20', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, border: '2px solid rgba(0,0,0,0.1)', cursor: 'pointer', transition: 'border-color 0.3s' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = '#1A1D20'} onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.1)'}>
+            <span className="start-building-btn__icon-wrapper">
+              <svg width="10" className="start-building-btn__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                  <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+              </svg>
+              <svg className="start-building-btn__icon-svg start-building-btn__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="10" fill="none" viewBox="0 0 14 15">
+                  <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+              </svg>
+            </span>
+          </a>
+          <a href={communityData.whatsappLink} className="view-community-btn">
             View Community
-          </motion.button>
+          </a>
         </div>
       </motion.div>
 

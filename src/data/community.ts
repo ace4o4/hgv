@@ -3,10 +3,10 @@ export const communityData = {
   tagline: "Classroom to Career — Together",
   description: "HackGyanVerse Community is a student-driven community building a bridge from classroom to career through innovation, technology, collaboration and real-world opportunities.",
   email: "official@hackgyanverse.co.in",
-  whatsappLink: "https://chat.whatsapp.com/BbMMWNI2uLGCUEKXzrub30",
+  whatsappLink: "https://chat.whatsapp.com/Loqc4QmwcJW2LpXQCagjIQ",
   social: {
-    linkedin: "https://www.linkedin.com/company/hackgyanverse/",
-    instagram: "https://www.instagram.com/hack.gyan.verse"
+    linkedin: "https://www.linkedin.com/company/hackgyanverse/posts/?feedView=all",
+    instagram: "https://www.instagram.com/hack_gyan_verse/"
   },
   collaborationLink: "mailto:official@hackgyanverse.co.in",
   currentEventSlug: "ahgv-buildverse-2026",

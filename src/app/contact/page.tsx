@@ -243,7 +243,7 @@ export default function ContactPage() {
               <input type="email" placeholder="Email" className="input-field" />
               <input type="tel" placeholder="Phone number" className="input-field" />
               
-              <button type="button" className="submit-btn">
+              <button type="button" className="submit-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>
                 Submit Form <ArrowUpRight size={24} />
               </button>
             </form>

@@ -345,53 +345,19 @@ export default function Navbar() {
               {/* Bottom Actions & Social */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto', paddingTop: '1.2rem' }}>
                 {/* Highlighted Primary Join Community Button */}
-                <motion.a 
-                  href={communityData.whatsappLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ 
-                    padding: '0.9rem 1.6rem', 
-                    backgroundColor: '#2F80FF', 
-                    borderRadius: '100px', 
-                    fontSize: '1rem', 
-                    fontWeight: 700, 
-                    color: '#FFFFFF', 
-                    textDecoration: 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.6rem',
-                    boxShadow: '0 8px 24px rgba(47, 128, 255, 0.35)',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  <span>Join Community</span>
-                  <ArrowRight size={18} color="#FFFFFF" strokeWidth={2.5} />
-                </motion.a>
+                <a href={communityData.whatsappLink} target="_blank" rel="noopener noreferrer" className="hgv-explore-btn" style={{ width: '100%', padding: '0.6rem 1.2rem', fontSize: '1rem', marginTop: 'auto' }}>
+                  Join Community
+                  <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"></path>
+                  </svg>
+                </a>
 
                 {/* Subtler Events Button + Black Social Logos */}
                 <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
                   <Link 
                     href="/events" 
                     onClick={() => setIsOpen(false)} 
-                    style={{ 
-                      flex: 1,
-                      padding: '0.8rem 1.4rem', 
-                      backgroundColor: '#F3F4F6', 
-                      borderRadius: '100px', 
-                      fontSize: '0.95rem', 
-                      fontWeight: 600, 
-                      color: '#1A1D20', 
-                      textDecoration: 'none',
-                      textAlign: 'center',
-                      border: '1px solid rgba(0,0,0,0.06)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.2s'
-                    }}
+                    className="drawer-events-btn"
                   >
                     Events
                   </Link>
@@ -402,21 +368,9 @@ export default function Navbar() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     aria-label="Instagram"
-                    style={{ 
-                      width: '44px', 
-                      height: '44px', 
-                      backgroundColor: '#F3F4F6', 
-                      borderRadius: '50%', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center', 
-                      textDecoration: 'none',
-                      flexShrink: 0,
-                      border: '1px solid rgba(0,0,0,0.06)',
-                      transition: 'all 0.2s'
-                    }}
+                    className="drawer-social-btn drawer-instagram"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -429,21 +383,9 @@ export default function Navbar() {
                     target="_blank" 
                     rel="noopener noreferrer" 
                     aria-label="LinkedIn"
-                    style={{ 
-                      width: '44px', 
-                      height: '44px', 
-                      backgroundColor: '#F3F4F6', 
-                      borderRadius: '50%', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center', 
-                      textDecoration: 'none',
-                      flexShrink: 0,
-                      border: '1px solid rgba(0,0,0,0.06)',
-                      transition: 'all 0.2s'
-                    }}
+                    className="drawer-social-btn drawer-linkedin"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                       <rect x="2" y="9" width="4" height="12"></rect>
                       <circle cx="4" cy="4" r="2"></circle>

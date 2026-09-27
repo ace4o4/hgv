@@ -144,13 +144,6 @@ export default function Footer() {
                   <span className="link-text" style={{ fontSize: '1.2rem' }}>{communityData.email}</span>
                 </a>
               </div>
-              <div style={{ textAlign: 'right' }}>
-                <h3 className="footer-col-title">Current Event</h3>
-                <Link href={`/events/${communityData.currentEventSlug}`} className="premium-event-link">
-                  <div className="event-badge">LIVE</div>
-                  <span>AHGV BUILDVERSE 2026</span>
-                </Link>
-              </div>
             </div>
           </div>
         </div>

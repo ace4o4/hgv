@@ -7,7 +7,7 @@ export const eventsData = [
     description: "A next-level industry-focused hackathon by HackGyanVerse Community where participants work with real-world industry problems, gain expert exposure and build meaningful solutions.",
     image: "/events/ahgv-2026.jpg",
     featured: true,
-    registrationLink: "https://unstop.com/events/ahgv-buildverse-2026",
+    registrationLink: "https://unstop.com/o/Mz70soJ?lb=pX4EFBAh&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Anshufgs99609",
     status: "NOW BUILDING"
   },
   {

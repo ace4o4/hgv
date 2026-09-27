@@ -352,17 +352,16 @@ export default function EventListingSection() {
 
         {/* Bottom Redesigned Button */}
         <div style={{ marginTop: '3vw', zIndex: 2 }}>
-          <Link href="/events" style={{ textDecoration: 'none' }}>
-            <motion.div
-              whileHover={{ scale: 1.03, boxShadow: '0 25px 50px rgba(0,0,0,0.2)' }}
-              whileTap={{ scale: 0.97 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '20px', padding: '18px 48px', backgroundColor: '#1A1D20', color: '#FFFFFF', borderRadius: '100px', fontSize: '1.05rem', fontWeight: 600, boxShadow: '0 15px 35px rgba(0,0,0,0.15)', border: '1px solid rgba(255,255,255,0.1)' }}
-            >
-              <span>Explore all Events</span>
-              <div style={{ width: '32px', height: '32px', backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ArrowRight size={16} color="#FFF" />
-              </div>
-            </motion.div>
+          <Link href="/events" className="explore-events-btn" style={{ fontSize: '1.05rem', padding: '18px 48px', paddingLeft: '32px' }}>
+            Explore all Events
+            <span className="explore-events-btn__icon-wrapper" style={{ width: '32px', height: '32px' }}>
+              <svg width="12" className="explore-events-btn__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
+                  <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+              </svg>
+              <svg className="explore-events-btn__icon-svg explore-events-btn__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" width="12" fill="none" viewBox="0 0 14 15">
+                  <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
+              </svg>
+            </span>
           </Link>
         </div>
 

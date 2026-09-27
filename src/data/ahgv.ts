@@ -1,7 +1,7 @@
 export const ahgvData = {
   name: "AHGV BUILDVERSE 2026",
   concept: "Problem → Idea → PPT → Prototype → Product",
-  registrationLink: "https://unstop.com/events/ahgv-buildverse-2026",
+  registrationLink: "https://unstop.com/o/Mz70soJ?lb=pX4EFBAh&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Anshufgs99609",
   rewards: [
     {
       title: "Winners",

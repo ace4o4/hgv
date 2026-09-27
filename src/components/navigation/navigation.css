@@ -181,3 +181,73 @@
   align-items: center;
   font-size: 0.85rem;
 }
+
+/* ═══════════════════════════════════════════
+   DRAWER EVENTS BUTTON
+   ═══════════════════════════════════════════ */
+.drawer-events-btn {
+  flex: 1;
+  padding: 0.8rem 1.4rem;
+  background-color: #F3F4F6;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A1D20;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-events-btn:hover {
+  background-color: #1A1D20;
+  color: #FFFFFF;
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-color: #1A1D20;
+}
+
+
+/* -------------------------------------------
+   DRAWER SOCIAL BUTTONS
+   ------------------------------------------- */
+.drawer-social-btn {
+  width: 44px;
+  height: 44px;
+  background-color: #F3F4F6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.drawer-social-btn svg {
+  stroke: #000000;
+  transition: stroke 0.3s ease;
+}
+
+.drawer-social-btn.drawer-instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  border-color: transparent;
+  transform: scale(1.1);
+}
+.drawer-social-btn.drawer-instagram:hover svg {
+  stroke: #ffffff;
+}
+
+.drawer-social-btn.drawer-linkedin:hover {
+  background-color: #0077b5;
+  border-color: #0077b5;
+  transform: scale(1.1);
+}
+.drawer-social-btn.drawer-linkedin:hover svg {
+  stroke: #ffffff;
+}
+
