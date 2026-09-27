@@ -64,6 +64,7 @@ export default function CommunityIntro() {
       const lp = getP(progress, 0.02, 0.15);
       leftEl.style.opacity = String(lp);
       leftEl.style.transform = `translateX(${lerp(-150, 0, lp)}px)`;
+      leftEl.style.filter = `blur(${lerp(20, 0, lp)}px)`;
       leftEl.style.textShadow = lp > 0.5 ? '0 0 30px rgba(255,255,255,0.4)' : 'none';
     }
 
@@ -82,6 +83,7 @@ export default function CommunityIntro() {
 
       el.style.opacity = String(p);
       el.style.transform = `translateY(${y}px) scale(${scale})`;
+      el.style.filter = `blur(${lerp(25, 0, p)}px)`;
       el.style.textShadow = glowP > 0.05 ? `0 0 40px ${color}${g1}, 0 0 80px ${color}${g2}` : 'none';
     });
 
