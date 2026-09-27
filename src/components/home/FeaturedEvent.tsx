@@ -248,10 +248,10 @@ export default function FeaturedEvent() {
       <div style={{ width: '100%', maxWidth: '1400px', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
         
         {/* TOP ROW */}
-        <div style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap', position: 'relative' }}>
+        <div className="featured-top-row" style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap', position: 'relative' }}>
           
           {/* 3D Happy Drone placed in the empty center space */}
-          <div style={{ position: 'absolute', top: '50%', left: '55%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', zIndex: 10, pointerEvents: 'none' }}>
+          <div className="featured-drone-container" style={{ position: 'absolute', top: '50%', left: '55%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', zIndex: 10, pointerEvents: 'none' }}>
             <Canvas camera={{ position: [0, 0, 15], fov: 45 }} style={{ pointerEvents: 'auto' }}>
               <ambientLight intensity={1} />
               <directionalLight position={[10, 10, 5]} intensity={2} />
@@ -261,7 +261,7 @@ export default function FeaturedEvent() {
           </div>
 
           {/* Huge Typography Area */}
-          <div style={{ flex: '1 1 60%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div className="featured-text-area" style={{ flex: '1 1 60%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h2 style={{ 
               fontSize: 'clamp(3rem, 6.5vw, 8rem)', 
               fontWeight: 400, 
@@ -270,7 +270,7 @@ export default function FeaturedEvent() {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-              BUILD THE <span style={{ 
+              BUILD THE <span className="featured-inline-pill" style={{ 
                 display: 'inline-block', 
                 border: '2px solid #111', 
                 borderRadius: '100px', 
@@ -286,6 +286,7 @@ export default function FeaturedEvent() {
 
           {/* Top Right Dark Card */}
           <motion.div 
+            className="featured-prize-card"
             whileHover={{ scale: 0.98 }}
             style={{ 
               flex: '1 1 30%', 
@@ -315,8 +316,8 @@ export default function FeaturedEvent() {
             </div>
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 'clamp(3rem, 4vw, 5rem)', fontWeight: 500, letterSpacing: '-0.02em', marginBottom: '1vw' }}>10 <span style={{ fontSize: '0.5em', color: '#2F80FF' }}>Lakh</span></div>
-              <p style={{ fontSize: '1rem', color: '#A0A0A0', lineHeight: 1.5, margin: 0, maxWidth: '80%' }}>
+              <div className="featured-prize-amount" style={{ fontSize: 'clamp(3rem, 4vw, 5rem)', fontWeight: 500, letterSpacing: '-0.02em', margin: '1vw 0' }}>10 <span style={{ fontSize: '0.5em', color: '#2F80FF' }}>Lakh</span></div>
+              <p style={{ fontSize: '1rem', color: '#A0A0A0', lineHeight: 1.5, margin: 0, maxWidth: '100%' }}>
                 {dataPoints[2].desc}
               </p>
             </div>
@@ -324,10 +325,10 @@ export default function FeaturedEvent() {
         </div>
 
         {/* BOTTOM ROW */}
-        <div style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap', minHeight: '400px' }}>
+        <div className="featured-bottom-row" style={{ display: 'flex', gap: '1.5vw', flexWrap: 'wrap', minHeight: '400px' }}>
           
           {/* Bottom Left Column */}
-          <div style={{ flex: '1 1 30%', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
+          <div className="featured-bottom-left" style={{ flex: '1 1 30%', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
             
             {/* Lottie / Glass Card */}
             <motion.div 
@@ -361,25 +362,28 @@ export default function FeaturedEvent() {
             {/* Two Small Squares */}
             <div style={{ display: 'flex', gap: '1.5vw', height: '160px' }}>
               <motion.div 
+                className="featured-square-card"
                 whileHover={{ y: -5 }}
                 style={{ flex: 1, backgroundColor: '#EBEBEB', borderRadius: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1vw' }}
               >
-                <span style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>500+</span>
-                <span style={{ fontSize: '0.9rem', color: '#666' }}>Hackers</span>
+                <span className="featured-square-stat" style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>500+</span>
+                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#666' }}>Hackers</span>
               </motion.div>
               
               <motion.div 
+                className="featured-square-card"
                 whileHover={{ y: -5 }}
                 style={{ flex: 1, backgroundColor: '#0F0F0F', color: '#FFF', borderRadius: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1vw' }}
               >
-                <span style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>0</span>
-                <span style={{ fontSize: '0.9rem', color: '#A0A0A0' }}>Limits</span>
+                <span className="featured-square-stat" style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>0</span>
+                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#A0A0A0' }}>Limits</span>
               </motion.div>
             </div>
           </div>
           
           {/* Bottom Right Theme Blue Card */}
           <motion.div 
+            className="featured-blue-card"
             whileHover={{ scale: 0.99 }}
             style={{ 
               flex: '1 1 60%', 
@@ -393,18 +397,18 @@ export default function FeaturedEvent() {
             }}
           >
             {/* Pill tags */}
-            <div style={{ display: 'flex', gap: '0.8vw', flexWrap: 'wrap', marginBottom: '2vw' }}>
+            <div className="featured-blue-pills" style={{ display: 'flex', gap: '0.8vw', flexWrap: 'wrap', marginBottom: '2vw' }}>
               <span style={{ backgroundColor: '#2F80FF', color: '#FFF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>36 Hours</span>
               <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Hackathon</span>
               <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Innovation</span>
             </div>
 
             <div>
-              <h3 style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#090A0B' }}>
+              <h3 className="featured-blue-heading" style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#090A0B' }}>
                 Non-stop
               </h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '2vw' }}>
-                <p style={{ margin: 0, fontSize: '1.1rem', color: '#475569', maxWidth: '60%', lineHeight: 1.5, fontWeight: 500 }}>
+                <p className="featured-blue-desc" style={{ margin: 0, fontSize: '1.1rem', color: '#475569', maxWidth: '60%', lineHeight: 1.5, fontWeight: 500 }}>
                   {dataPoints[0].desc} Experience the future of building today. Join forces with the brightest minds and create something extraordinary.
                 </p>
                 {/* Large Arrow Icon */}

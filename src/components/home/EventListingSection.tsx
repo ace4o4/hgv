@@ -99,11 +99,11 @@ export default function EventListingSection() {
             <div style={{ width: '4px', height: '4px', backgroundColor: '#2F80FF', borderRadius: '50%' }}></div>
             <span>HACKATHONS & EVENTS</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)', fontWeight: 700, letterSpacing: '-0.03em', color: '#1A1D20' }}>Current & Upcoming</h2>
+          <h2 style={{ fontSize: 'clamp(2.8rem, 5vw, 5rem)', fontWeight: 700, letterSpacing: '-0.03em', color: '#1A1D20' }}>Current & Upcoming Events</h2>
         </div>
 
         {/* Floating Bento Carousel Area */}
-        <div ref={carouselRef} style={{ position: 'relative', width: '100%', maxWidth: '1440px', height: '700px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1vw' }}>
+        <div className="event-carousel-wrapper" ref={carouselRef} style={{ position: 'relative', width: '100%', maxWidth: '1440px', height: '700px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1vw' }}>
 
           {/* SVG Connecting Lines (Smooth Bezier Curves) */}
           <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 4, pointerEvents: 'none' }}>
@@ -140,6 +140,7 @@ export default function EventListingSection() {
 
           <AnimatePresence mode="wait">
             <motion.div 
+              className="event-mobile-stack-container"
               key={activeIndex}
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -150,6 +151,7 @@ export default function EventListingSection() {
 
               {/* CENTER PORTRAIT CARD */}
               <motion.div 
+                className="event-center-card"
                 initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={transitionConfig}
@@ -164,6 +166,7 @@ export default function EventListingSection() {
 
               {/* FLOATING CARD 1: Left Mid (Main Info & CTA) */}
               <motion.div 
+                className="event-floating-card-1"
                 initial={{ x: -80, opacity: 0 }} animate={{ x: 0, opacity: 1 }} whileHover={{ scale: 1.03, y: -5 }} transition={{ ...transitionConfig, delay: 0.1 }}
                 style={{
                   position: 'absolute', left: '8%', top: '26%', width: '360px', backgroundColor: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(30px)', borderRadius: '28px', padding: '2rem', border: '1px solid rgba(255,255,255,1)', boxShadow: '0 25px 50px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,1)', zIndex: 10, display: 'flex', flexDirection: 'column', gap: '1.2rem'
@@ -206,6 +209,7 @@ export default function EventListingSection() {
 
               {/* FLOATING CARD 2: Top Right (Registration Date) */}
               <motion.div 
+                className="event-floating-card-2"
                 initial={{ y: -80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} whileHover={{ scale: 1.05 }} transition={{ ...transitionConfig, delay: 0.2 }}
                 style={{
                   position: 'absolute', right: '12%', top: '2%', width: '230px', backgroundColor: '#FFFFFF', borderRadius: '28px', padding: '1.4rem', boxShadow: '0 25px 50px rgba(0,0,0,0.06), inset 0 2px 4px rgba(255,255,255,1)', border: '1px solid rgba(255,255,255,1)', zIndex: 8, display: 'flex', flexDirection: 'column'
@@ -224,6 +228,7 @@ export default function EventListingSection() {
 
               {/* FLOATING CARD 3: Bottom Right (Prize Pool) */}
               <motion.div 
+                className="event-floating-card-3"
                 initial={{ x: 80, opacity: 0 }} animate={{ x: 0, opacity: 1 }} whileHover={{ scale: 1.05 }} transition={{ ...transitionConfig, delay: 0.3 }}
                 style={{
                   position: 'absolute', right: '6%', bottom: '10%', width: '280px', background: 'linear-gradient(135deg, #FF6B6B 0%, #D94B2B 100%)', borderRadius: '28px', padding: '1.6rem', boxShadow: '0 30px 60px rgba(217,75,43,0.35), inset 0 2px 10px rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.2)', zIndex: 9, display: 'flex', flexDirection: 'column'

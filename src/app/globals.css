@@ -285,6 +285,101 @@ button {
     width: 120px !important;
   }
 
+  /* Fix Featured Event Section Mobile Layout */
+  .featured-top-row, .featured-bottom-row {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+  .featured-drone-container {
+    display: none !important; /* Hide drone on mobile to prevent overlapping */
+  }
+  .featured-text-area h2 {
+    font-size: clamp(3rem, 15vw, 4rem) !important;
+    text-align: left !important;
+    margin-bottom: 2rem !important;
+  }
+  .featured-inline-pill {
+    padding: 0 1rem !important;
+    font-size: clamp(1.2rem, 6vw, 2rem) !important;
+  }
+  .featured-prize-card {
+    min-height: 220px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .featured-prize-card > div {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .featured-bottom-row + div {
+    margin-top: 2rem !important;
+  }
+  
+  /* Grid typography tuning */
+  .featured-square-stat {
+    font-size: 3rem !important;
+  }
+  .featured-square-label {
+    font-size: 1.1rem !important;
+  }
+  .featured-blue-heading {
+    font-size: 2.8rem !important;
+    margin-top: 1rem !important;
+  }
+  .featured-blue-desc {
+    font-size: 1rem !important;
+    max-width: 100% !important;
+  }
+  .featured-blue-pills {
+    gap: 0.5rem !important;
+  }
+  .featured-blue-pills span {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+
+  /* Event Listing Section Mobile Stacking */
+  .event-carousel-wrapper {
+    height: auto !important;
+    padding-bottom: 3rem !important;
+    overflow: hidden !important;
+  }
+  .event-carousel-wrapper > div:first-child {
+    display: none !important; /* Hide connecting SVG lines on mobile */
+  }
+  .event-mobile-stack-container {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .event-center-card {
+    position: relative !important;
+    width: 100% !important;
+    height: 380px !important;
+    margin-bottom: 1rem !important;
+    border-radius: 28px !important;
+  }
+  .event-floating-card-1, .event-floating-card-2, .event-floating-card-3 {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    box-sizing: border-box !important;
+  }
+  .event-floating-card-1 h3 {
+    font-size: 1.8rem !important;
+  }
+  .event-floating-card-1 p {
+    font-size: 1rem !important;
+  }
+
   /* Specifically fix the inline typography pills and animations inside the H1 */
   h1 > div, h1 > motion\\.div, div[style*="inline-flex"] {
     width: max-content !important;
