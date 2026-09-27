@@ -164,7 +164,7 @@ export default function WhatWeDo() {
       }}
     >
       {/* 3D Background Layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.9 }}>
+      <div className="what-we-do-3d-bg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.9 }}>
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[2, 5, 2]} intensity={2.5} color="#FFF" />
@@ -191,7 +191,7 @@ export default function WhatWeDo() {
           willChange: 'transform'
         }}
       >
-        <div style={{ 
+        <div className="what-we-do-grid" style={{ 
           maxWidth: '1440px', 
           margin: '0 auto', 
           padding: '0 4vw',

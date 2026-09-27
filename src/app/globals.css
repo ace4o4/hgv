@@ -380,6 +380,41 @@ button {
     font-size: 1rem !important;
   }
 
+  /* What We Do / Community Engine Section Mobile Fixes */
+  .what-we-do-3d-bg {
+    display: none !important; /* Hide phoenix model to save resources */
+  }
+  .what-we-do-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 0 5vw !important;
+  }
+  .what-we-do-grid > div {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    padding: 2rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .what-we-do-title-card {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .what-we-do-title-card h2 {
+    font-size: clamp(2.8rem, 12vw, 4rem) !important;
+  }
+  .what-we-do-grid h2 span {
+    font-size: clamp(2.5rem, 10vw, 3.5rem) !important;
+  }
+  .what-we-do-grid p {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+  }
+  .what-we-do-grid span, .what-we-do-grid h3 {
+    font-size: 1.3rem !important;
+  }
+
   /* Specifically fix the inline typography pills and animations inside the H1 */
   h1 > div, h1 > motion\\.div, div[style*="inline-flex"] {
     width: max-content !important;
