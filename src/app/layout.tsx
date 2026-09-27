@@ -22,11 +22,14 @@ export const metadata: Metadata = {
   description: "Classroom to Career — Together. A student-driven community building a bridge from classroom to career through innovation, technology, collaboration and real-world opportunities.",
   icons: {
     icon: [
-      { url: '/logos/hgv-og.png', type: 'image/png' },
-      { url: '/favicon.png', type: 'image/png' },
+      { url: '/favicon.ico?v=3' },
+      { url: '/logos/hgv-lg.png?v=3', type: 'image/png' },
+      { url: '/favicon-32x32.png?v=3', sizes: '32x32', type: 'image/png' },
     ],
-    shortcut: '/logos/hgv-og.png',
-    apple: '/logos/hgv-og.png',
+    shortcut: '/favicon.ico?v=3',
+    apple: [
+      { url: '/apple-touch-icon.png?v=3', sizes: '180x180', type: 'image/png' },
+    ],
   },
   openGraph: {
     title: 'HackGyanVerse Community',
@@ -59,6 +62,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
+        <link rel="icon" href="/logos/hgv-lg.png?v=3" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
         <SmoothScroll />
         <Navbar />
