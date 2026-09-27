@@ -306,29 +306,28 @@ html {
     width: 100% !important;
   }
 
-  /* Increase top section height by roughly 2rem to push grids down */
+  /* Increase top section height to give comfortable clearance under fixed navbar */
   .hero-content-stack > div:first-child {
     padding-bottom: 2rem !important;
-    padding-top: 1rem !important;
+    padding-top: 5.5rem !important;
   }
 
-  /* Navigation & Hamburger Mobile View */
-  .mobile-menu-btn {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+  /* Hide Hero nav on mobile so ONLY the global Navbar logo & hamburger render (prevents duplicate logos) */
+  .hero-nav {
+    display: none !important;
   }
   .nav-links, .nav-login, .nav-join-btn {
     display: none !important;
   }
-  .hero-nav {
-    padding: 1.5rem !important;
+  .fixed-logo-lockup {
+    top: 1.1rem !important;
+    left: 1.2rem !important;
   }
-  .nav-logo-text {
-    font-size: 1.4rem !important;
+  .floating-menu-btn {
+    top: 0.9rem !important;
+    right: 1.2rem !important;
+    width: 48px !important;
+    height: 48px !important;
   }
 
   /* Typography Scaling - Resized to fill screen naturally */

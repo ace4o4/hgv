@@ -172,6 +172,7 @@ export default function Navbar() {
         <>
           {/* ── Logo lockup — top left ── */}
           <motion.div
+            className="fixed-logo-lockup"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -222,17 +223,18 @@ export default function Navbar() {
           </motion.div>
           {/* Floating Toggle Button */}
           <motion.button
+            className="floating-menu-btn"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             onClick={() => setIsOpen(true)}
             style={{
               position: 'fixed',
-              top: '2rem',
-              right: '2rem',
+              top: '1.4rem',
+              right: '1.8rem',
               zIndex: 100,
-              width: '60px',
-              height: '60px',
+              width: '54px',
+              height: '54px',
               borderRadius: '50%',
               background: '#FFFFFF',
               border: '1px solid #E5E7EB',
@@ -245,7 +247,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Menu color="#333" size={28} />
+            <Menu color="#333" size={26} />
           </motion.button>
 
           {/* Premium Light Sidebar Overlay */}
@@ -273,11 +275,27 @@ export default function Navbar() {
                 fontFamily: "'Outfit', sans-serif"
               }}
             >
-              {/* Header Close Button */}
-              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '1.5rem' }}>
+              {/* Header Top Row: Logo Centered Mid-Top with Close Button */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', marginBottom: '1.2rem', position: 'relative' }}>
+                <div style={{ width: '36px' }} /> {/* Spacer to keep logo centered */}
+
+                {/* Center / Mid-Top Logo (2x size) */}
+                <Link href="/" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
+                  <Image
+                    src="/logos/hgv.png"
+                    alt="HackGyanVerse Logo"
+                    width={112}
+                    height={112}
+                    style={{ objectFit: 'contain', width: '112px', height: '112px' }}
+                    priority
+                  />
+                </Link>
+
+                {/* Header Close Button */}
                 <button 
                   onClick={() => setIsOpen(false)}
-                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem' }}
+                  aria-label="Close menu"
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.5rem', width: '36px' }}
                 >
                   <div style={{ width: '28px', height: '3px', backgroundColor: '#333', borderRadius: '2px' }} />
                 </button>
