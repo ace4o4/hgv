@@ -172,6 +172,212 @@ function AISummitIllus() {
 
 const pastIllus = [HackEnergy2Illus, HackEnergy1Illus, AISummitIllus];
 
+/* ══════════════════════════════════════════════
+   HERO FLOATING CUTOUTS + ILLUSTRATIONS
+══════════════════════════════════════════════ */
+function HeroFloatingElements() {
+  return (
+    <>
+      {/* ── Prize cutout — top right ── */}
+      <motion.div
+        className="ev-cutout ev-cutout-prize"
+        initial={{ opacity: 0, y: 30, rotate: 6 }}
+        animate={{ opacity: 1, y: 0, rotate: 6 }}
+        transition={{ duration: 0.8, delay: 1.5, ease: [0.16,1,0.3,1] }}
+      >
+        <motion.div
+          animate={{ y: [0, -10, 0], rotate: [6, 3, 6] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <div className="ev-cutout-inner">
+            <span className="ev-cutout-icon">🏆</span>
+            <div>
+              <div className="ev-cutout-num">₹15,000</div>
+              <div className="ev-cutout-label">Prize Pool</div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Team size cutout — top left ── */}
+      <motion.div
+        className="ev-cutout ev-cutout-team"
+        initial={{ opacity: 0, y: 30, rotate: -5 }}
+        animate={{ opacity: 1, y: 0, rotate: -5 }}
+        transition={{ duration: 0.8, delay: 1.7, ease: [0.16,1,0.3,1] }}
+      >
+        <motion.div
+          animate={{ y: [0, -8, 0], rotate: [-5, -8, -5] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+        >
+          <div className="ev-cutout-inner">
+            <span className="ev-cutout-icon">👥</span>
+            <div>
+              <div className="ev-cutout-num">2–4</div>
+              <div className="ev-cutout-label">Team Size</div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* ── AI Credits badge — mid right ── */}
+      <motion.div
+        className="ev-cutout ev-cutout-ai"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 1.9, ease: [0.16,1,0.3,1] }}
+      >
+        <motion.div
+          animate={{ y: [0, -12, 0], rotate: [4, 8, 4] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          style={{ transform: 'rotate(4deg)' }}
+        >
+          <div className="ev-cutout-inner ev-cutout-inner-dark">
+            <span className="ev-cutout-icon">⚡</span>
+            <div>
+              <div className="ev-cutout-num" style={{ color: '#FBBF24' }}>₹50K+</div>
+              <div className="ev-cutout-label" style={{ color: 'rgba(255,255,255,0.5)' }}>AI Credits</div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Free entry badge — bottom left ── */}
+      <motion.div
+        className="ev-cutout ev-cutout-free"
+        initial={{ opacity: 0, y: -20, rotate: -8 }}
+        animate={{ opacity: 1, y: 0, rotate: -8 }}
+        transition={{ duration: 0.7, delay: 2.1 }}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0], rotate: [-8, -5, -8] }}
+          transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+        >
+          <div className="ev-cutout-pill ev-cutout-pill-green">
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#16A34A', flexShrink: 0, display: 'inline-block' }} />
+            FREE ENTRY
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Delhi NCR badge — bottom right ── */}
+      <motion.div
+        className="ev-cutout ev-cutout-venue"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 2.3 }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+          style={{ transform: 'rotate(5deg)' }}
+        >
+          <div className="ev-cutout-pill ev-cutout-pill-blue">
+            📍 Delhi NCR
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* ── Floating geometric shapes ── */}
+      {/* Big dashed circle — far top left */}
+      <motion.div className="ev-geo ev-geo-ring-tl"
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+      />
+
+      {/* Rotating square — bottom right */}
+      <motion.div className="ev-geo ev-geo-sq-br"
+        animate={{ rotate: [0, 90, 180, 270, 360] }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+      />
+
+      {/* Small dots cluster — top right corner */}
+      <div className="ev-dots-cluster">
+        {[0,1,2,3,4,5,6,7,8].map(i => (
+          <motion.div key={i} className="ev-dot"
+            animate={{ opacity: [0.2, 0.8, 0.2] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.28 }}
+          />
+        ))}
+      </div>
+
+      {/* Code bracket cutout — left mid */}
+      <motion.div
+        className="ev-cutout ev-cutout-code"
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 2.5 }}
+      >
+        <motion.div
+          animate={{ y: [0, -14, 0], rotate: [0, -3, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+        >
+          <div className="ev-code-block">
+            <span className="ev-code-line"><span style={{ color: '#A78BFA' }}>const</span> <span style={{ color: '#60A5FA' }}>team</span> = {'{'}</span>
+            <span className="ev-code-line" style={{ paddingLeft: '1rem' }}><span style={{ color: '#34D399' }}>idea</span>: <span style={{ color: '#FBBF24' }}>&quot;✨&quot;</span>,</span>
+            <span className="ev-code-line" style={{ paddingLeft: '1rem' }}><span style={{ color: '#34D399' }}>build</span>: <span style={{ color: '#FBBF24' }}>true</span>,</span>
+            <span className="ev-code-line">{'}'}</span>
+            <motion.div className="ev-code-cursor"
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Hackathon flow mini SVG — right side */}
+      <motion.div
+        className="ev-cutout ev-cutout-flow"
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9, delay: 2 }}
+      >
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 160, height: 220 }}>
+            {/* Vertical flow line */}
+            <motion.line x1="90" y1="20" x2="90" y2="220"
+              stroke="rgba(47,128,255,0.15)" strokeWidth="2" strokeDasharray="6 4"
+              animate={{ strokeDashoffset: [0, -40] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            />
+            {/* Steps */}
+            {[
+              { y: 30,  label: '🎯 Problem', color: '#EFF6FF', border: '#BFDBFE', text: '#1E40AF' },
+              { y: 85,  label: '💡 Idea',    color: '#FFF7ED', border: '#FED7AA', text: '#C2410C' },
+              { y: 140, label: '🛠 Build',   color: '#F0FDF4', border: '#BBF7D0', text: '#166534' },
+              { y: 195, label: '🚀 Launch',  color: '#2F80FF', border: '#2F80FF', text: '#FFFFFF' },
+            ].map((s, i) => (
+              <motion.g key={i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 2.4 + i * 0.2 }}
+              >
+                <rect x="10" y={s.y} width="160" height="36" rx="10"
+                  fill={s.color} stroke={s.border} strokeWidth="1.5" />
+                <text x="90" y={s.y + 23} textAnchor="middle" fontSize="11" fontWeight="700" fill={s.text}>
+                  {s.label}
+                </text>
+                {i < 3 && (
+                  <motion.text x="90" y={s.y + 53} textAnchor="middle" fontSize="12" fill="rgba(47,128,255,0.5)"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.3 }}
+                  >
+                    ↓
+                  </motion.text>
+                )}
+              </motion.g>
+            ))}
+          </svg>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+}
+
+
 /* ─── PAGE ─── */
 export default function EventsPage() {
   const featuredEvent = eventsData.find(e => e.featured);
@@ -193,6 +399,9 @@ export default function EventsPage() {
           <div className="events-bg-grid" />
           <div className="events-hero-orb-1" />
           <div className="events-hero-orb-2" />
+
+          {/* Floating cutouts + illustrations */}
+          <HeroFloatingElements />
 
           <motion.div
             className="events-hero-badge"

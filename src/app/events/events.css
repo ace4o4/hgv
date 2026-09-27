@@ -56,6 +56,194 @@
   pointer-events: none;
 }
 
+/* ─────────────────────────────────────────── */
+/*  FLOATING CUTOUT CARDS & BADGES            */
+/* ─────────────────────────────────────────── */
+
+/* Base cutout */
+.ev-cutout {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Positions */
+.ev-cutout-prize  { top: 14%;  right: 3vw; }
+.ev-cutout-team   { top: 10%;  left: 2vw; }
+.ev-cutout-ai     { top: 42%;  right: 2vw; }
+.ev-cutout-free   { bottom: 22%; left: 2vw; }
+.ev-cutout-venue  { bottom: 18%; right: 3vw; }
+.ev-cutout-code   { top: 55%;  left: 1.5vw; }
+.ev-cutout-flow   { top: 13%;  right: 5vw; display: none; }
+
+/* Card cutout inner */
+.ev-cutout-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 14px 20px;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.08),
+    0 1px 3px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  backdrop-filter: blur(8px);
+}
+
+.ev-cutout-inner-dark {
+  background: #0A0C10;
+  border-color: rgba(255,255,255,0.1);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.ev-cutout-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.ev-cutout-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0A0C10;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.ev-cutout-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+/* Pill cutouts */
+.ev-cutout-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.ev-cutout-pill-green {
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+  color: #166534;
+}
+
+.ev-cutout-pill-blue {
+  background: #EFF6FF;
+  border: 1.5px solid #BFDBFE;
+  color: #1E40AF;
+}
+
+/* Code block */
+.ev-code-block {
+  background: #0F172A;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 190px;
+}
+
+.ev-code-line {
+  font-family: 'Outfit', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+
+.ev-code-cursor {
+  width: 8px;
+  height: 2px;
+  background: #60A5FA;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* Geometric decorations */
+.ev-geo {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ev-geo-ring-tl {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px dashed rgba(47,128,255,0.12);
+  top: 6%;
+  left: -60px;
+}
+
+.ev-geo-sq-br {
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(251,146,60,0.15);
+  border-radius: 16px;
+  bottom: 15%;
+  right: 12vw;
+}
+
+/* Dot cluster */
+.ev-dots-cluster {
+  position: absolute;
+  top: 8%;
+  right: 8vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ev-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(47,128,255,0.35);
+}
+
+/* Show flow on large screens */
+@media (min-width: 1400px) {
+  .ev-cutout-flow { display: block; }
+}
+
+/* Hide some cutouts on mobile to avoid clutter */
+@media (max-width: 768px) {
+  .ev-cutout-code { display: none; }
+  .ev-cutout-ai   { display: none; }
+  .ev-geo-ring-tl { width: 120px; height: 120px; }
+  .ev-dots-cluster { display: none; }
+  .ev-cutout-prize  { top: 8%;  right: 1vw; }
+  .ev-cutout-team   { top: 8%;  left: 1vw; transform: scale(0.85); transform-origin: top left; }
+  .ev-cutout-free   { bottom: 28%; left: 1vw; }
+  .ev-cutout-venue  { bottom: 25%; right: 1vw; }
+}
+
+
+
 .events-hero-badge {
   display: inline-flex;
   align-items: center;
