@@ -427,29 +427,7 @@ export default function FeaturedEvent() {
         </div>
       </div>
       
-      {/* Redesigned Button Below Grid */}
-      <div style={{ marginTop: '4vw' }}>
-        <MagneticWrap pull={0.4}>
-          <Link href={`/events/${event.slug}`} style={{ 
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '1.2vw 3vw', 
-            backgroundColor: '#090A0B', 
-            color: '#FFF', 
-            borderRadius: '100px', 
-            fontSize: '1rem', 
-            fontWeight: 600, 
-            letterSpacing: '0.05em',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            EXPLORE AHGV BUILDVERSE 2026 &rarr;
-          </Link>
-        </MagneticWrap>
-      </div>
+
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes marquee-scroll {

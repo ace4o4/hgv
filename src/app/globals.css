@@ -96,7 +96,7 @@ html.lenis body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none; white-space: nowrap; flex-wrap: nowrap;
 }
 
 ul, ol {
@@ -735,7 +735,7 @@ html {
   color: #1A1D20;
   cursor: pointer;
   transition: color 0.3s ease;
-  text-decoration: none;
+  text-decoration: none; white-space: nowrap; flex-wrap: nowrap;
 }
 
 .hgv-explore-btn::before {
@@ -785,3 +785,153 @@ html {
 .hgv-explore-btn:hover svg path {
   fill: #1f2937;
 }
+
+
+/* -------------------------------------------
+   VIEW COMMUNITY BUTTON (Uiverse sekaiking)
+   ------------------------------------------- */
+.view-community-btn {
+  background-color: white;
+  color: black;
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+  box-shadow: 0 0 0 0 black;
+  text-decoration: none; white-space: nowrap; flex-wrap: nowrap;
+  display: inline-block;
+}
+
+.view-community-btn:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+.view-community-btn:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}
+
+/* -------------------------------------------
+   START BUILDING BUTTON (Uiverse Creatlydev)
+   ------------------------------------------- */
+.start-building-btn {
+  --clr: #2F80FF;
+  line-height: 1;
+  text-decoration: none; white-space: nowrap; flex-wrap: nowrap;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+}
+
+.start-building-btn__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.start-building-btn:hover {
+  background-color: #000;
+}
+
+.start-building-btn:hover .start-building-btn__icon-wrapper {
+  color: #000;
+}
+
+.start-building-btn__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.start-building-btn:hover .start-building-btn__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.start-building-btn:hover .start-building-btn__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
+
+
+/* -------------------------------------------
+   EXPLORE ALL EVENTS BUTTON (Uiverse Creatlydev modified)
+   ------------------------------------------- */
+.explore-events-btn {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, #2F80FF, #9333EA, #00F0FF);
+  background-size: 200% auto;
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+.explore-events-btn__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: #9333EA; /* Match the purple theme */
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.explore-events-btn:hover {
+  background-position: right center;
+  box-shadow: 0 10px 20px rgba(47, 128, 255, 0.4);
+}
+
+.explore-events-btn__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.explore-events-btn:hover .explore-events-btn__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.explore-events-btn:hover .explore-events-btn__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
