@@ -203,24 +203,6 @@ export default function HeroSection() {
               </motion.div>
             </div>
 
-            {/* Bottom Logos */}
-            <div style={{ marginTop: 'auto', paddingBottom: '1vw' }}>
-              <div className="hero-logos-row" style={{ display: 'flex', alignItems: 'center', gap: '2.5vw', position: 'relative', marginTop: '2vw' }}>
-                <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
-                  <div style={{ width: '1vw', height: '1vw', backgroundColor: '#2F80FF', borderRadius: '4px' }} /> HGV Community
-                </span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#1A1D20', letterSpacing: '1px' }}>AVORITE</span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 600, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.5vw' }}>
-                   Unstop
-                </span>
-                <span style={{ fontSize: '1.2vw', fontWeight: 900, color: '#1A1D20', fontStyle: 'italic' }}>Work2Hire</span>
-                
-                {/* Floating Tech Icon near logos */}
-                <motion.div animate={{ y: [-10, 10, -10], rotate: [0, 10, -10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', right: '-4vw', top: '-2vw', opacity: 0.15 }}>
-                  <Code2 size={48} color="#2F80FF" />
-                </motion.div>
-              </div>
-            </div>
             
           </div>
 

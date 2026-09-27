@@ -267,104 +267,54 @@ export default function Partners() {
             </p>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3vw' }}>
-            {partnersData.map((partner, i) => (
-              <div 
-                key={partner.name} 
-                ref={el => { itemsRef.current[i] = el; }}
-                className="partner-card"
-                style={{ 
-                  ...getCustomShapeForIndex(i),
-                  // Provide standard mask properties as a fallback for non-webkit browsers
-                  maskImage: (getCustomShapeForIndex(i) as any).WebkitMaskImage,
-                  maskSize: (getCustomShapeForIndex(i) as any).WebkitMaskSize,
-                  maskPosition: (getCustomShapeForIndex(i) as any).WebkitMaskPosition,
-                  maskRepeat: (getCustomShapeForIndex(i) as any).WebkitMaskRepeat,
-                  
-                  // Intense Apple-style Premium Refractive Glass with Subtle Tech Grid
-                  background: `
-                    linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.02) 20%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0.05) 100%),
-                    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
-                  `,
-                  backgroundSize: '100% 100%, 15px 15px, 15px 15px',
-                  backdropFilter: 'blur(30px) saturate(200%) brightness(1.15) contrast(1.1)',
-                  WebkitBackdropFilter: 'blur(30px) saturate(200%) brightness(1.15) contrast(1.1)',
-                  padding: '4vw 2vw',
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  boxShadow: `
-                    inset 0 1px 3px rgba(255,255,255,0.6), 
-                    inset 1px 0 3px rgba(255,255,255,0.3), 
-                    inset -1px 0 2px rgba(255,255,255,0.05), 
-                    inset 0 -1px 2px rgba(255,255,255,0.05), 
-                    0 30px 60px rgba(0,0,0,0.6), 
-                    0 0 30px rgba(47,128,255,0.15)
-                  `,
-                  transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                
-                {/* Abstract Glowing Orb (Fills empty space with premium tech vibe) */}
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.0))',
-                  boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.5)',
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  position: 'relative',
-                  zIndex: 2
-                }}>
-                  <div style={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #00F0FF, #2F80FF)',
-                    boxShadow: '0 0 20px #00F0FF, 0 0 40px #2F80FF'
-                  }} />
-                </div>
-
-                <div style={{ 
-                  fontSize: '0.75rem', 
-                  color: '#FFFFFF', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.15em', 
-                  marginBottom: '1rem', 
-                  fontWeight: 700,
-                  padding: '0.4vw 1vw',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: '20px',
-                  background: 'rgba(255,255,255,0.05)',
-                  boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.1)',
-                  position: 'relative',
-                  zIndex: 2
-                }}>
-                  {partner.tier}
-                </div>
-                <h3 className="partner-name" style={{ 
-                  fontSize: '2rem', 
-                  fontWeight: 800, 
-                  textAlign: 'center', 
-                  letterSpacing: '-0.02em', 
-                  position: 'relative', 
-                  zIndex: 2
-                }}>
-                  {partner.name}
-                </h3>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div 
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                borderRadius: '32px',
+                padding: '5vw',
+                border: '1px solid rgba(255,255,255,0.1)',
+                boxShadow: '0 30px 60px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.2)',
+                textAlign: 'center',
+                maxWidth: '800px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+            >
+              {/* Decorative elements */}
+              <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(47,128,255,0.2) 0%, transparent 70%)', mixBlendMode: 'screen' }} />
+              <div style={{ position: 'absolute', bottom: '-10%', right: '-10%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(0,240,255,0.15) 0%, transparent 70%)', mixBlendMode: 'screen' }} />
+              
+              <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2vw', boxShadow: 'inset 0 2px 10px rgba(255,255,255,0.1)' }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2F80FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
               </div>
-            ))}
+
+              <h3 style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 700, color: '#FFF', letterSpacing: '-0.02em', marginBottom: '1.5vw' }}>
+                Build the future with us
+              </h3>
+              <p style={{ fontSize: '1.1rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '3vw', maxWidth: '90%', margin: '0 auto 3vw' }}>
+                Join our ecosystem of innovators and tech leaders. We are actively looking for visionary organizations to partner with HackGyanVerse and empower the next generation of builders.
+              </p>
+
+              <button style={{ 
+                background: '#FFF', color: '#1A1D20', padding: '1vw 3vw', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600,
+                border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.8vw',
+                boxShadow: '0 10px 20px rgba(255,255,255,0.15), inset 0 -2px 0 rgba(0,0,0,0.1)',
+                transition: 'transform 0.2s ease, boxShadow 0.2s ease'
+              }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                Become a Partner
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
           </div>
 
         </div>

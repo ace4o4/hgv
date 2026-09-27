@@ -652,6 +652,19 @@ export default function EventsPage() {
                       </a>
                     )}
                   </div>
+
+                  {/* Event Partners */}
+                  <div style={{ marginTop: '2vw', display: 'flex', alignItems: 'center', gap: '1.5vw', flexWrap: 'wrap', padding: '1vw 1.5vw', backgroundColor: '#F8FAFC', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Partners:</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5vw', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '0.4vw' }}>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#2F80FF', borderRadius: '2px' }} /> HGV Community
+                      </span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1A1D20', letterSpacing: '0.5px' }}>AVORITE</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#1A1D20' }}>Unstop</span>
+                      <span style={{ fontSize: '0.95rem', fontWeight: 900, color: '#1A1D20', fontStyle: 'italic' }}>Work2Hire</span>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
