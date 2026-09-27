@@ -205,26 +205,28 @@ export default function Navbar() {
               zIndex: 100,
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
-              textDecoration: 'none',
               pointerEvents: isNavbarVisible ? 'auto' : 'none',
+              background: 'rgba(255, 255, 255, 0.85)',
+              backdropFilter: 'blur(12px)',
+              padding: '0.35rem 1rem 0.35rem 0.35rem',
+              borderRadius: '100px',
+              border: '1px solid rgba(0, 0, 0, 0.08)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
             }}
           >
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
               <div style={{
-                width: 40, height: 40,
-                borderRadius: 12,
+                width: 36, height: 36,
+                borderRadius: '50%',
                 overflow: 'hidden',
                 flexShrink: 0,
-                boxShadow: '0 4px 14px rgba(47,128,255,0.18)',
-                border: '1.5px solid rgba(47,128,255,0.15)',
                 background: '#fff',
               }}>
                 <Image
                   src="/logos/hgv-og.png"
                   alt="HackGyanVerse logo"
-                  width={40}
-                  height={40}
+                  width={36}
+                  height={36}
                   style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                   priority
                 />

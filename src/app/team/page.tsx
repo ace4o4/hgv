@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+
 import { teamData } from '@/data/team';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { ArrowUpRight, Star, Sparkles } from 'lucide-react';
 import './team.css';
 import FinalCTA from '@/components/home/FinalCTA';
 
@@ -108,58 +110,119 @@ function LeadershipCard({ member }: { member: typeof teamData[0] }) {
 ───────────────────────────────── */
 export default function TeamPage() {
   const totalMembers = teamData.length;
+  const [hoverTerminal, setHoverTerminal] = useState(false);
+
+  const wordVariants: Variants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(15px)', rotateX: -15, scale: 0.95 },
+    visible: {
+      opacity: 1, y: 0, filter: 'blur(0px)', rotateX: 0, scale: 1,
+      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
+    }
+  };
+
+  const shapeVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.6, filter: 'blur(15px)', y: 20 },
+    visible: {
+      opacity: 1, scale: 1, filter: 'blur(0px)', y: 0,
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
+    }
+  };
 
   return (
     <>
       <div className="team-page-wrapper">
 
-        {/* ══ HERO ══ */}
-        <section className="team-hero">
-          <div className="team-hero-bg-grid" />
-          <div className="team-hero-orb team-hero-orb-1" />
-          <div className="team-hero-orb team-hero-orb-2" />
-
-          <motion.div
-            className="team-hero-content"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="team-hero-badge">
-              <span />
-              Meet the team
-            </div>
-
-            <h1 className="team-hero-title">
-              Mentors &amp;{' '}
-              <span className="gradient-text">Team</span>
-            </h1>
-
-            <p className="team-hero-subtitle">
-              Industry professionals &amp; passionate students driving
-              HackGyanVerse forward — together.
-            </p>
-
-            <div className="team-hero-stats">
-              <div className="team-hero-stat">
-                <span className="team-hero-stat-num">{totalMembers}+</span>
-                <span className="team-hero-stat-label">Members</span>
-              </div>
-              <div className="team-hero-stat">
-                <span className="team-hero-stat-num">5</span>
-                <span className="team-hero-stat-label">Teams</span>
-              </div>
-              <div className="team-hero-stat">
-                <span className="team-hero-stat-num">∞</span>
-                <span className="team-hero-stat-label">Impact</span>
-              </div>
+        {/* ══════════════════════════════════════════════
+            HERO: KINETIC TYPOGRAPHY 
+            ══════════════════════════════════════════════ */}
+        <section className="team-about-hero-section">
+          {/* Floating Stickers */}
+          <motion.div style={{ position: 'absolute', top: '25%', left: '10vw', zIndex: 3 }}
+             animate={{ y: [-10, 10, -10] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}>
+            <div className="team-float-sticker sticker-white">
+              <Star size={14} fill="#F59E0B" color="#F59E0B" />
+              <span>Next-Gen Mentors</span>
             </div>
           </motion.div>
 
-          <div className="team-hero-scroll">
-            <div className="team-hero-scroll-line" />
-            Scroll
-          </div>
+          <motion.div className="team-hide-mobile" style={{ position: 'absolute', top: '20%', right: '15vw', zIndex: 3, rotate: 6 }}
+             animate={{ y: [15, -15, 15] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
+            <div className="team-float-sticker sticker-dark">
+              <span>#HackGyanVerse</span>
+            </div>
+          </motion.div>
+
+          {/* ══ COMPACT 3-LINE DISPLAY TYPOGRAPHY ══ */}
+          <motion.div
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="team-about-typography-wrap"
+          >
+            {/* LINE 1 */}
+            <motion.span variants={wordVariants} className="about-hero-word">
+              OUR BRILLIANT
+            </motion.span>
+
+            <motion.div
+              variants={shapeVariants}
+              whileHover={{ width: 'clamp(12rem, 16vw, 18rem)' }}
+              className="about-interactive-avatars"
+            >
+              <div style={{ display: 'flex', zIndex: 2 }}>
+                {[1, 2, 3, 4].map((_, i) => (
+                  <motion.div key={i} whileHover={{ y: -3 }} className="about-avatar-bubble" style={{ marginLeft: i > 0 ? '-9px' : '0' }}>
+                    <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i + 45}`} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="about-line-break" />
+
+            {/* LINE 2 */}
+            <motion.span variants={wordVariants} className="about-hero-word">
+              &
+            </motion.span>
+
+            <motion.div variants={shapeVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="about-interactive-pill-gradient">
+              MENTORS <Sparkles size={18} color="#FFF" style={{ marginLeft: '6px' }} />
+            </motion.div>
+
+            <div className="about-line-break" />
+
+            {/* LINE 3 */}
+            <motion.span variants={wordVariants} className="about-hero-word">
+              SHAPING THE
+            </motion.span>
+
+            <motion.div variants={shapeVariants} whileHover={{ y: -4 }} className="about-interactive-terminal">
+              <div style={{ display: 'flex', gap: '4px', marginBottom: '3px' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#EF4444' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#F59E0B' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+              </div>
+              <div className="about-terminal-code">
+                ~$ <span>hgv team</span>
+                <motion.div animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="about-terminal-cursor" />
+              </div>
+            </motion.div>
+
+            <div className="about-line-break" />
+
+            {/* LINE 3 */}
+            <motion.span variants={wordVariants} className="about-hero-word">
+              HACKGYANVERSE
+            </motion.span>
+
+            <motion.div variants={shapeVariants} whileHover={{ scale: 1.05 }} className="about-interactive-neon-pill">
+              ECOSYSTEM.
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* ══ SECTIONS ══ */}

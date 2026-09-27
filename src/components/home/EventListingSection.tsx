@@ -106,7 +106,7 @@ export default function EventListingSection() {
         <div className="event-carousel-wrapper" ref={carouselRef} style={{ position: 'relative', width: '100%', maxWidth: '1440px', height: '700px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '1vw' }}>
 
           {/* SVG Connecting Lines (Smooth Bezier Curves) */}
-          <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 4, pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
             {/* Curves Layer (Stretched viewBox for percentage-based curves) */}
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0.25, overflow: 'visible' }}>
               <motion.path d="M 50 50 C 36 50, 36 42, 22 42" fill="none" stroke="#1A1D20" strokeWidth="1.5" vectorEffect="non-scaling-stroke" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} />
@@ -146,7 +146,7 @@ export default function EventListingSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.05, y: -30 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              style={{ width: '100%', height: '100%', position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              style={{ width: '100%', height: '100%', position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 10 }}
             >
 
               {/* CENTER PORTRAIT CARD */}
@@ -159,7 +159,7 @@ export default function EventListingSection() {
                   width: '460px', height: '620px', background: 'linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%)', borderRadius: '36px', position: 'relative', zIndex: 5, boxShadow: '0 40px 80px rgba(0,0,0,0.12), inset 0 2px 10px rgba(255,255,255,1)', border: '1px solid rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'
                 }}
               >
-                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(1.6)', width: '100%', height: '100%', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.08))', zIndex: 2 }} dangerouslySetInnerHTML={{__html: `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_bhebjzpu.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`}} />
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) scale(1.6)', width: '100%', height: '100%', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.08))', zIndex: 2 }} dangerouslySetInnerHTML={{__html: `<lottie-player src="https://assets3.lottiefiles.com/packages/lf20_w51pcehl.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>`}} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '45%', background: 'linear-gradient(180deg, rgba(241,245,249,0) 0%, rgba(241,245,249,1) 100%)', zIndex: 3 }} />
               </motion.div>
 
@@ -248,8 +248,8 @@ export default function EventListingSection() {
                     <Trophy size={20} color="#D94B2B" />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: '1.1rem', color: '#FFF', fontWeight: 800 }}>₹1,00,000+</span>
-                    <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.9)' }}>Total Rewards</span>
+                    <span style={{ fontSize: '0.95rem', color: '#FFF', fontWeight: 800 }}>Exciting Prizes</span>
+                    <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.9)' }}>Internships & Certs</span>
                   </div>
                 </div>
               </motion.div>

@@ -29,7 +29,7 @@ const snap = (n: number) => Math.round(n * 10000) / 10000;
 const marqueeItems = [
   'AHGV BUILDVERSE 2026', 'HACK ENERGY 2.0', 'AI FOUNDERS SUMMIT',
   'HACK ENERGY 1.0', '24 OCT 2026', 'DELHI NCR', 'FREE ENTRY',
-  '₹15,000 PRIZE', '₹50K+ AI CREDITS', 'REGISTER NOW',
+  'EXCITING PRIZES', '₹50K+ AI CREDITS', 'REGISTER NOW',
 ];
 
 
@@ -244,8 +244,8 @@ function HeroFloatingElements() {
           <div className="ev-cutout-inner">
             <span className="ev-cutout-icon">🏆</span>
             <div>
-              <div className="ev-cutout-num">₹15,000</div>
-              <div className="ev-cutout-label">Prize Pool</div>
+              <div className="ev-cutout-num">Prizes</div>
+              <div className="ev-cutout-label">Exciting</div>
             </div>
           </div>
         </motion.div>
@@ -646,8 +646,8 @@ export default function EventsPage() {
                       </div>
                     </div>
                     <div className="events-featured-meta-item">
-                      <div className="events-featured-meta-label">Prize Pool</div>
-                      <div className="events-featured-meta-value" style={{ color: '#D97706' }}>₹15,000+</div>
+                      <div className="events-featured-meta-label">Rewards</div>
+                      <div className="events-featured-meta-value" style={{ color: '#D97706' }}>Exciting Prizes</div>
                     </div>
                     <div className="events-featured-meta-item">
                       <div className="events-featured-meta-label">Format</div>
