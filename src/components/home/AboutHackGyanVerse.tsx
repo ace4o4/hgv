@@ -96,7 +96,7 @@ export default function AboutHackGyanVerse() {
         </div>
       </motion.div>
 
-      <motion.div style={{ position: 'absolute', top: '15%', right: '18%', y: floatRight, zIndex: 3, rotate: 10 }}>
+      <motion.div className="float-item-mobile-hide" style={{ position: 'absolute', top: '15%', right: '18%', y: floatRight, zIndex: 3, rotate: 10 }}>
         <div style={{ backgroundColor: '#0F172A', padding: '8px 16px', borderRadius: '100px', boxShadow: '0 10px 30px rgba(15,23,42,0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#38BDF8' }}>#BuildInPublic</span>
         </div>
@@ -143,7 +143,7 @@ export default function AboutHackGyanVerse() {
         </motion.span>
 
         {/* Interactive Element 2: Expandable Avatar Stack */}
-        <motion.div variants={shapeVariants} whileHover={{ width: 'clamp(13rem, 18vw, 20rem)' }} style={{ width: 'clamp(8rem, 11vw, 13rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', borderRadius: '100px', backgroundColor: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 15px 35px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', padding: '0 12px', position: 'relative', overflow: 'hidden', cursor: 'pointer', transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1)', margin: '0 0.5vw' }}>
+        <motion.div className="avatar-stack-element" variants={shapeVariants} whileHover={{ width: 'clamp(13rem, 18vw, 20rem)' }} style={{ width: 'clamp(8rem, 11vw, 13rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', borderRadius: '100px', backgroundColor: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 15px 35px rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', padding: '0 12px', position: 'relative', overflow: 'hidden', cursor: 'pointer', transition: 'width 0.4s cubic-bezier(0.22, 1, 0.36, 1)', margin: '0 0.5vw' }}>
           <div style={{ display: 'flex', zIndex: 2 }}>
             {[1, 2, 3, 4].map((_, i) => (
               <motion.div key={i} whileHover={{ y: -5 }} style={{ width: 'clamp(2.2rem, 3.8vw, 3.8rem)', height: 'clamp(2.2rem, 3.8vw, 3.8rem)', borderRadius: '50%', backgroundColor: '#CBD5E1', border: '3px solid #FFF', marginLeft: i > 0 ? '-12px' : '0', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
@@ -166,7 +166,7 @@ export default function AboutHackGyanVerse() {
         </motion.span>
 
         {/* Interactive Element 3: Animated Gradient Button */}
-        <motion.a variants={shapeVariants} href="#events" whileHover={{ scale: 1.05, boxShadow: '0 25px 50px rgba(139,92,246,0.5)' }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', padding: '0 clamp(1.8rem, 3.5vw, 3.5rem)', borderRadius: '100px', background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)', color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, textDecoration: 'none', boxShadow: '0 15px 35px rgba(139,92,246,0.3)', cursor: 'pointer', margin: '0 0.5vw' }}>
+        <motion.a className="builders-button-element" variants={shapeVariants} href="#events" whileHover={{ scale: 1.05, boxShadow: '0 25px 50px rgba(139,92,246,0.5)' }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', padding: '0 clamp(1.8rem, 3.5vw, 3.5rem)', borderRadius: '100px', background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)', color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, textDecoration: 'none', boxShadow: '0 15px 35px rgba(139,92,246,0.3)', cursor: 'pointer', margin: '0 0.5vw' }}>
           BUILDERS <Sparkles size={24} color="#FFF" style={{ marginLeft: '10px' }} />
         </motion.a>
 
@@ -202,7 +202,7 @@ export default function AboutHackGyanVerse() {
         </motion.span>
 
         {/* Interactive Element 5: Spinning Globe */}
-        <motion.div variants={shapeVariants} style={{ width: 'clamp(3.5rem, 5.8vw, 5.8rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', margin: '0 0.5vw', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <motion.div className="globe-element" variants={shapeVariants} style={{ width: 'clamp(3.5rem, 5.8vw, 5.8rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', margin: '0 0.5vw', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div style={{ position: 'absolute', width: '100%', height: '100%', borderRadius: '50%', border: '2px dashed #3B82F6', rotate: rotateGlobe }} />
           <div style={{ width: '80%', height: '80%', borderRadius: '50%', backgroundColor: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 4px 10px rgba(59,130,246,0.2)' }}>
             <Globe size={28} color="#3B82F6" />
@@ -221,7 +221,7 @@ export default function AboutHackGyanVerse() {
         </motion.span>
 
         {/* Interactive Element 6: Toggle Switch */}
-        <motion.div variants={shapeVariants} onClick={() => setIsToggled(!isToggled)} style={{ display: 'flex', alignItems: 'center', padding: '6px', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', width: 'clamp(12rem, 16vw, 18rem)', backgroundColor: isToggled ? '#1A1D20' : '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '100px', margin: '0 0.5vw', cursor: 'pointer', position: 'relative', boxShadow: '0 15px 35px rgba(0,0,0,0.08)', transition: 'background-color 0.4s' }}>
+        <motion.div className="tools-network-toggle" variants={shapeVariants} onClick={() => setIsToggled(!isToggled)} style={{ display: 'flex', alignItems: 'center', padding: '6px', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', width: 'clamp(12rem, 16vw, 18rem)', backgroundColor: isToggled ? '#1A1D20' : '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '100px', margin: '0 0.5vw', cursor: 'pointer', position: 'relative', boxShadow: '0 15px 35px rgba(0,0,0,0.08)', transition: 'background-color 0.4s' }}>
           <motion.div animate={{ x: isToggled ? '100%' : '0%' }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} style={{ width: '50%', height: '100%', backgroundColor: isToggled ? '#FFFFFF' : '#10B981', borderRadius: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', zIndex: 2 }}>
             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#1A1D20' : '#FFF' }}>{isToggled ? 'NETWORK' : 'TOOLS'}</span>
           </motion.div>
