@@ -100,21 +100,19 @@ export default function HeroSection() {
           {/* Links Center */}
           <div className="nav-links" style={{ display: 'flex', gap: '3vw', alignItems: 'center' }}>
             {navigationData.desktop.map(link => (
-              <div key={link.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3vw', cursor: 'pointer' }}>
-                <Link href={link.href} style={{ fontSize: '0.9vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'none' }}>
+              <motion.div key={link.name} whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} style={{ display: 'flex', alignItems: 'center', gap: '0.3vw', cursor: 'pointer' }}>
+                <Link href={link.href} style={{ fontSize: '0.9vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.currentTarget.style.color = '#2F80FF'} onMouseLeave={(e) => e.currentTarget.style.color = '#1A1D20'}>
                   {link.name}
                 </Link>
-                {/* Simulated dropdown arrow for some links if needed, matching the image */}
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Right Actions */}
           <div className="nav-actions" style={{ display: 'flex', gap: '1.5vw', alignItems: 'center' }}>
-            <a href="#" className="nav-login" style={{ fontSize: '0.9vw', fontWeight: 700, color: '#1A1D20', textDecoration: 'none' }}>Log in</a>
-            <a href={communityData.whatsappLink} className="nav-join-btn" style={{ padding: '0.6vw 1.5vw', backgroundColor: '#2F80FF', borderRadius: '100px', fontSize: '0.9vw', fontWeight: 600, color: '#FFF', textDecoration: 'none' }}>
+            <motion.a whileHover={{ scale: 1.05, backgroundColor: '#1E40AF', boxShadow: '0 10px 20px rgba(47, 128, 255, 0.4)' }} whileTap={{ scale: 0.95 }} href={communityData.whatsappLink} className="nav-join-btn" style={{ padding: '0.6vw 1.5vw', backgroundColor: '#2F80FF', borderRadius: '100px', fontSize: '0.9vw', fontWeight: 600, color: '#FFF', textDecoration: 'none', display: 'inline-block' }}>
               Join us
-            </a>
+            </motion.a>
             
             {/* Hamburger Button (Mobile Only) */}
             <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
@@ -216,12 +214,12 @@ export default function HeroSection() {
 
             {/* Buttons Row */}
             <div className="hero-buttons-row" style={{ marginTop: '1vw', display: 'flex', alignItems: 'center', gap: '2vw' }}>
-              <a href={communityData.whatsappLink} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '1vw 2vw', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1vw', fontWeight: 600, textDecoration: 'none' }}>
+              <motion.a whileHover={{ scale: 1.05, backgroundColor: '#1E40AF', boxShadow: '0 10px 20px rgba(47, 128, 255, 0.4)' }} whileTap={{ scale: 0.95 }} href={communityData.whatsappLink} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '1vw 2vw', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1vw', fontWeight: 600, textDecoration: 'none' }}>
                 Join community <ArrowUpRight size={16} />
-              </a>
-              <a href="#" style={{ fontSize: '1vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+              </motion.a>
+              <motion.a whileHover={{ scale: 1.05, color: '#2F80FF' }} whileTap={{ scale: 0.95 }} href="#" style={{ fontSize: '1vw', fontWeight: 600, color: '#1A1D20', textDecoration: 'underline', textUnderlineOffset: '4px', display: 'inline-block' }}>
                 Live events
-              </a>
+              </motion.a>
             </div>
 
             {/* Bottom Logos */}
@@ -251,7 +249,8 @@ export default function HeroSection() {
             {/* Top Card (Full width) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-              style={{ flex: '1.2', backgroundColor: '#2F80FF', borderRadius: '32px', padding: '3vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+              whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.3)' }}
+              style={{ flex: '1.2', backgroundColor: '#2F80FF', borderRadius: '32px', padding: '3vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', cursor: 'pointer' }}
             >
               <h2 style={{ fontSize: '2.8vw', fontWeight: 500, color: '#FFF', lineHeight: 1.1, maxWidth: '80%', position: 'relative', zIndex: 2 }}>
                 Build real-world projects and accelerate your tech career.
@@ -276,9 +275,9 @@ export default function HeroSection() {
                 </motion.div>
               </motion.div>
               
-              <div style={{ position: 'absolute', bottom: '2vw', right: '2vw', width: '3.5vw', height: '3.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 2, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
+              <motion.div whileHover={{ scale: 1.15, rotate: 15 }} whileTap={{ scale: 0.9 }} style={{ position: 'absolute', bottom: '2vw', right: '2vw', width: '3.5vw', height: '3.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 2, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
                 <ArrowUpRight size={24} color="#1A1D20" strokeWidth={2.5} />
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Bottom Row */}
@@ -287,7 +286,8 @@ export default function HeroSection() {
               {/* Bottom Left Card */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-                style={{ flex: '1', backgroundColor: '#1A1D20', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}
+                style={{ flex: '1', backgroundColor: '#1A1D20', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
               >
                 {/* 3D Sphere BG */}
                 <div style={{ position: 'absolute', right: '-10%', top: '-10%', width: '15vw', height: '15vw', borderRadius: '50%', background: 'radial-gradient(circle at 30% 30%, rgba(47,128,255,0.4), transparent 70%)', mixBlendMode: 'screen' }} />
@@ -296,9 +296,9 @@ export default function HeroSection() {
                   <div style={{ padding: '0.4vw 1vw', backgroundColor: '#FFF', borderRadius: '100px', fontSize: '0.8vw', fontWeight: 700, color: '#1A1D20' }}>
                     campuses
                   </div>
-                  <div style={{ width: '2.5vw', height: '2.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <motion.div whileHover={{ scale: 1.15, rotate: 15 }} whileTap={{ scale: 0.9 }} style={{ width: '2.5vw', height: '2.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowUpRight size={18} color="#1A1D20" strokeWidth={2.5} />
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div style={{ position: 'relative', zIndex: 2, marginTop: '2vw' }}>
@@ -314,7 +314,8 @@ export default function HeroSection() {
               {/* Bottom Right Card */}
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                style={{ flex: '1', backgroundColor: '#EFF6FF', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.15)' }}
+                style={{ flex: '1', backgroundColor: '#EFF6FF', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
               >
                 {/* Abstract shape BG */}
                 <div style={{ position: 'absolute', bottom: '0', right: '0', width: '100%', height: '60%', backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(47,128,255,0.05) 10px, rgba(47,128,255,0.05) 20px)', zIndex: 1 }} />

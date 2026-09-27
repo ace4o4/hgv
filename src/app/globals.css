@@ -586,3 +586,10 @@ button {
     align-items: center !important;
   }
 }
+
+/* Hide mobile menu button on desktop */
+@media (min-width: 1024px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
