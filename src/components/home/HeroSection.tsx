@@ -3,9 +3,10 @@
 import { communityData } from '@/data/community';
 import { navigationData } from '@/data/navigation';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Play, ArrowRight, Code2, Rocket, Cpu, Sparkles, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Play, ArrowRight, Code2, Rocket, Cpu, Sparkles, Menu, X, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 
 // Mini Interactive Toggle Component for inline text
@@ -27,6 +28,7 @@ const MiniToggle = () => {
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -129,32 +131,74 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(255,255,255,0.98)', zIndex: 999, display: 'flex', flexDirection: 'column', padding: '1.5rem' }}
+              style={{ position: 'fixed', inset: 0, backgroundColor: '#FFFFFF', zIndex: 999, display: 'flex', flexDirection: 'column', padding: '1.5rem 1rem', fontFamily: "'Outfit', sans-serif" }}
             >
+              {/* Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
-                    <div style={{ width: '8px', height: '8px', backgroundColor: '#2F80FF', borderRadius: '50%' }} />
-                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
-                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
-                    <div style={{ width: '8px', height: '8px', backgroundColor: '#1A1D20', borderRadius: '50%' }} />
-                  </div>
-                  <span style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
+                  <span style={{ fontSize: '1.5rem', fontWeight: 500, letterSpacing: '-0.02em', color: '#1A1D20' }}>HackGyanVerse</span>
                 </div>
-                <button onClick={() => setIsMobileMenuOpen(false)} style={{ padding: '8px', background: '#F1F5F9', borderRadius: '50%', border: 'none', cursor: 'pointer' }}>
-                  <X size={24} color="#1A1D20" />
+                <button onClick={() => setIsMobileMenuOpen(false)} style={{ padding: '4px', background: 'transparent', border: 'none', cursor: 'pointer' }}>
+                  <X size={36} strokeWidth={1} color="#1A1D20" />
                 </button>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                {navigationData.desktop.map(link => (
-                  <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '2rem', fontWeight: 600, color: '#1A1D20', textDecoration: 'none', borderBottom: '1px solid #E2E8F0', paddingBottom: '1rem' }}>
-                    {link.name}
+              {/* Menu Content Container */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, overflowY: 'auto' }}>
+                
+                {/* Standard Top Links */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center', marginBottom: '2.5rem' }}>
+                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.8rem', fontWeight: pathname === '/' ? 600 : 400, color: pathname === '/' ? '#1A1D20' : '#9CA3AF', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    {pathname === '/' && <span>—</span>} Home
                   </Link>
-                ))}
-                <a href={communityData.whatsappLink} onClick={() => setIsMobileMenuOpen(false)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem 2rem', backgroundColor: '#2F80FF', color: '#FFF', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600, textDecoration: 'none', marginTop: '1rem' }}>
+                  <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.8rem', fontWeight: pathname === '/about' ? 600 : 400, color: pathname === '/about' ? '#1A1D20' : '#9CA3AF', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    {pathname === '/about' && <span>—</span>} About
+                  </Link>
+                </div>
+
+                {/* Explore / Pills Section */}
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem', marginBottom: '2.5rem' }}>
+                  <div style={{ fontSize: '1.5rem', fontWeight: 400, color: '#1A1D20', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span>—</span> Explore
+                  </div>
+                  
+                  <Link href="/events" onClick={() => setIsMobileMenuOpen(false)} style={{ width: '90%', padding: '1.2rem', border: pathname === '/events' ? '2px solid #1A1D20' : '1px solid #E5E7EB', borderRadius: '100px', textAlign: 'center', fontSize: '1.3rem', fontWeight: pathname === '/events' ? 600 : 400, color: '#1A1D20', textDecoration: 'none' }}>
+                    Events
+                  </Link>
+                  <Link href="/team" onClick={() => setIsMobileMenuOpen(false)} style={{ width: '90%', padding: '1.2rem', border: pathname === '/team' ? '2px solid #1A1D20' : '1px solid #E5E7EB', borderRadius: '100px', textAlign: 'center', fontSize: '1.3rem', fontWeight: pathname === '/team' ? 600 : 400, color: '#1A1D20', textDecoration: 'none' }}>
+                    Team
+                  </Link>
+                  <Link href={`/events/${communityData.currentEventSlug}`} onClick={() => setIsMobileMenuOpen(false)} style={{ width: '90%', padding: '1.2rem', border: pathname === `/events/${communityData.currentEventSlug}` ? '2px solid #1A1D20' : '1px solid #E5E7EB', borderRadius: '100px', textAlign: 'center', fontSize: '1.3rem', fontWeight: pathname === `/events/${communityData.currentEventSlug}` ? 600 : 400, color: '#1A1D20', textDecoration: 'none' }}>
+                    AHGV BUILDVERSE
+                  </Link>
+                </div>
+
+                {/* Standard Bottom Link */}
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} style={{ fontSize: '1.8rem', fontWeight: pathname === '/contact' ? 600 : 400, color: pathname === '/contact' ? '#1A1D20' : '#9CA3AF', textDecoration: 'none', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  {pathname === '/contact' && <span>—</span>} Contact
+                </Link>
+
+                {/* Big Action Button */}
+                <a href={communityData.whatsappLink} onClick={() => setIsMobileMenuOpen(false)} style={{ width: '90%', padding: '1.2rem', backgroundColor: '#000', color: '#FFF', borderRadius: '100px', textAlign: 'center', fontSize: '1.5rem', fontWeight: 400, textDecoration: 'none', marginTop: '1rem' }}>
                   Join Community
                 </a>
+
+                {/* Footer Socials */}
+                <div style={{ marginTop: 'auto', paddingTop: '3rem', paddingBottom: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+                  <span style={{ fontSize: '1rem', color: '#9CA3AF', fontWeight: 400 }}>See you on:</span>
+                  <div style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
+                    <a href={communityData.whatsappLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ color: '#1A1D20', fontWeight: 800, fontSize: '1.4rem' }}>wa</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ color: '#1A1D20', fontWeight: 800, fontSize: '1.4rem' }}>ig</span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ color: '#1A1D20', fontWeight: 800, fontSize: '1.4rem' }}>in</span>
+                    </a>
+                  </div>
+                </div>
+
               </div>
             </motion.div>
           )}
