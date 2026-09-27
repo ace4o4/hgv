@@ -417,22 +417,43 @@ button {
 
   /* Partners & Collaborators Section Mobile Fixes */
   .partner-card {
-    padding: 3rem 1.5rem !important;
+    padding: 2rem 1.2rem !important;
     box-sizing: border-box !important;
     width: 100% !important;
     border-radius: 20px !important;
-    -webkit-mask-image: none !important; /* Remove complex cutouts on mobile to prevent clipping */
+    -webkit-mask-image: none !important;
     mask-image: none !important;
   }
   .partner-card > div:nth-of-type(2) {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.75rem !important;
-    margin-bottom: 1.5rem !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.7rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .partner-card > div:first-of-type {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 1rem !important;
   }
   .partner-name {
-    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+    font-size: clamp(1.4rem, 6vw, 1.8rem) !important;
     word-break: break-word !important;
     line-height: 1.1 !important;
+  }
+  .partners-title {
+    font-size: 2.2rem !important;
+  }
+  .partners-title span {
+    font-size: 2rem !important;
+  }
+  .partners-drone-bg {
+    display: none !important; /* Hide v3 drone on mobile for optimization */
+  }
+
+  /* FAQ Section Mobile Typography Override */
+  .faq-item-card h3 {
+    font-size: 1.25rem !important; /* Override the global h3 clamp that makes this huge */
+    line-height: 1.4 !important;
+    margin-bottom: 0 !important;
   }
 
   /* Specifically fix the inline typography pills and animations inside the H1 */

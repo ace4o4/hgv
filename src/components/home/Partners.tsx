@@ -244,7 +244,7 @@ export default function Partners() {
         `}</style>
 
         {/* 3D Background Layer */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.6, pointerEvents: 'none' }}>
+        <div className="partners-drone-bg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.6, pointerEvents: 'none' }}>
           <Canvas camera={{ position: [0, 0, 5] }}>
             <ambientLight intensity={0.6} />
             <directionalLight position={[2, 5, 2]} intensity={2.5} color="#FFF" />
@@ -258,7 +258,7 @@ export default function Partners() {
         <div ref={containerRef} style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           
           <div style={{ textAlign: 'center', marginBottom: '8vw' }}>
-            <h2 style={{ fontSize: 'clamp(2.5rem, 4vw, 5rem)', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            <h2 className="partners-title" style={{ fontSize: 'clamp(2.5rem, 4vw, 5rem)', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
               PARTNERS &<br/>
               <span style={{ color: '#2F80FF', fontStyle: 'italic', fontFamily: "'Playfair Display', serif", fontWeight: 500 }}>COLLABORATORS</span>
             </h2>
