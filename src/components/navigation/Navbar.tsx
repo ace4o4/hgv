@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -169,6 +170,56 @@ export default function Navbar() {
     <AnimatePresence>
       {shouldShow && (
         <>
+          {/* ── Logo lockup — top left ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'fixed',
+              top: '1.4rem',
+              left: '1.8rem',
+              zIndex: 100,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              textDecoration: 'none',
+              pointerEvents: 'auto',
+            }}
+          >
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+              <div style={{
+                width: 40, height: 40,
+                borderRadius: 12,
+                overflow: 'hidden',
+                flexShrink: 0,
+                boxShadow: '0 4px 14px rgba(47,128,255,0.18)',
+                border: '1.5px solid rgba(47,128,255,0.15)',
+                background: '#fff',
+              }}>
+                <Image
+                  src="/logos/hgv-og.png"
+                  alt="HackGyanVerse logo"
+                  width={40}
+                  height={40}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  priority
+                />
+              </div>
+              <span style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '1rem',
+                fontWeight: 800,
+                color: '#0A0C10',
+                letterSpacing: '-0.02em',
+                lineHeight: 1,
+                userSelect: 'none',
+              }}>
+                HackGyanVerse
+              </span>
+            </Link>
+          </motion.div>
           {/* Floating Toggle Button */}
           <motion.button
             initial={{ scale: 0, opacity: 0 }}

@@ -21,6 +21,9 @@ const stagger = (delay = 0) => ({
   visible: { transition: { staggerChildren: 0.1, delayChildren: delay } }
 });
 const inView = { once: true, margin: '-80px' };
+/** Round trig values to 4dp — prevents SSR/client hydration float mismatch */
+const snap = (n: number) => Math.round(n * 10000) / 10000;
+
 
 /* ─── marquee data ─── */
 const marqueeItems = [
@@ -29,69 +32,118 @@ const marqueeItems = [
   '₹15,000 PRIZE', '₹50K+ AI CREDITS', 'REGISTER NOW',
 ];
 
+
 /* ─── Animated SVG for featured visual panel ─── */
 function BuildverseIllus() {
-  const nodes = [
-    { x: 200, y: 140, r: 30, label: 'IDEA' },
-    { x: 100, y: 220, r: 20, label: 'PPT' },
-    { x: 300, y: 220, r: 20, label: 'CODE' },
-    { x: 150, y: 310, r: 18, label: 'TEST' },
-    { x: 250, y: 310, r: 18, label: 'BUILD' },
-    { x: 200, y: 390, r: 25, label: '🚀' },
+
+  const steps = [
+    { x: 200, y: 78,  r: 36, label: 'PROBLEM', sub: 'Industry PS',  col: '#3B82F6', bg: 'rgba(59,130,246,0.18)' },
+    { x: 88,  y: 188, r: 28, label: 'IDEA',    sub: 'Innovate',     col: '#A78BFA', bg: 'rgba(167,139,250,0.18)' },
+    { x: 312, y: 188, r: 28, label: 'PPT',     sub: 'Present',      col: '#34D399', bg: 'rgba(52,211,153,0.18)' },
+    { x: 88,  y: 308, r: 28, label: 'PROTO',   sub: 'Build fast',   col: '#FB923C', bg: 'rgba(251,146,60,0.18)'  },
+    { x: 312, y: 308, r: 28, label: 'TEST',    sub: 'Validate',     col: '#F472B6', bg: 'rgba(244,114,182,0.18)' },
+    { x: 200, y: 418, r: 44, label: '🚀',      sub: 'LAUNCH',       col: '#2F80FF', bg: 'rgba(47,128,255,0.25)'  },
   ];
-  const edges = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,5]];
+  const edges: [number,number][] = [[0,1],[0,2],[1,3],[2,4],[3,5],[4,5]];
 
   return (
-    <svg viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg"
-      style={{ width: '80%', maxWidth: 340, height: 'auto', position: 'relative', zIndex: 1 }}>
-      {/* Edges */}
+    <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}>
+      <defs>
+        {edges.map(([a, b], i) => (
+          <linearGradient key={i} id={`eg${i}`}
+            x1={steps[a].x} y1={steps[a].y} x2={steps[b].x} y2={steps[b].y}
+            gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor={steps[a].col} stopOpacity="0.7" />
+            <stop offset="100%" stopColor={steps[b].col} stopOpacity="0.7" />
+          </linearGradient>
+        ))}
+      </defs>
+
+      {/* Background glow blobs */}
+      <motion.circle cx="200" cy="418" r="100"
+        fill="rgba(47,128,255,0.1)"
+        animate={{ r: [100, 125, 100], opacity: [0.1, 0.22, 0.1] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      />
+      <motion.circle cx="200" cy="78" r="65"
+        fill="rgba(59,130,246,0.08)"
+        animate={{ r: [65, 85, 65] }}
+        transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+      />
+
+      {/* Animated edges */}
       {edges.map(([a, b], i) => (
         <motion.line key={i}
-          x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-          stroke="rgba(47,128,255,0.4)" strokeWidth="2" strokeDasharray="6 4"
-          initial={{ opacity: 0, pathLength: 0 }}
-          animate={{ opacity: 1, pathLength: 1 }}
-          transition={{ duration: 1.2, delay: i * 0.2, ease: 'easeOut' }}
+          x1={steps[a].x} y1={steps[a].y} x2={steps[b].x} y2={steps[b].y}
+          stroke={`url(#eg${i})`} strokeWidth="2.5" strokeDasharray="8 5"
+          animate={{ opacity: [0.4, 0.9, 0.4], strokeDashoffset: [0, -40] }}
+          transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.3, ease: 'linear' }}
         />
       ))}
+
       {/* Nodes */}
-      {nodes.map((n, i) => (
+      {steps.map((s, i) => (
         <motion.g key={i}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 + i * 0.15, type: 'spring', stiffness: 200 }}
-          style={{ transformOrigin: `${n.x}px ${n.y}px` }}
+          transition={{ duration: 0.7, delay: 0.2 + i * 0.18, type: 'spring', stiffness: 160 }}
+          style={{ transformOrigin: `${s.x}px ${s.y}px` }}
         >
-          <motion.circle cx={n.x} cy={n.y} r={n.r}
-            fill={i === nodes.length - 1 ? 'rgba(47,128,255,0.9)' : 'rgba(255,255,255,0.08)'}
-            stroke={i === nodes.length - 1 ? '#2F80FF' : 'rgba(255,255,255,0.2)'}
-            strokeWidth="1.5"
-            animate={i === nodes.length - 1
-              ? { scale: [1, 1.12, 1], boxShadow: ['0 0 0 0 rgba(47,128,255,0)', '0 0 0 12px rgba(47,128,255,0.2)', '0 0 0 0 rgba(47,128,255,0)'] }
-              : { y: [0, -4, 0] }}
-            transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.2 }}
+          {/* Outer pulse ring */}
+          <motion.circle cx={s.x} cy={s.y} r={s.r + 14}
+            fill="none" stroke={s.col} strokeWidth="1.5"
+            animate={{ r: [s.r + 12, s.r + 26, s.r + 12], opacity: [0.35, 0, 0.35] }}
+            transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.35, ease: 'easeOut' }}
           />
-          <text x={n.x} y={n.y + 4} textAnchor="middle"
-            fontSize={n.r > 22 ? '9' : '7'} fontWeight="700"
-            fill={i === nodes.length - 1 ? 'white' : 'rgba(255,255,255,0.6)'}>
-            {n.label}
+          {/* Node circle */}
+          <circle cx={s.x} cy={s.y} r={s.r} fill={s.bg} stroke={s.col} strokeWidth="2.5" />
+          {/* Inner shimmer */}
+          <motion.circle cx={s.x} cy={s.y} r={s.r - 8}
+            fill={s.col} animate={{ opacity: [0.1, 0.28, 0.1] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+          />
+          {/* Main label */}
+          <text x={s.x} y={s.label === '🚀' ? s.y + 7 : s.y - 3}
+            textAnchor="middle"
+            fontSize={s.label === '🚀' ? '24' : s.r > 30 ? '9.5' : '8.5'}
+            fontWeight="800" fill={s.col} letterSpacing="0.8">
+            {s.label}
           </text>
+          {s.label !== '🚀' && (
+            <text x={s.x} y={s.y + 11} textAnchor="middle" fontSize="7.5"
+              fontWeight="500" fill="rgba(255,255,255,0.4)">{s.sub}</text>
+          )}
+          {s.label === '🚀' && (
+            <text x={s.x} y={s.y + s.r * 0.7} textAnchor="middle" fontSize="9.5"
+              fontWeight="800" fill={s.col} letterSpacing="3">LAUNCH</text>
+          )}
         </motion.g>
       ))}
-      {/* Ping from last node */}
-      <motion.circle cx={nodes[5].x} cy={nodes[5].y} r={nodes[5].r}
-        stroke="rgba(47,128,255,0.5)" strokeWidth="2" fill="none"
-        animate={{ r: [25, 55, 25], opacity: [0.7, 0, 0.7] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut' }}
-      />
-      {/* Title */}
-      <text x="200" y="50" textAnchor="middle" fontSize="13" fontWeight="900"
-        fill="rgba(255,255,255,0.15)" letterSpacing="-1">BUILDVERSE</text>
-      <text x="200" y="70" textAnchor="middle" fontSize="9" fontWeight="700"
-        fill="rgba(255,255,255,0.08)" letterSpacing="4">PROBLEM → IDEA → BUILD → LAUNCH</text>
+
+      {/* Orbiting particles around launch node */}
+      {[0, 120, 240].map((deg, i) => (
+        <motion.g key={i}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 4 + i * 1.2, repeat: Infinity, ease: 'linear' }}
+          style={{ transformOrigin: '200px 418px' }}
+        >
+          <circle
+            cx={snap(200 + 62 * Math.cos((deg * Math.PI) / 180))}
+            cy={snap(418 + 62 * Math.sin((deg * Math.PI) / 180))}
+            r={5 - i} fill={['#2F80FF', '#60A5FA', '#A78BFA'][i]}
+            opacity={0.9}
+          />
+        </motion.g>
+      ))}
+
+      {/* Watermark */}
+      <text x="200" y="488" textAnchor="middle" fontSize="10" fontWeight="900"
+        fill="rgba(255,255,255,0.05)" letterSpacing="10">BUILDVERSE 2026</text>
     </svg>
   );
 }
+
 
 /* ─── Past event card visual illustrations ─── */
 function HackEnergy2Illus() {
@@ -146,21 +198,21 @@ function AISummitIllus() {
       {[45,90,135,180,225,270,315,360].map((deg, i) => (
         <motion.g key={i}>
           <motion.line
-            x1={140 + 40 * Math.cos((deg * Math.PI) / 180)}
-            y1={80  + 40 * Math.sin((deg * Math.PI) / 180)}
-            x2={140 + 60 * Math.cos((deg * Math.PI) / 180)}
-            y2={80  + 60 * Math.sin((deg * Math.PI) / 180)}
+            x1={snap(140 + 40 * Math.cos((deg * Math.PI) / 180))}
+            y1={snap(80  + 40 * Math.sin((deg * Math.PI) / 180))}
+            x2={snap(140 + 60 * Math.cos((deg * Math.PI) / 180))}
+            y2={snap(80  + 60 * Math.sin((deg * Math.PI) / 180))}
             stroke="rgba(167,139,250,0.4)" strokeWidth="1.5"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
           />
           <motion.circle
-            cx={140 + 65 * Math.cos((deg * Math.PI) / 180)}
-            cy={80  + 65 * Math.sin((deg * Math.PI) / 180)}
+            cx={snap(140 + 65 * Math.cos((deg * Math.PI) / 180))}
+            cy={snap(80  + 65 * Math.sin((deg * Math.PI) / 180))}
             r="5" fill="rgba(167,139,250,0.6)"
             animate={{ scale: [1, 1.4, 1] }}
             transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-            style={{ transformOrigin: `${140 + 65 * Math.cos((deg * Math.PI) / 180)}px ${80 + 65 * Math.sin((deg * Math.PI) / 180)}px` }}
+            style={{ transformOrigin: `${snap(140 + 65 * Math.cos((deg * Math.PI) / 180))}px ${snap(80 + 65 * Math.sin((deg * Math.PI) / 180))}px` }}
           />
         </motion.g>
       ))}
@@ -519,17 +571,54 @@ export default function EventsPage() {
               >
                 {/* Left: dark visual */}
                 <div className="events-featured-visual">
+                  {/* Grid + gradient layers */}
                   <div className="events-featured-visual-bg" />
-                  <div className="events-featured-watermark">AHGV</div>
+                  <div className="events-fv-gradient" />
+
+                  {/* Status badge */}
                   <div className="events-featured-badge">
                     <span className="events-featured-badge-dot" />
                     Now Building
                   </div>
+
+                  {/* Full-panel illustration */}
                   <BuildverseIllus />
+
+                  {/* Floating stat chip — top right */}
+                  <motion.div className="events-fv-chip events-fv-chip-1"
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <span className="events-fv-chip-icon">⚡</span>
+                    <div>
+                      <div className="events-fv-chip-num">₹50K+</div>
+                      <div className="events-fv-chip-label">AI Credits</div>
+                    </div>
+                  </motion.div>
+
+                  {/* Floating stat chip — mid left */}
+                  <motion.div className="events-fv-chip events-fv-chip-2"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+                  >
+                    <span className="events-fv-chip-icon">🏆</span>
+                    <div>
+                      <div className="events-fv-chip-num">₹15K</div>
+                      <div className="events-fv-chip-label">Cash Prize</div>
+                    </div>
+                  </motion.div>
+
+                  {/* Date tag bottom-right */}
                   <div className="events-featured-date-tag">
                     📅 {ahgvData.details.grandFinale}
                   </div>
+
+                  {/* Bottom concept strip */}
+                  <div className="events-fv-concept">
+                    Problem → Idea → Build → Launch
+                  </div>
                 </div>
+
 
                 {/* Right: info */}
                 <div className="events-featured-info">

@@ -22,6 +22,9 @@ const stagger = (delay = 0) => ({
 
 const inView = { once: true, margin: '-80px' };
 
+/** Round trig values to 4dp so SSR and client produce identical strings (prevents hydration mismatch) */
+const snap = (n: number) => Math.round(n * 10000) / 10000;
+
 /* ─── data ─── */
 const stats = [
   { num: '10K+', label: 'Students Impacted' },
@@ -97,11 +100,11 @@ function JBuildIllus({ active }: { active: boolean }) {
       <motion.g animate={{ rotate: [0, 360] }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '40px 36px' }}>
         {[0,45,90,135,180,225,270,315].map((deg, i) => (
           <rect key={i}
-            x={40 + 22 * Math.cos((deg * Math.PI) / 180) - 3}
-            y={36 + 22 * Math.sin((deg * Math.PI) / 180) - 5}
+            x={snap(40 + 22 * Math.cos((deg * Math.PI) / 180)) - 3}
+            y={snap(36 + 22 * Math.sin((deg * Math.PI) / 180)) - 5}
             width="6" height="10" rx="2"
             fill={fill} stroke={stroke} strokeWidth="1.2"
-            transform={`rotate(${deg} ${40 + 22 * Math.cos((deg * Math.PI) / 180)} ${36 + 22 * Math.sin((deg * Math.PI) / 180)})`}
+            transform={`rotate(${deg} ${snap(40 + 22 * Math.cos((deg * Math.PI) / 180))} ${snap(36 + 22 * Math.sin((deg * Math.PI) / 180))})`}
           />
         ))}
         <circle cx="40" cy="36" r="18" fill={fill} stroke={stroke} strokeWidth="1.8" />
@@ -207,10 +210,10 @@ function JGrowIllus({ active }: { active: boolean }) {
       {/* Star burst rays */}
       {rays.map((deg, i) => (
         <motion.line key={i}
-          x1={40 + 14 * Math.cos((deg * Math.PI) / 180)}
-          y1={32 + 14 * Math.sin((deg * Math.PI) / 180)}
-          x2={40 + 26 * Math.cos((deg * Math.PI) / 180)}
-          y2={32 + 26 * Math.sin((deg * Math.PI) / 180)}
+          x1={snap(40 + 14 * Math.cos((deg * Math.PI) / 180))}
+          y1={snap(32 + 14 * Math.sin((deg * Math.PI) / 180))}
+          x2={snap(40 + 26 * Math.cos((deg * Math.PI) / 180))}
+          y2={snap(32 + 26 * Math.sin((deg * Math.PI) / 180))}
           stroke={active ? 'rgba(255,255,255,0.7)' : '#FBBF24'} strokeWidth="2" strokeLinecap="round"
           animate={{ opacity: [1, 0.2, 1], scale: [1, 1.3, 1] }}
           transition={{ duration: 1.4, repeat: Infinity, delay: i * 0.18 }}
@@ -294,8 +297,8 @@ function InnovationIllus() {
           transition={{ duration: 3 + i * 0.4, repeat: Infinity, ease: 'linear' }}
           style={{
             transformOrigin: '100px 66px',
-            cx: 100 + 38 * Math.cos((deg * Math.PI) / 180),
-            cy: 66 + 38 * Math.sin((deg * Math.PI) / 180),
+            cx: snap(100 + 38 * Math.cos((deg * Math.PI) / 180)),
+            cy: snap(66 + 38 * Math.sin((deg * Math.PI) / 180)),
           } as React.CSSProperties & { cx: number; cy: number }}
         />
       ))}
@@ -303,10 +306,10 @@ function InnovationIllus() {
       {[0, 60, 120, 180, 240, 300].map((deg, i) => (
         <motion.line
           key={i}
-          x1={100 + 42 * Math.cos((deg * Math.PI) / 180)}
-          y1={66 + 42 * Math.sin((deg * Math.PI) / 180)}
-          x2={100 + 55 * Math.cos((deg * Math.PI) / 180)}
-          y2={66 + 55 * Math.sin((deg * Math.PI) / 180)}
+          x1={snap(100 + 42 * Math.cos((deg * Math.PI) / 180))}
+          y1={snap(66 + 42 * Math.sin((deg * Math.PI) / 180))}
+          x2={snap(100 + 55 * Math.cos((deg * Math.PI) / 180))}
+          y2={snap(66 + 55 * Math.sin((deg * Math.PI) / 180))}
           stroke="#2F80FF" strokeWidth="2" strokeLinecap="round"
           animate={{ opacity: [1, 0.2, 1], scale: [1, 1.3, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.25 }}
