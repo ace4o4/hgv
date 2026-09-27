@@ -456,6 +456,21 @@ button {
     margin-bottom: 0 !important;
   }
 
+  /* Footer Mobile Fixes */
+  .footer-bento-grid .footer-cutout-card {
+    grid-column: 1 / -1 !important; /* Force all cards to stack in 1 column instead of spanning */
+  }
+  
+  .footer-col-title {
+    font-size: 0.9rem !important; /* Override global h3 to prevent giant text */
+    letter-spacing: 0.2em !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .footer-cutout-card {
+    padding: 2rem !important; /* Reduce massive desktop padding */
+  }
+
   /* Specifically fix the inline typography pills and animations inside the H1 */
   h1 > div, h1 > motion\\.div, div[style*="inline-flex"] {
     width: max-content !important;
