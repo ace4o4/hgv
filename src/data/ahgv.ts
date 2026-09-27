@@ -4,8 +4,12 @@ export const ahgvData = {
   registrationLink: "https://unstop.com/events/ahgv-buildverse-2026",
   rewards: [
     {
-      title: "₹15,000",
-      description: "Prize Money"
+      title: "Winners",
+      description: "Exciting prizes, certificates, internship opportunities, and exclusive goodies await the top-performing teams!"
+    },
+    {
+      title: "Participation Certificate",
+      description: "Certificates for all participants"
     },
     {
       title: "₹50K+",

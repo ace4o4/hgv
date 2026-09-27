@@ -2,8 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { navigationData } from '@/data/navigation';
 import { communityData } from '@/data/community';
+import RollText from '@/components/animata/text/roll-text';
+import Plasma from '@/components/ui/Plasma';
 
 export default function Footer() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -32,40 +35,69 @@ export default function Footer() {
       <div style={{ position: 'absolute', top: '-10%', left: '20%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(147,51,234,0.12) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(47,128,255,0.08) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
 
+      {/* Plasma Animated Background with 2px Blur */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', filter: 'blur(2px)', pointerEvents: 'none', zIndex: 1, opacity: 0.6 }}>
+        <Plasma
+          color="#3B82F6"
+          speed={1.5}
+          direction="forward"
+          scale={1.2}
+          opacity={0.8}
+          mouseInteractive={true}
+          iterations={50}
+        />
+      </div>
+
       <div className="container" style={{ position: 'relative', zIndex: 2, maxWidth: '1400px', margin: '0 auto', padding: '0 4vw' }}>
         
         <div className="footer-bento-grid" style={{ position: 'relative', zIndex: 2 }}>
           
           {/* Card 1: Brand Column */}
-          <div className="footer-cutout-card" style={{ gridColumn: 'span 2' }}>
+          <div className="footer-cutout-card" style={{ gridColumn: 'span 2', borderRadius: '40px 16px 40px 40px' }}>
             <div className="card-glow" style={{ background: 'radial-gradient(circle at 0% 0%, rgba(47,128,255,0.15) 0%, transparent 50%)' }} />
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.02em', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
-              <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                HGV
-              </span>
-              <div className="glow-dot" style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 15px #00F0FF, 0 0 30px #2F80FF' }} />
-            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.2rem', position: 'relative', zIndex: 2 }}>
+              <div style={{
+                width: 52,
+                height: 52,
+                borderRadius: 14,
+                overflow: 'hidden',
+                flexShrink: 0,
+                boxShadow: '0 4px 20px rgba(0,240,255,0.25)',
+                border: '1.5px solid rgba(0,240,255,0.3)',
+                background: '#fff'
+              }}>
+                <Image
+                  src="/logos/hgv-og.png"
+                  alt="HackGyanVerse Logo"
+                  width={52}
+                  height={52}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                />
+              </div>
+              <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '2.6rem', fontWeight: 900, letterSpacing: '-0.02em', margin: 0 }}>
+                <span style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  HGV
+                </span>
+                <div className="glow-dot" style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#00F0FF', boxShadow: '0 0 15px #00F0FF, 0 0 30px #2F80FF' }} />
+              </h2>
+            </div>
             <p style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.5rem', color: '#E2E8F0', position: 'relative', zIndex: 2 }}>{communityData.name}</p>
             <p style={{ color: '#64748B', lineHeight: 1.6, maxWidth: '300px', fontSize: '1.05rem', position: 'relative', zIndex: 2 }}>{communityData.tagline}</p>
             
-            {/* Abstract 3D CSS Illustration inside Brand Card */}
-            <div style={{ position: 'absolute', bottom: '-20%', right: '-5%', zIndex: 0, opacity: 0.15, pointerEvents: 'none', perspective: '800px' }}>
-              <div className="abstract-shape">
-                <div className="shape-ring" />
-                <div className="shape-ring" style={{ animationDelay: '-1s', transform: 'rotateX(60deg) rotateY(60deg)' }} />
-                <div className="shape-ring" style={{ animationDelay: '-2s', transform: 'rotateX(120deg) rotateY(120deg)' }} />
-              </div>
+            {/* Animated Lottie / Tech Abstract inside Brand Card */}
+            <div style={{ position: 'absolute', bottom: '-20%', right: '-5%', zIndex: 0, opacity: 0.6, pointerEvents: 'none' }}>
+              <iframe src="https://lottie.host/embed/8b96917f-b673-42e7-91fb-db94285b0266/b6Y5Vp28R3.json" style={{ width: '350px', height: '350px', border: 'none' }}></iframe>
             </div>
           </div>
 
           {/* Card 2: Navigation Links */}
-          <div className="footer-cutout-card">
+          <div className="footer-cutout-card" style={{ borderRadius: '16px 40px 16px 16px' }}>
             <h3 className="footer-col-title">Navigation</h3>
             <ul className="footer-link-list">
               {navigationData.footer.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="premium-footer-link">
-                    <span className="link-text">{link.name}</span>
+                  <Link href={link.href} className="premium-footer-link" data-roll-group={true}>
+                    <span className="link-text"><RollText text={link.name} stagger="character" groupHover={true} /></span>
                     <span className="link-arrow">→</span>
                   </Link>
                 </li>
@@ -74,28 +106,32 @@ export default function Footer() {
           </div>
 
           {/* Card 3: Community Links */}
-          <div className="footer-cutout-card">
-            <h3 className="footer-col-title">Community</h3>
-            <ul className="footer-link-list">
+          <div className="footer-cutout-card" style={{ borderRadius: '16px 16px 40px 16px' }}>
+            <h3 className="footer-col-title" style={{ position: 'relative', zIndex: 2 }}>Community</h3>
+            <ul className="footer-link-list" style={{ position: 'relative', zIndex: 2 }}>
               <li>
-                <a href={communityData.whatsappLink} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Join WhatsApp</span>
+                <a href={communityData.whatsappLink} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="Join WhatsApp" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
               <li>
-                <a href={communityData.social.linkedin} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">LinkedIn</span>
+                <a href={communityData.social.linkedin} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="LinkedIn" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
               <li>
-                <a href={communityData.social.instagram} className="premium-footer-link" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Instagram</span>
+                <a href={communityData.social.instagram} className="premium-footer-link" target="_blank" rel="noopener noreferrer" data-roll-group={true}>
+                  <span className="link-text"><RollText text="Instagram" stagger="character" groupHover={true} /></span>
                   <span className="link-arrow">→</span>
                 </a>
               </li>
             </ul>
+            {/* Lottie Animation for Community */}
+            <div style={{ position: 'absolute', bottom: '-10%', right: '-20%', zIndex: 0, opacity: 0.3, pointerEvents: 'none' }}>
+              <iframe src="https://lottie.host/embed/db11df13-ef3c-4a37-b4db-5509cbf2c8d2/Q0vL4gR4Nf.json" style={{ width: '250px', height: '250px', border: 'none' }}></iframe>
+            </div>
           </div>
 
           {/* Card 4: Contact & Events */}
@@ -144,25 +180,51 @@ export default function Footer() {
           }}>
             {"HACKGYANVERSE".split("").map((char, index) => {
               const distance = hoveredIndex !== null ? Math.abs(hoveredIndex - index) : 100;
+              const isHovered = hoveredIndex !== null;
               let y = 0;
               let scale = 1;
               let rotateX = 0;
+              let rotateY = 0;
+              let glow = 0;
               
-              if (distance === 0) { y = -24; scale = 1.15; rotateX = 15; }
-              else if (distance === 1) { y = -12; scale = 1.08; rotateX = 8; }
-              else if (distance === 2) { y = -4; scale = 1.03; rotateX = 3; }
+              if (distance === 0) { 
+                y = -30; scale = 1.25; rotateX = 15; rotateY = 0; glow = 40; 
+              }
+              else if (distance === 1) { 
+                y = -15; scale = 1.12; rotateX = 8; glow = 20; 
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 30 : -30;
+              }
+              else if (distance === 2) { 
+                y = -5; scale = 1.05; rotateX = 4; glow = 10; 
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 15 : -15;
+              }
+              else if (isHovered) {
+                // Background letters push back slightly to emphasize depth
+                scale = 0.95;
+                y = 5;
+                rotateY = hoveredIndex !== null && hoveredIndex > index ? 5 : -5;
+                rotateX = -5;
+              }
 
               return (
-                <span 
-                  key={index} 
-                  className="footer-char" 
+                <div 
+                  key={index}
                   onMouseEnter={() => setHoveredIndex(index)}
-                  style={{ 
-                    transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg)` 
-                  }}
+                  style={{ display: 'inline-block', cursor: 'crosshair', padding: 0 }}
                 >
-                  {char}
-                </span>
+                  <span 
+                    data-char={char}
+                    className={`footer-char ${isHovered && distance <= 2 ? 'active' : ''}`}
+                    style={{ 
+                      display: 'inline-block',
+                      transform: `translateY(${y}px) scale(${scale}) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+                      filter: isHovered && glow > 0 ? `drop-shadow(0 20px ${glow}px rgba(0, 240, 255, 0.5))` : 'none',
+                      zIndex: 20 - distance
+                    }}
+                  >
+                    {char}
+                  </span>
+                </div>
               );
             })}
           </h1>
@@ -207,33 +269,53 @@ export default function Footer() {
           display: grid;
           grid-template-columns: 1fr;
           gap: 1.5rem;
+          animation: bentoReveal 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
+        
+        @keyframes bentoReveal {
+          0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
         @media (min-width: 1024px) {
           .footer-bento-grid {
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
           }
         }
 
-        /* Separate Filled Cutout Cards */
+        /* Separate Smooth Skeuomorphic Glass Cards */
         .footer-cutout-card {
-          background: #0A0C10; /* Deep filled premium color */
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          border-radius: 32px;
+          background: linear-gradient(145deg, rgba(16, 20, 28, 0.7), rgba(10, 12, 16, 0.9)); /* Glassmorphic dark skeuo */
+          backdrop-filter: blur(30px);
+          -webkit-backdrop-filter: blur(30px);
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          border-radius: 40px; /* Default */
           padding: 3rem;
           position: relative;
           overflow: hidden;
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.5);
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          /* Skeuomorphic inner bevels and outer drop shadows */
+          box-shadow: 
+            10px 10px 30px rgba(0, 0, 0, 0.6), 
+            -4px -4px 15px rgba(255, 255, 255, 0.02),
+            inset 1px 1px 2px rgba(255, 255, 255, 0.1),
+            inset -1px -1px 2px rgba(0, 0, 0, 0.5);
+          transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
           display: flex;
           flex-direction: column;
           justify-content: center;
         }
 
         .footer-cutout-card:hover {
-          border-color: rgba(255, 255, 255, 0.15);
+          background: linear-gradient(145deg, rgba(20, 24, 34, 0.8), rgba(12, 14, 20, 1));
+          border-color: rgba(255, 255, 255, 0.1);
           transform: translateY(-8px);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(47, 128, 255, 0.05);
+          box-shadow: 
+            15px 15px 40px rgba(0, 0, 0, 0.8), 
+            -5px -5px 20px rgba(255, 255, 255, 0.03),
+            inset 1px 1px 3px rgba(255, 255, 255, 0.2),
+            inset -1px -1px 3px rgba(0, 0, 0, 0.6),
+            0 0 40px rgba(47, 128, 255, 0.1);
         }
 
         .card-glow {
@@ -273,10 +355,10 @@ export default function Footer() {
           text-decoration: none;
           font-size: 1.1rem;
           font-weight: 500;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
         }
-        
+
         .premium-footer-link .link-arrow {
           opacity: 0;
           transform: translateX(-10px);
@@ -359,23 +441,9 @@ export default function Footer() {
           100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        /* Fixed Clean Neon Hover on Logo */
+        /* Cinematic Neon Hover on Logo */
         .huge-footer-text {
           perspective: 1000px;
-          transition: all 0.4s ease;
-        }
-
-        .huge-footer-text:hover {
-          background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA, #FF00E5);
-          -webkit-background-clip: text;
-          background-size: 200% auto;
-          animation: shineFlow 3s linear infinite;
-        }
-
-        @keyframes shineFlow {
-          to {
-            background-position: 200% center;
-          }
         }
 
         .footer-char {
@@ -383,13 +451,37 @@ export default function Footer() {
           color: transparent;
           -webkit-text-stroke: 1px rgba(255,255,255,0.1);
           transform-origin: bottom center;
-          padding: 0 2px;
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Spring effect */
+          transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Cinematic smooth float */
+          position: relative;
         }
         
-        .huge-footer-text:hover .footer-char {
+        .footer-char::before {
+          content: attr(data-char);
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          width: 100%; height: 100%;
+          background-image: linear-gradient(90deg, #00F0FF, #2F80FF, #9333EA, #FF00E5, #00F0FF);
+          background-size: 300% 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
           -webkit-text-stroke: 0px;
-          filter: drop-shadow(0 10px 20px rgba(0, 240, 255, 0.3));
+          opacity: 0;
+          transition: opacity 0.6s ease;
+          pointer-events: none;
+        }
+        
+        .footer-char.active::before {
+          opacity: 1;
+          animation: cinematicPan 3s linear infinite;
+        }
+
+        .footer-char.active {
+          -webkit-text-stroke: 0px;
+        }
+
+        @keyframes cinematicPan {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 100% 50%; }
         }
       `}</style>
     </footer>

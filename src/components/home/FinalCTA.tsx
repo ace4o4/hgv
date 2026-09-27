@@ -60,12 +60,8 @@ export default function FinalCTA() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderTopLeftRadius: '60px',
-        borderTopRightRadius: '60px',
-        marginTop: '-40px', 
         paddingTop: '60px',
         paddingBottom: '60px',
-        boxShadow: '0 -20px 50px rgba(0,0,0,0.05)',
         overflow: 'hidden',
         zIndex: 10,
         fontFamily: "'Outfit', sans-serif",
@@ -213,43 +209,6 @@ export default function FinalCTA() {
             
             <span>a team</span>
 
-            {/* Interactive Hollow Pill Toggle */}
-            <div 
-              onClick={() => setIsHollowToggleOn(!isHollowToggleOn)}
-              style={{ 
-                height: 'clamp(3.5rem, 7vw, 5.5rem)', 
-                width: 'clamp(7rem, 14vw, 11rem)', 
-                border: '4px solid #1A1C20', 
-                borderRadius: '100px',
-                display: 'flex',
-                alignItems: 'center',
-                padding: '0 4px',
-                position: 'relative',
-                backgroundColor: isHollowToggleOn ? '#F1F5F9' : '#FFFFFF',
-                cursor: 'pointer',
-                transition: 'background 0.3s ease',
-                zIndex: 2
-              }}
-            >
-              {/* Inner Track Line */}
-              <div style={{ 
-                width: '60%', height: '4px', backgroundColor: '#1A1C20', borderRadius: '2px', 
-                position: 'absolute', left: '50%', transform: 'translateX(-50%)', opacity: 0.2 
-              }} />
-              
-              {/* Sliding Dot */}
-              <div style={{ 
-                height: 'clamp(2.5rem, 5vw, 4rem)', 
-                width: 'clamp(2.5rem, 5vw, 4rem)', 
-                backgroundColor: isHollowToggleOn ? '#F43F5E' : '#4ADE80', 
-                borderRadius: '50%',
-                position: 'absolute',
-                border: '4px solid #1A1C20',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                left: isHollowToggleOn ? 'calc(100% - clamp(2.5rem, 5vw, 4rem) - 8px)' : '4px',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
-              }} />
-            </div>
           </div>
 
           {/* Line 3: [Overlapping Orbs] together */}
@@ -299,6 +258,44 @@ export default function FinalCTA() {
             </div>
 
             <span>together</span>
+
+            {/* Interactive Hollow Pill Toggle */}
+            <div 
+              onClick={() => setIsHollowToggleOn(!isHollowToggleOn)}
+              style={{ 
+                height: 'clamp(3.5rem, 7vw, 5.5rem)', 
+                width: 'clamp(7rem, 14vw, 11rem)', 
+                border: '4px solid #1A1C20', 
+                borderRadius: '100px',
+                display: 'flex',
+                alignItems: 'center',
+                padding: '0 4px',
+                position: 'relative',
+                backgroundColor: isHollowToggleOn ? '#F1F5F9' : '#FFFFFF',
+                cursor: 'pointer',
+                transition: 'background 0.3s ease',
+                zIndex: 2
+              }}
+            >
+              {/* Inner Track Line */}
+              <div style={{ 
+                width: '60%', height: '4px', backgroundColor: '#1A1C20', borderRadius: '2px', 
+                position: 'absolute', left: '50%', transform: 'translateX(-50%)', opacity: 0.2 
+              }} />
+              
+              {/* Sliding Dot */}
+              <div style={{ 
+                height: 'clamp(2.5rem, 5vw, 4rem)', 
+                width: 'clamp(2.5rem, 5vw, 4rem)', 
+                backgroundColor: isHollowToggleOn ? '#F43F5E' : '#4ADE80', 
+                borderRadius: '50%',
+                position: 'absolute',
+                border: '4px solid #1A1C20',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                left: isHollowToggleOn ? 'calc(100% - clamp(2.5rem, 5vw, 4rem) - 8px)' : '4px',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+              }} />
+            </div>
           </div>
 
         </div>

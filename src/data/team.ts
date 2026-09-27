@@ -55,6 +55,17 @@ export const teamData = [
     order: 5
   },
   {
+    name: "Harish",
+    role: "UI/UX Lead",
+    organization: "HackGyanVerse Community",
+    image: "/team/harish.jpg",
+    categories: ["Core Leadership", "UI/UX Team"],
+    socialLinks: {
+      linkedin: "#"
+    },
+    order: 6
+  },
+  {
     name: "Krishna",
     role: "Graphics Team",
     organization: "HackGyanVerse Community",
@@ -63,7 +74,7 @@ export const teamData = [
     socialLinks: {
       linkedin: "#"
     },
-    order: 6
+    order: 7
   },
   {
     name: "Akansha Shishodia",
@@ -74,7 +85,7 @@ export const teamData = [
     socialLinks: {
       linkedin: "#"
     },
-    order: 7
+    order: 8
   },
   {
     name: "Khushi Jindal",
@@ -85,7 +96,7 @@ export const teamData = [
     socialLinks: {
       linkedin: "#"
     },
-    order: 8
+    order: 9
   },
   {
     name: "Atreyi Pandey",
@@ -96,6 +107,6 @@ export const teamData = [
     socialLinks: {
       linkedin: "#"
     },
-    order: 9
+    order: 10
   }
 ];

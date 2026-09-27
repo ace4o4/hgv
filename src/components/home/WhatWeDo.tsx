@@ -164,7 +164,7 @@ export default function WhatWeDo() {
       }}
     >
       {/* 3D Background Layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.9 }}>
+      <div className="what-we-do-3d-bg" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, opacity: 0.9 }}>
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={0.6} />
           <directionalLight position={[2, 5, 2]} intensity={2.5} color="#FFF" />
@@ -191,7 +191,7 @@ export default function WhatWeDo() {
           willChange: 'transform'
         }}
       >
-        <div style={{ 
+        <div className="what-we-do-grid" style={{ 
           maxWidth: '1440px', 
           margin: '0 auto', 
           padding: '0 4vw',
@@ -203,6 +203,7 @@ export default function WhatWeDo() {
           
           {/* TITLE CARD (Spans 2 columns) */}
           <div 
+            className="what-we-do-title-card"
             ref={el => { cardsRef.current[0] = el; }}
             style={{ ...glassStyle, gridColumn: 'span 2', justifyContent: 'center', background: 'rgba(255,255,255,0.01)' }}
             onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
@@ -235,6 +236,7 @@ export default function WhatWeDo() {
 
           {/* ITEM 1 - Innovation (Micro Chart) */}
           <div 
+            className="what-we-do-card"
             ref={el => { cardsRef.current[1] = el; }}
             style={{ ...glassStyle, gridColumn: 'span 1' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)' }}
@@ -356,4 +358,42 @@ export default function WhatWeDo() {
       </div>
     </section>
   );
+}
+
+// Mobile Responsive Overrides
+const globalStyles = `
+  @media (max-width: 1024px) {
+    .what-we-do-container { padding: 6rem 2rem !important; }
+    .what-we-do-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 2rem !important; }
+    .what-we-do-title-card, .what-we-do-project-card { grid-column: span 2 !important; }
+  }
+  
+  @media (max-width: 768px) {
+    .what-we-do-container { padding: 4rem 1.5rem !important; }
+    .what-we-do-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+    .what-we-do-title-card, 
+    .what-we-do-card,
+    .what-we-do-project-card { 
+      grid-column: span 1 !important; 
+      padding: 2rem !important; 
+    }
+    .what-we-do-project-card {
+      flex-direction: column !important;
+    }
+    .what-we-do-project-card > div:first-child {
+      display: none !important; /* Hide image on mobile if it breaks */
+    }
+    .what-we-do-project-card > div:last-child {
+      padding-left: 0 !important;
+    }
+    .what-we-do-title-card h2 { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
+    .what-we-do-title-card p { max-width: 100% !important; }
+    .three-d-canvas-container { display: none !important; }
+  }
+`;
+
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.innerHTML = globalStyles;
+  document.head.appendChild(style);
 }

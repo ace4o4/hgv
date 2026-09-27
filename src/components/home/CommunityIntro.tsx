@@ -87,7 +87,7 @@ export default function CommunityIntro() {
       }}
     >
       {/* Scrollable Cutout Overlay (Not pinned) */}
-      <div style={{ 
+      <div className="community-cutout" style={{ 
         width: '100%', 
         height: '10vw', 
         position: 'relative',
@@ -130,6 +130,7 @@ export default function CommunityIntro() {
       {/* Pinned Dark Content Area */}
       <div 
         ref={sectionRef}
+        className="community-reveal-container"
         style={{
           height: '100vh',
           width: '100%',
