@@ -91,6 +91,42 @@ export default function EventListingSection() {
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px', opacity: 0.7, pointerEvents: 'none', zIndex: 0 }} />
 
       <div style={{ paddingTop: '5vw', paddingBottom: '10vw', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        <style dangerouslySetInnerHTML={{__html: `
+          @media (max-width: 1024px) {
+            .event-carousel-wrapper {
+              height: auto !important;
+              display: flex !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 20px !important;
+              margin-top: 4vw !important;
+              overflow: hidden;
+              padding: 0 5vw;
+            }
+            .event-carousel-wrapper > div:first-child { 
+              display: none !important;
+            }
+            .event-center-card {
+              position: relative !important;
+              width: 100% !important;
+              max-width: 400px;
+              height: 400px !important;
+              transform: none !important;
+              margin: 0 auto 20px;
+            }
+            .event-floating-card-1 {
+              position: relative !important;
+              left: auto !important;
+              top: auto !important;
+              transform: none !important;
+              width: 100% !important;
+              max-width: 400px;
+            }
+            .event-floating-mobile-hide, .event-floating-card-2, .event-floating-card-3, .event-floating-card-4, .event-floating-card-5, .event-floating-card-6, .event-floating-card-7, .event-floating-card-8 {
+              display: none !important;
+            }
+          }
+        `}} />
         
         {/* Header Section */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '4vw' }}>
@@ -130,13 +166,15 @@ export default function EventListingSection() {
             </svg>
           </div>
 
-          {/* Nav Arrows */}
+          {/* Nav Arrows (Hidden for single event) */}
+          {/*
           <button onClick={prevEvent} style={{ position: 'absolute', left: '2%', zIndex: 20, width: '56px', height: '56px', backgroundColor: '#FFFFFF', color: '#1A1D20', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(0,0,0,0.06)', cursor: 'pointer', boxShadow: '0 12px 30px rgba(0,0,0,0.08)', transition: 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
             <ChevronLeft size={24} />
           </button>
           <button onClick={nextEvent} style={{ position: 'absolute', right: '2%', zIndex: 20, width: '56px', height: '56px', backgroundColor: '#FFFFFF', color: '#1A1D20', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(0,0,0,0.06)', cursor: 'pointer', boxShadow: '0 12px 30px rgba(0,0,0,0.08)', transition: 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)' }} onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
             <ChevronRight size={24} />
           </button>
+          */}
 
           <AnimatePresence mode="wait">
             <motion.div 
@@ -257,9 +295,10 @@ export default function EventListingSection() {
 
               {/* FLOATING CARD 4: Location (Bottom Left) */}
               <motion.div 
+                className="event-floating-card-4"
                 initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} whileHover={{ scale: 1.05 }} transition={{ ...transitionConfig, delay: 0.4 }}
                 style={{
-                  position: 'absolute', left: '18%', bottom: '5%', backgroundColor: '#FFFFFF', borderRadius: '100px', padding: '16px 32px', boxShadow: '0 20px 40px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,1)', border: '1px solid rgba(255,255,255,1)', zIndex: 11, display: 'flex', alignItems: 'center', gap: '14px'
+                  position: 'absolute', left: '26%', bottom: '2%', backgroundColor: '#FFFFFF', borderRadius: '100px', padding: '16px 32px', boxShadow: '0 20px 40px rgba(0,0,0,0.08), inset 0 2px 4px rgba(255,255,255,1)', border: '1px solid rgba(255,255,255,1)', zIndex: 11, display: 'flex', alignItems: 'center', gap: '14px'
                 }}
               >
                 <div style={{ width: '40px', height: '40px', backgroundColor: '#F1F5F9', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -268,6 +307,25 @@ export default function EventListingSection() {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#1A1D20' }}>Hybrid Mode</span>
                   <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#64748B' }}>Online + Offline</span>
+                </div>
+              </motion.div>
+
+              {/* FLOATING CARD 7: Partners (Bottom Left) */}
+              <motion.div 
+                className="event-floating-card-7"
+                initial={{ x: -80, opacity: 0 }} animate={{ x: 0, opacity: 1 }} whileHover={{ scale: 1.05 }} transition={{ ...transitionConfig, delay: 0.7 }}
+                style={{
+                  position: 'absolute', left: '4%', bottom: '15%', backgroundColor: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(20px)', borderRadius: '20px', padding: '16px 24px', boxShadow: '0 20px 40px rgba(0,0,0,0.06), inset 0 2px 4px rgba(255,255,255,1)', border: '1px solid rgba(255,255,255,1)', zIndex: 9, display: 'flex', flexDirection: 'column', gap: '10px'
+                }}
+              >
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Partners</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#1A1D20', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div style={{ width: '8px', height: '8px', backgroundColor: '#2F80FF', borderRadius: '2px' }} /> HGV Community
+                  </span>
+                  <span style={{ fontSize: '1rem', fontWeight: 800, color: '#1A1D20', letterSpacing: '0.5px' }}>AVORITE</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 700, color: '#1A1D20' }}>Unstop</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 900, color: '#1A1D20', fontStyle: 'italic' }}>Work2Hire</span>
                 </div>
               </motion.div>
 
@@ -337,7 +395,8 @@ export default function EventListingSection() {
 
         </div>
 
-        {/* Pagination Dots */}
+        {/* Pagination Dots (Hidden for single event) */}
+        {/*
         <div style={{ display: 'flex', gap: '10px', marginTop: '6vw', alignItems: 'center', zIndex: 2 }}>
           {eventsData.map((_, idx) => (
             <motion.div 
@@ -349,6 +408,7 @@ export default function EventListingSection() {
             />
           ))}
         </div>
+        */}
 
         {/* Bottom Redesigned Button */}
         <div style={{ marginTop: '3vw', zIndex: 2 }}>
