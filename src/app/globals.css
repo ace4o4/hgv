@@ -415,6 +415,26 @@ button {
     font-size: 1.3rem !important;
   }
 
+  /* Partners & Collaborators Section Mobile Fixes */
+  .partner-card {
+    padding: 3rem 1.5rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    border-radius: 20px !important;
+    -webkit-mask-image: none !important; /* Remove complex cutouts on mobile to prevent clipping */
+    mask-image: none !important;
+  }
+  .partner-card > div:nth-of-type(2) {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .partner-name {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+    word-break: break-word !important;
+    line-height: 1.1 !important;
+  }
+
   /* Specifically fix the inline typography pills and animations inside the H1 */
   h1 > div, h1 > motion\\.div, div[style*="inline-flex"] {
     width: max-content !important;
