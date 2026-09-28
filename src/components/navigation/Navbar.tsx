@@ -153,8 +153,12 @@ export default function Navbar() {
         // Near the top: always show
         setVisible(true);
       } else if (currentScrollY > lastScrollY.current + 8) {
-        // Scrolling down: slide up & hide
-        setVisible(false);
+        // Scrolling down: slide up & hide only on mobile
+        if (window.innerWidth < 1024) {
+          setVisible(false);
+        } else {
+          setVisible(true);
+        }
       } else if (currentScrollY < lastScrollY.current - 8) {
         // Scrolling up: slide down & show
         setVisible(true);
