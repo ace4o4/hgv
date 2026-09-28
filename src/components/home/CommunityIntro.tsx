@@ -137,6 +137,7 @@ export default function CommunityIntro() {
       {/* Main scroll container */}
       <div
         ref={containerRef}
+        className="community-scroll-container"
         style={{
           height: '400vh',
           position: 'relative',
@@ -144,9 +145,54 @@ export default function CommunityIntro() {
           overflow: 'clip'
         }}
       >
+        <style dangerouslySetInnerHTML={{__html: `
+          @media (max-width: 768px) {
+            .community-scroll-container {
+              height: auto !important;
+              padding: 10vh 0 !important;
+            }
+            .community-content {
+              height: auto !important;
+              flex-direction: column !important;
+              transform: none !important;
+              gap: 20px !important;
+              padding: 0 5vw !important;
+            }
+            .community-content [data-left] {
+              opacity: 1 !important;
+              transform: none !important;
+              filter: none !important;
+              text-shadow: none !important;
+              font-size: 14vw !important;
+              text-align: center !important;
+              margin-bottom: 5px !important;
+            }
+            .community-words-stack {
+              align-items: center !important;
+              width: 100% !important;
+            }
+            .community-content [data-word] {
+              opacity: 1 !important;
+              transform: none !important;
+              filter: none !important;
+              font-size: 13vw !important;
+              text-align: center !important;
+              width: 100% !important;
+              display: block !important;
+            }
+            .community-word-0 { text-shadow: 0 0 20px #FF7A00 !important; }
+            .community-word-1 { text-shadow: 0 0 20px #FFD700 !important; }
+            .community-word-2 { text-shadow: 0 0 20px #00FF66 !important; }
+            .community-word-3 { text-shadow: 0 0 40px #FFFFFF, 0 0 80px #FFFFFF !important; }
+            .community-word-4 { text-shadow: 0 0 20px #00BFFF !important; }
+            .community-word-5 { text-shadow: 0 0 20px #9D4EDD !important; }
+            .community-word-6 { text-shadow: 0 0 20px #FF007F !important; }
+          }
+        `}} />
         {/* Content block — manually positioned via translateY in rAF */}
         <div
           ref={contentRef}
+          className="community-content"
           style={{
             height: '100vh',
             width: '100%',
@@ -174,7 +220,7 @@ export default function CommunityIntro() {
           </div>
 
           {/* Words */}
-          <div style={{
+          <div className="community-words-stack" style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
@@ -184,6 +230,7 @@ export default function CommunityIntro() {
               <div
                 key={i}
                 data-word=""
+                className={`community-word-${i}`}
                 style={{
                   lineHeight: 1.15,
                   paddingBottom: '0.05em',
