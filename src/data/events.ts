@@ -37,7 +37,7 @@ export const eventsData = [
     name: "AI Innovation & Founders Summit",
     category: "Summit",
     date: "Past",
-    description: "A summit bringing together AI innovators and founders.",
+    description: "An AI and innovation-focused summit connected with the founders and emerging technology ecosystem.",
     image: "/events/ai-summit.jpg",
     featured: false,
     registrationLink: null,

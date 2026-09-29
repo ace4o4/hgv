@@ -474,33 +474,17 @@ export default function EventsPage() {
           >
             {/* Line 1 */}
             <div className="events-hero-line">
-              <motion.span className="events-hero-word" variants={fadeUp()}>WHERE</motion.span>
-              <motion.div className="events-hero-chip" variants={fadeUp()}>
-                <span className="events-hero-chip-dot" />
-                Students Build
-              </motion.div>
+              <motion.span className="events-hero-word" variants={fadeUp()}>HACKGYANVERSE</motion.span>
             </div>
 
             {/* Line 2 */}
             <div className="events-hero-line">
-              <motion.span className="events-hero-word outline" variants={fadeUp()}>IDEAS</motion.span>
-              <motion.span className="events-hero-word" variants={fadeUp()}>BECOME</motion.span>
+              <motion.span className="events-hero-word outline" variants={fadeUp()}>COMMUNITY</motion.span>
             </div>
 
             {/* Line 3 */}
             <div className="events-hero-line">
-              <motion.div className="events-hero-pill" variants={fadeUp()}>
-                🏆 PRODUCTS
-              </motion.div>
-            </div>
-
-            {/* Line 4 */}
-            <div className="events-hero-line">
-              <motion.span className="events-hero-word" variants={fadeUp()}>NEXT</motion.span>
-              <motion.div className="events-hero-date-pill" variants={fadeUp()}>
-                📅 24 Oct 2026
-              </motion.div>
-              <motion.span className="events-hero-word blue" variants={fadeUp()}>UP.</motion.span>
+              <motion.span className="events-hero-word blue" variants={fadeUp()}>EVENTS.</motion.span>
             </div>
           </motion.div>
 
@@ -510,8 +494,7 @@ export default function EventsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            Hackathons, summits, and meetups where students work on real problems,
-            gain industry exposure, and launch meaningful solutions.
+            Hackathons, workshops, talks and community sessions — built by students, for students.
           </motion.p>
 
           <motion.div
@@ -715,6 +698,38 @@ export default function EventsPage() {
                   </motion.div>
                 );
               })}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════
+            EVENT GALLERY
+        ══════════════════════════════════ */}
+        <section className="events-past" style={{ backgroundColor: '#F8FAFC', paddingBottom: '8vw' }}>
+          <div className="events-section-inner">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={inView}
+              variants={stagger()}
+            >
+              <motion.p variants={fadeUp()} className="events-section-label">03 — Event Gallery</motion.p>
+              <motion.h2 variants={fadeUp()} className="events-giant-title">
+                Moments From<br />Our <em>Community</em>.
+              </motion.h2>
+              <motion.p variants={fadeUp()} className="events-hero-subtitle" style={{ maxWidth: '800px', margin: '2vw 0 4vw 0', textAlign: 'left', marginLeft: 0 }}>
+                A visual collection of HackGyanVerse Community events, hackathons, sessions and student experiences.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2vw' }}
+              variants={stagger(0.1)}
+              initial="hidden" whileInView="visible" viewport={inView}
+            >
+              {[1, 2, 3, 4, 5, 6].map(i => (
+                <motion.div key={i} variants={fadeUp()} style={{ width: '100%', aspectRatio: '4/3', backgroundColor: '#E2E8F0', borderRadius: '16px', overflow: 'hidden' }}>
+                  <img src={`https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800&random=${i}`} alt="Community moment" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </section>

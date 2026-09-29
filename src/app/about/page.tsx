@@ -704,7 +704,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span className="about-hero-badge-dot" />
-            About HackGyanVerse
+            About HackGyanVerse Community
           </motion.div>
 
           {/* Giant word-by-word title */}
@@ -717,43 +717,15 @@ export default function AboutPage() {
           >
             {/* Line 1 */}
             <div className="about-hero-line">
-              {['WE', 'ARE'].map((w, i) => (
-                <motion.span key={w} className="about-hero-word" variants={fadeUp(0)}>
-                  {w}
-                </motion.span>
-              ))}
-              <motion.div className="about-hero-chip" variants={fadeUp(0)}>
-                <span className="about-hero-chip-dot" />
-                Live &amp; Building
-              </motion.div>
+              <motion.span className="about-hero-word outline" variants={fadeUp(0)}>CLASSROOM</motion.span>
+              <motion.span className="about-hero-word" variants={fadeUp(0)}>TO</motion.span>
             </div>
 
             {/* Line 2 */}
             <div className="about-hero-line">
-              <motion.span className="about-hero-word outline" variants={fadeUp(0)}>ON</motion.span>
-              <motion.span className="about-hero-word" variants={fadeUp(0)}>A</motion.span>
-              <motion.div className="about-hero-pill" variants={fadeUp(0)}>MISSION</motion.div>
-            </div>
-
-            {/* Line 3 */}
-            <div className="about-hero-line">
-              <motion.span className="about-hero-word" variants={fadeUp(0)}>TO</motion.span>
-              <motion.span className="about-hero-word blue" variants={fadeUp(0)}>UNITE</motion.span>
-            </div>
-
-            {/* Line 4 */}
-            <div className="about-hero-line">
-              {/* avatar stack */}
-              <motion.div className="about-hero-avatars" variants={fadeUp(0)}>
-                {[0,1,2,3].map(i => (
-                  <div key={i} className="about-hero-avatar">
-                    <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i + 10}`} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                ))}
-                <span className="about-hero-avatar-count">+10K Builders</span>
-              </motion.div>
-              <motion.span className="about-hero-word" variants={fadeUp(0)}>THE</motion.span>
-              <motion.span className="about-hero-word blue" variants={fadeUp(0)}>FUTURE.</motion.span>
+              <motion.span className="about-hero-word blue" variants={fadeUp(0)}>CAREER</motion.span>
+              <motion.span className="about-hero-word" variants={fadeUp(0)}>—</motion.span>
+              <motion.span className="about-hero-word outline" variants={fadeUp(0)}>TOGETHER</motion.span>
             </div>
           </motion.div>
 
@@ -764,8 +736,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            HackGyanVerse is a student-driven ecosystem building a bridge from classroom to career
-            through innovation, technology, collaboration and real-world opportunities.
+            HackGyanVerse Community is a student-driven community focused on connecting students with technology, innovation, events, opportunities and collaborative experiences.
           </motion.p>
 
           <motion.div
@@ -774,11 +745,8 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.4 }}
           >
-            <a href={communityData.whatsappLink} target="_blank" rel="noopener noreferrer" className="about-btn-primary">
-              Join the Community →
-            </a>
-            <a href="/team" className="about-btn-secondary">
-              Meet the Team
+            <a href="https://chat.whatsapp.com/BbMMWNI2uLGCUEKXzrub30" target="_blank" rel="noopener noreferrer" className="about-btn-primary">
+              Join WhatsApp Community →
             </a>
           </motion.div>
         </section>
@@ -809,7 +777,7 @@ export default function AboutPage() {
             >
               <motion.p variants={fadeUp()} className="about-section-label">01 — Who we are</motion.p>
               <motion.h2 variants={fadeUp()} className="about-giant-title">
-                We turn students<br />into <em>builders</em>.
+                Who We Are
               </motion.h2>
             </motion.div>
 
@@ -820,9 +788,8 @@ export default function AboutPage() {
                 variants={stagger(0.1)}
               >
                 <motion.p variants={fadeUp()} className="about-who-text">
-                  HackGyanVerse Community is a student-driven ecosystem focused on connecting students
+                  HackGyanVerse Community is a student-driven community focused on connecting students
                   with technology, innovation, events, opportunities and collaborative experiences.
-                  We bridge the gap between the classroom and the career world — together.
                 </motion.p>
                 <motion.div variants={fadeUp()} className="about-pills">
                   {whoWeArePills.map(p => (
@@ -1025,6 +992,71 @@ export default function AboutPage() {
                   </motion.div>
                 );
               })}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════
+            ECOSYSTEM & WHERE WE'RE GOING
+        ══════════════════════════════════ */}
+        <section className="about-who" style={{ marginTop: '8vw' }}>
+          <div className="about-section-inner">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={inView}
+              variants={stagger()}
+            >
+              <motion.h2 variants={fadeUp()} className="about-giant-title" style={{ fontSize: 'clamp(2.5rem, 4vw, 5rem)' }}>
+                Community Today.<br/>Ecosystem for Tomorrow.
+              </motion.h2>
+            </motion.div>
+            
+            <div className="about-who-layout" style={{ marginTop: '4vw' }}>
+              <motion.div
+                initial="hidden" whileInView="visible" viewport={inView}
+                variants={stagger(0.1)}
+              >
+                <motion.p variants={fadeUp()} className="about-who-text">
+                  HackGyanVerse Community focuses on bringing students together through technology, innovation, events, learning, collaboration and opportunities.
+                  Alongside the community, HackGyanVerse is building a broader ecosystem around the journey from college to industry.
+                </motion.p>
+                <motion.div variants={fadeUp()} style={{ marginTop: '2vw', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
+                  <div style={{ display: 'flex', gap: '1vw' }}>
+                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Industry Connection:</span>
+                    <span style={{ color: '#64748B' }}>The broader HackGyanVerse vision is to help bridge the gap between college students and industry.</span>
+                  </div>
+                  <div style={{ display: 'flex', gap: '1vw' }}>
+                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Mentorship:</span>
+                    <span style={{ color: '#64748B' }}>When students need relevant guidance, HackGyanVerse aims to connect them with mentors based on their needs and areas of interest.</span>
+                  </div>
+                  <div style={{ display: 'flex', gap: '1vw' }}>
+                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Startup / Builder Direction:</span>
+                    <span style={{ color: '#64748B' }}>The broader HackGyanVerse ecosystem also explores how students can move from learning and ideas toward building real-world solutions and startup journeys.</span>
+                  </div>
+                </motion.div>
+                
+                <motion.div variants={fadeUp()} style={{ marginTop: '3vw', padding: '1.5vw 2vw', backgroundColor: 'rgba(47,128,255,0.05)', borderLeft: '4px solid #2F80FF', borderRadius: '0 12px 12px 0' }}>
+                  <p style={{ margin: 0, color: '#1A1D20', fontSize: '1.1rem', fontWeight: 500 }}>
+                    <strong style={{ color: '#2F80FF' }}>Important distinction:</strong> HackGyanVerse Community is the student community. HackGyanVerse Startup / Platform is a separate ecosystem initiative.
+                  </p>
+                </motion.div>
+              </motion.div>
+            </div>
+            
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={inView}
+              variants={stagger()}
+              style={{ marginTop: '8vw' }}
+            >
+              <motion.p variants={fadeUp()} className="about-section-label">05 — Where We're Going</motion.p>
+              <motion.div variants={fadeUp()} className="about-pills" style={{ marginTop: '2vw' }}>
+                <span className="about-pill">01 — More Student Connections</span>
+                <span className="about-pill">02 — More Innovation Experiences</span>
+                <span className="about-pill">03 — Industry Exposure</span>
+                <span className="about-pill">04 — More Events</span>
+                <span className="about-pill">05 — Mentorship Connections</span>
+                <span className="about-pill">06 — Student Leadership</span>
+                <span className="about-pill">07 — Classroom to Career</span>
+              </motion.div>
             </motion.div>
           </div>
         </section>

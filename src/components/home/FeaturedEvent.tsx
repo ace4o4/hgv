@@ -270,17 +270,16 @@ export default function FeaturedEvent() {
               margin: 0,
               textTransform: 'uppercase'
             }}>
-              BUILD THE <span className="featured-inline-pill" style={{ 
+              AHGV <span className="featured-inline-pill" style={{ 
                 display: 'inline-block', 
                 border: '2px solid #111', 
                 borderRadius: '100px', 
                 padding: '0 2vw', 
                 fontSize: 'clamp(1.5rem, 3vw, 4rem)', 
                 transform: 'translateY(-10px)'
-              }}>NEXT</span>
+              }}>BUILDVERSE</span>
               <br/>
-              STARTUP <br/>
-              WITH US.
+              2026
             </h2>
           </div>
 
@@ -311,14 +310,14 @@ export default function FeaturedEvent() {
             </svg>
 
             <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '30px', padding: '0.4vw 1.2vw', fontSize: '0.9rem' }}>Prize Pool</div>
-              <div style={{ fontSize: '3rem', lineHeight: 1, color: '#2F80FF' }}>✱</div>
+              <div style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '30px', padding: '0.4vw 1.2vw', fontSize: '0.9rem' }}>Status</div>
+              <div style={{ fontSize: '2rem', lineHeight: 1, color: '#FF3B30' }}>🔴</div>
             </div>
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div className="featured-prize-amount" style={{ fontSize: 'clamp(3rem, 4vw, 5rem)', fontWeight: 500, letterSpacing: '-0.02em', margin: '1vw 0' }}>10 <span style={{ fontSize: '0.5em', color: '#2F80FF' }}>Lakh</span></div>
+              <div className="featured-prize-amount" style={{ fontSize: 'clamp(2.5rem, 3.5vw, 4rem)', fontWeight: 500, letterSpacing: '-0.02em', margin: '1vw 0', lineHeight: 1.1 }}>NOW <br/> BUILDING</div>
               <p style={{ fontSize: '1rem', color: '#A0A0A0', lineHeight: 1.5, margin: 0, maxWidth: '100%' }}>
-                {dataPoints[2].desc}
+                Currently happening: Participants are building meaningful solutions.
               </p>
             </div>
           </motion.div>
@@ -366,8 +365,8 @@ export default function FeaturedEvent() {
                 whileHover={{ y: -5 }}
                 style={{ flex: 1, backgroundColor: '#EBEBEB', borderRadius: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1vw' }}
               >
-                <span className="featured-square-stat" style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>500+</span>
-                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#666' }}>Hackers</span>
+                <span className="featured-square-stat" style={{ fontSize: 'clamp(1.5rem, 2vw, 3rem)', fontWeight: 500, lineHeight: 1 }}>Idea</span>
+                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#666' }}>To Prototype</span>
               </motion.div>
               
               <motion.div 
@@ -375,8 +374,8 @@ export default function FeaturedEvent() {
                 whileHover={{ y: -5 }}
                 style={{ flex: 1, backgroundColor: '#0F0F0F', color: '#FFF', borderRadius: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1vw' }}
               >
-                <span className="featured-square-stat" style={{ fontSize: 'clamp(2rem, 3vw, 4rem)', fontWeight: 500, lineHeight: 1 }}>0</span>
-                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#A0A0A0' }}>Limits</span>
+                <span className="featured-square-stat" style={{ fontSize: 'clamp(1.5rem, 2vw, 3rem)', fontWeight: 500, lineHeight: 1 }}>Product</span>
+                <span className="featured-square-label" style={{ fontSize: '0.9rem', color: '#A0A0A0' }}>Real-world</span>
               </motion.div>
             </div>
           </div>
@@ -398,28 +397,30 @@ export default function FeaturedEvent() {
           >
             {/* Pill tags */}
             <div className="featured-blue-pills" style={{ display: 'flex', gap: '0.8vw', flexWrap: 'wrap', marginBottom: '2vw' }}>
-              <span style={{ backgroundColor: '#2F80FF', color: '#FFF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>36 Hours</span>
+              <span style={{ backgroundColor: '#2F80FF', color: '#FFF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>CURRENTLY HAPPENING</span>
+              <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Industry-focused</span>
               <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Hackathon</span>
-              <span style={{ border: '1px solid #2F80FF', color: '#2F80FF', padding: '0.5vw 1.2vw', borderRadius: '30px', fontSize: '0.9rem' }}>Innovation</span>
             </div>
 
             <div>
-              <h3 className="featured-blue-heading" style={{ fontSize: 'clamp(3rem, 5vw, 6rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#090A0B' }}>
-                Non-stop
+              <h3 className="featured-blue-heading" style={{ fontSize: 'clamp(2rem, 3.5vw, 4.5rem)', fontWeight: 500, margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1, color: '#090A0B' }}>
+                Problem → Idea → PPT<br/>→ Prototype → Product
               </h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '2vw' }}>
                 <p className="featured-blue-desc" style={{ margin: 0, fontSize: '1.1rem', color: '#475569', maxWidth: '60%', lineHeight: 1.5, fontWeight: 500 }}>
-                  {dataPoints[0].desc} Experience the future of building today. Join forces with the brightest minds and create something extraordinary.
+                  A next-level industry-focused hackathon by HackGyanVerse Community where participants work with real-world industry problems, gain expert exposure and build meaningful solutions.
                 </p>
-                {/* Large Arrow Icon */}
-                <div style={{ padding: '1vw', border: '2px solid #2F80FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', color: '#2F80FF' }}
-                     onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2F80FF'; e.currentTarget.style.color = '#FFF'; }}
-                     onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#2F80FF'; }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="19" x2="19" y2="5"></line>
-                    <polyline points="10 5 19 5 19 14"></polyline>
-                  </svg>
-                </div>
+                {/* Large Arrow Icon linked to event */}
+                <Link href="/events/ahgv-buildverse-2026">
+                  <div style={{ padding: '1vw', border: '2px solid #2F80FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', color: '#2F80FF' }}
+                       onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#2F80FF'; e.currentTarget.style.color = '#FFF'; }}
+                       onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#2F80FF'; }}>
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="19" x2="19" y2="5"></line>
+                      <polyline points="10 5 19 5 19 14"></polyline>
+                    </svg>
+                  </div>
+                </Link>
               </div>
             </div>
           </motion.div>

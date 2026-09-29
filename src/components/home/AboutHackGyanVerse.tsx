@@ -124,7 +124,7 @@ export default function AboutHackGyanVerse() {
         
         {/* LINE 1 */}
         <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          WE ARE ON A
+          BUILDING A
         </motion.span>
         
         {/* Interactive Element 1: Map Pin Drop */}
@@ -133,14 +133,14 @@ export default function AboutHackGyanVerse() {
         </motion.div>
 
         <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          MISSION TO
+          COMMUNITY
         </motion.span>
         
         <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
 
         {/* LINE 2 */}
         <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          UNITE
+          FROM
         </motion.span>
 
         {/* Interactive Element 2: Expandable Avatar Stack */}
@@ -152,31 +152,26 @@ export default function AboutHackGyanVerse() {
               </motion.div>
             ))}
           </div>
-          <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#2F80FF', marginLeft: '12px', whiteSpace: 'nowrap' }}>+10K Devs</span>
+          <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#2F80FF', marginLeft: '12px', whiteSpace: 'nowrap' }}>+1300 Devs</span>
         </motion.div>
 
         <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          THE MOST
+          CLASSROOM
         </motion.span>
 
         <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
 
         {/* LINE 3 */}
         <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          AMBITIOUS
+          TO
         </motion.span>
 
         {/* Interactive Element 3: Animated Gradient Button */}
         <motion.a className="builders-button-element" variants={shapeVariants} href="#events" whileHover={{ scale: 1.05, boxShadow: '0 25px 50px rgba(139,92,246,0.5)' }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', padding: '0 clamp(1.8rem, 3.5vw, 3.5rem)', borderRadius: '100px', background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)', color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, textDecoration: 'none', boxShadow: '0 15px 35px rgba(139,92,246,0.3)', cursor: 'pointer', margin: '0 0.5vw' }}>
-          BUILDERS <Sparkles size={24} color="#FFF" style={{ marginLeft: '10px' }} />
+          CAREER. <Sparkles size={24} color="#FFF" style={{ marginLeft: '10px' }} />
         </motion.a>
 
         <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
-
-        {/* LINE 4 */}
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          FROM
-        </motion.span>
 
         {/* Interactive Element 4: Terminal Window */}
         <motion.div variants={shapeVariants} onMouseEnter={() => setHoverTerminal(true)} onMouseLeave={() => setHoverTerminal(false)} whileHover={{ y: -5 }} style={{ width: 'clamp(9rem, 14vw, 16rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', borderRadius: '16px', backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', padding: '10px 15px', position: 'relative', overflow: 'hidden', cursor: 'text', margin: '0 0.5vw', boxShadow: '0 20px 40px rgba(15,23,42,0.4)' }}>
@@ -191,17 +186,6 @@ export default function AboutHackGyanVerse() {
           </div>
         </motion.div>
 
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          HACKATHONS TO
-        </motion.span>
-
-        <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
-
-        {/* LINE 5 */}
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          GLOBAL
-        </motion.span>
-
         {/* Interactive Element 5: Spinning Globe */}
         <motion.div className="globe-element" variants={shapeVariants} style={{ width: 'clamp(3.5rem, 5.8vw, 5.8rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', margin: '0 0.5vw', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <motion.div style={{ position: 'absolute', width: '100%', height: '100%', borderRadius: '50%', border: '2px dashed #3B82F6', rotate: rotateGlobe }} />
@@ -210,40 +194,22 @@ export default function AboutHackGyanVerse() {
           </div>
         </motion.div>
 
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          STARTUPS, WE
-        </motion.span>
-
-        <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
-
-        {/* LINE 6 */}
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          GIVE YOU THE
-        </motion.span>
-
         {/* Interactive Element 6: Toggle Switch */}
         <motion.div className="tools-network-toggle" variants={shapeVariants} onClick={() => setIsToggled(!isToggled)} style={{ display: 'flex', alignItems: 'center', padding: '6px', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', width: 'clamp(12rem, 16vw, 18rem)', backgroundColor: isToggled ? '#1A1D20' : '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '100px', margin: '0 0.5vw', cursor: 'pointer', position: 'relative', boxShadow: '0 15px 35px rgba(0,0,0,0.08)', transition: 'background-color 0.4s' }}>
           <motion.div animate={{ x: isToggled ? '100%' : '0%' }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} style={{ width: '50%', height: '100%', backgroundColor: isToggled ? '#FFFFFF' : '#10B981', borderRadius: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', zIndex: 2 }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#1A1D20' : '#FFF' }}>{isToggled ? 'NETWORK' : 'TOOLS'}</span>
+            <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#1A1D20' : '#FFF' }}>{isToggled ? 'LEARN' : 'GROW'}</span>
           </motion.div>
           <div style={{ position: 'absolute', right: '15%', zIndex: 1 }}>
-             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#FFF' : '#94A3B8' }}>{isToggled ? '' : 'NETWORK'}</span>
+             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#FFF' : '#94A3B8' }}>{isToggled ? '' : 'LEARN'}</span>
           </div>
           <div style={{ position: 'absolute', left: '15%', zIndex: 1 }}>
-             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#94A3B8' : '#FFF' }}>{isToggled ? 'TOOLS' : ''}</span>
+             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#94A3B8' : '#FFF' }}>{isToggled ? 'GROW' : ''}</span>
           </div>
         </motion.div>
 
-        <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
-
-        {/* LINE 7 */}
-        <motion.span variants={wordVariants} style={{ fontSize: 'clamp(2.2rem, 5vw, 5.8rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          TO BUILD THE
-        </motion.span>
-
         {/* Interactive Element 7: Glowing Neon Pill */}
         <motion.div variants={shapeVariants} whileHover={{ scale: 1.05 }} animate={{ boxShadow: ['0 0 20px rgba(59,130,246,0.4)', '0 0 50px rgba(59,130,246,0.8)', '0 0 20px rgba(59,130,246,0.4)'] }} transition={{ duration: 2, repeat: Infinity }} style={{ height: 'clamp(3.5rem, 5.8vw, 5.8rem)', padding: '0 clamp(1.5rem, 3vw, 3rem)', borderRadius: '100px', background: 'linear-gradient(90deg, #2563EB 0%, #06B6D4 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 0.5vw', cursor: 'pointer' }}>
-          <span style={{ color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>FUTURE.</span>
+          <span style={{ color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>TOGETHER.</span>
         </motion.div>
 
       </motion.div>
@@ -258,11 +224,14 @@ export default function AboutHackGyanVerse() {
         style={{ marginTop: '8vw', maxWidth: '700px', textAlign: 'center', zIndex: 2 }}
       >
         <p style={{ fontSize: '1.2rem', color: '#64748B', lineHeight: 1.7 }}>
-          Join the most active ecosystem of makers, creators, and innovators. We provide the platform, you bring the vision. Dive into the HackGyanVerse today. 🌟
+          HackGyanVerse Community brings students together around technology, innovation, hackathons, events, learning, networking, opportunities, leadership and collaboration.
+        </p>
+        <p style={{ fontSize: '0.9rem', color: '#2F80FF', fontWeight: 700, marginTop: '1.5rem' }}>
+          Technology · Innovation · Hackathons · Events · Learning · Networking · Opportunities · Leadership · Collaboration
         </p>
         <div className="about-buttons" style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', marginTop: '2.5rem' }}>
-          <a href="#events" className="start-building-btn">
-            Start Building
+          <a href="/events" className="start-building-btn">
+            Explore Events
             <span className="start-building-btn__icon-wrapper">
               <svg width="10" className="start-building-btn__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 15">
                   <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
