@@ -6,6 +6,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import FAQSection from '@/components/home/FAQSection';
+import FinalCTA from '@/components/home/FinalCTA';
 
 export default function ContactPage() {
 
@@ -18,12 +20,23 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '2rem 2.5rem 100px 2.5rem', minHeight: '100vh', background: '#F1F5F9', fontFamily: "'Outfit', sans-serif" }}>
+    <>
+      <div className="contact-page-wrapper">
       <style dangerouslySetInnerHTML={{ __html: `
+        .contact-page-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 8rem 2.5rem 100px 2.5rem;
+          min-height: 100vh;
+          background: #F1F5F9;
+          font-family: 'Outfit', sans-serif;
+        }
         .contact-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          width: 95vw;
+          width: 100%;
+          max-width: 1300px;
           height: calc(100vh - 10rem);
           min-height: 700px;
           background: #0A0C10;
@@ -103,12 +116,13 @@ export default function ContactPage() {
           background: #00F0FF;
         }
         @media (max-width: 1024px) {
+          .contact-page-wrapper {
+            padding: 6rem 1rem 4rem 1rem;
+          }
           .contact-layout {
             grid-template-columns: 1fr;
             height: auto;
-            min-height: 95vh;
-            margin: 2.5vh 0;
-            width: 95vw;
+            min-height: auto;
             border-radius: 32px;
           }
           .contact-left {
@@ -122,6 +136,7 @@ export default function ContactPage() {
           }
           .title-text {
             font-size: 3.5rem !important;
+            word-break: break-word;
           }
           .social-group {
             flex-direction: column !important;
@@ -131,41 +146,7 @@ export default function ContactPage() {
         }
       `}} />
 
-      {/* Top Branding & Heading (Outside card) */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', width: '95vw' }}
-      >
-        {/* Logo and Name */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', textDecoration: 'none' }}>
-          <div style={{
-            width: 44,
-            height: 44,
-            borderRadius: 12,
-            overflow: 'hidden',
-            boxShadow: '0 4px 14px rgba(47,128,255,0.2)',
-            border: '1.5px solid rgba(47,128,255,0.15)',
-            background: '#fff',
-            flexShrink: 0
-          }}>
-            <Image
-              src="/logos/hgv-og.png"
-              alt="HackGyanVerse Logo"
-              width={44}
-              height={44}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            />
-          </div>
-          <span style={{ color: '#1A1D20', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.02em' }}>HackGyanVerse</span>
-        </Link>
-        
-        {/* Contact Us Badge */}
-        <div style={{ padding: '0.6rem 1.5rem', borderRadius: '100px', border: '1px solid rgba(0,0,0,0.1)', background: '#FFFFFF', color: '#1A1D20', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', marginRight: '5rem' }}>
-          Contact Us
-        </div>
-      </motion.div>
+
 
       <motion.div 
         className="contact-layout"
@@ -176,9 +157,12 @@ export default function ContactPage() {
         {/* Left Side: Info */}
         <div className="contact-left">
 
-          <h1 className="title-text" style={{ fontSize: '5.5rem', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '5rem' }}>
-            Ready?<br/>Let's talk
+          <h1 className="title-text" style={{ fontSize: '4.5rem', fontWeight: 500, color: '#FFFFFF', lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '2rem' }}>
+            Connect With<br/>HackGyanVerse
           </h1>
+          <p style={{ color: '#9CA3AF', fontSize: '1.2rem', lineHeight: 1.6, marginBottom: '4rem', maxWidth: '400px' }}>
+            Questions, collaborations, partnerships or just want to be part of the community — reach out.
+          </p>
 
           <div className="social-group" style={{ display: 'flex', alignItems: 'center', gap: '3rem', marginBottom: 'auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -230,26 +214,28 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Right Side: Form */}
+        {/* Right Side: Collaborate */}
         <div className="contact-right">
           <div className="contact-form-container">
             
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem' }}>
-              Leave your contacts<br/>and we will contact you
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
+              Collaborate With Us
             </h2>
+            
+            <p style={{ fontSize: '1.1rem', color: '#4B5563', lineHeight: 1.6, marginBottom: '3rem' }}>
+              Interested in collaborating with HackGyanVerse for events, partnerships, workshops, sponsorships or community initiatives?
+            </p>
 
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <input type="text" placeholder="Full name" className="input-field" />
-              <input type="email" placeholder="Email" className="input-field" />
-              <input type="tel" placeholder="Phone number" className="input-field" />
-              
-              <button type="button" className="submit-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>
-                Submit Form <ArrowUpRight size={24} />
-              </button>
-            </form>
+            <a href="mailto:official@hackgyanverse.co.in" className="submit-btn" style={{ textDecoration: 'none' }}>
+              Collaborate With Us <ArrowUpRight size={24} />
+            </a>
           </div>
         </div>
       </motion.div>
     </div>
+    
+    <FAQSection />
+    <FinalCTA />
+    </>
   );
 }

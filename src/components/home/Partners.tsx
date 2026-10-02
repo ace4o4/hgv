@@ -302,18 +302,19 @@ export default function Partners() {
                 Join our ecosystem of innovators and tech leaders. We are actively looking for visionary organizations to partner with HackGyanVerse and empower the next generation of builders.
               </p>
 
-              <button style={{ 
+              <a href="mailto:official@hackgyanverse.co.in" style={{ 
                 background: '#FFF', color: '#1A1D20', padding: '1vw 3vw', borderRadius: '100px', fontSize: '1.1rem', fontWeight: 600,
                 border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.8vw',
                 boxShadow: '0 10px 20px rgba(255,255,255,0.15), inset 0 -2px 0 rgba(0,0,0,0.1)',
-                transition: 'transform 0.2s ease, boxShadow 0.2s ease'
+                transition: 'transform 0.2s ease, boxShadow 0.2s ease',
+                textDecoration: 'none'
               }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
                 Become a Partner
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
 

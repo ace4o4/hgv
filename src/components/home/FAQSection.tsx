@@ -5,24 +5,36 @@ import MagicRings from '@/components/reactbits/MagicRings';
 
 const faqs = [
   {
-    question: "What is HackGyanVerse (HGV)?",
-    answer: "HackGyanVerse is a dynamic tech community where students, developers, and innovators come together to learn, collaborate on projects, and build the future of technology."
+    question: "What is HackGyanVerse Community?",
+    answer: "HackGyanVerse Community is a student-driven community connecting students with technology, innovation, hackathons, events, opportunities and collaborative experiences."
   },
   {
-    question: "Do I need technical knowledge to join?",
-    answer: "Not at all! Whether you're a complete beginner writing your first line of code or an experienced developer, HGV offers resources, mentorship, and a welcoming environment for all skill levels."
+    question: "What is the main focus of the community?",
+    answer: "The community focuses on technology, innovation, hackathons, events, learning, networking, opportunities, leadership and collaboration."
   },
   {
-    question: "Are the events and workshops free?",
-    answer: "Yes! We believe in accessible education. All our community events, workshops, hackathons, and learning resources are completely free for everyone to access."
+    question: "Who can join HackGyanVerse Community?",
+    answer: "College students interested in technology, innovation, events, hackathons, collaboration and career growth can join the community."
   },
   {
-    question: "How can I collaborate on projects?",
-    answer: "You can pitch your ideas or join existing open-source projects on our Discord and WhatsApp channels. We regularly host collaborative building sessions where teams are formed to solve real-world problems."
+    question: "Does HackGyanVerse organize hackathons?",
+    answer: "HackGyanVerse Community conducts and supports hackathon-focused initiatives and events. Current and previous events can be explored on the Events page."
   },
   {
-    question: "How do I get started?",
-    answer: "The easiest way is to join our WhatsApp or Discord community. From there, you can introduce yourself, join ongoing discussions, and register for our upcoming events!"
+    question: "How can I join?",
+    answer: "Join the official HackGyanVerse WhatsApp Community to stay connected with community updates and activities."
+  },
+  {
+    question: "Can I collaborate with HackGyanVerse?",
+    answer: "Yes. Students, organizations, institutions and potential collaborators can contact the team for relevant community initiatives, events and collaborations."
+  },
+  {
+    question: "Does HackGyanVerse provide mentorship?",
+    answer: "Mentorship is part of the broader community ecosystem. When relevant mentorship is needed, HackGyanVerse aims to connect students with appropriate mentors based on their needs and interests."
+  },
+  {
+    question: "Is HackGyanVerse Community the same as HackGyanVerse Startup?",
+    answer: "No. HackGyanVerse Community is the student-focused community. HackGyanVerse Startup / Platform is a separate broader ecosystem and product initiative."
   }
 ];
 
