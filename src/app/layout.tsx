@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import SmoothScroll from "@/components/ui/SmoothScroll";
+import LiveEventPopup from "@/components/home/LiveEventPopup";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <LiveEventPopup />
         <Analytics />
       </body>
     </html>
