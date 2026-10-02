@@ -67,7 +67,7 @@ export default function RootLayout({
         <link rel="icon" href="/logos/hgv-lg.png?v=3" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} no-select`} suppressHydrationWarning>
         <SmoothScroll />
         <Navbar />
         <main>{children}</main>

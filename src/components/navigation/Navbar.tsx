@@ -56,7 +56,7 @@ const MenuItem = ({ name, href, isActive, onClick }: { name: string, href: strin
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onClick={onClick}
-      style={{ cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', marginBottom: '2.5rem', overflow: 'visible', width: 'fit-content' }}
+      style={{ cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', marginBottom: 'clamp(1.2rem, 4vw, 2.5rem)', overflow: 'visible', width: 'fit-content' }}
     >
       <Link href={href} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', position: 'relative' }}>
         
@@ -64,7 +64,7 @@ const MenuItem = ({ name, href, isActive, onClick }: { name: string, href: strin
         <LottieIcon name={name} isHovered={isHovered} isActive={isActive} />
 
         {/* Text Roll Up Container */}
-        <div style={{ position: 'relative', overflow: 'hidden', height: '4rem', paddingRight: '1rem' }}>
+        <div style={{ position: 'relative', overflow: 'hidden', height: '1.2em', paddingRight: '1rem', fontSize: 'clamp(2.5rem, 10vw, 3.5rem)' }}>
           {/* Main Text */}
           <motion.div 
             variants={{
@@ -72,7 +72,7 @@ const MenuItem = ({ name, href, isActive, onClick }: { name: string, href: strin
               hover: { y: '-100%' }
             }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: '3.5rem', fontWeight: 800, color: '#1A1D20', opacity: (isActive || isHovered) ? 1 : 0.3, lineHeight: '4rem', letterSpacing: '-0.02em', transition: 'opacity 0.3s' }}
+            style={{ fontWeight: 800, color: '#1A1D20', opacity: (isActive || isHovered) ? 1 : 0.3, lineHeight: '1.2em', letterSpacing: '-0.02em', transition: 'opacity 0.3s' }}
           >
             {name}
           </motion.div>
@@ -83,7 +83,7 @@ const MenuItem = ({ name, href, isActive, onClick }: { name: string, href: strin
               hover: { y: 0, position: 'absolute', top: 0, left: 0 }
             }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: '3.5rem', fontWeight: 800, color: '#1A1D20', opacity: 1, lineHeight: '4rem', letterSpacing: '-0.02em' }}
+            style={{ fontWeight: 800, color: '#1A1D20', opacity: 1, lineHeight: '1.2em', letterSpacing: '-0.02em' }}
           >
             {name}
           </motion.div>

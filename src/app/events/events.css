@@ -234,12 +234,12 @@
 @media (max-width: 768px) {
   .ev-cutout-code { display: none; }
   .ev-cutout-ai   { display: none; }
-  .ev-geo-ring-tl { width: 120px; height: 120px; }
+  .ev-geo-ring-tl { display: none; }
   .ev-dots-cluster { display: none; }
-  .ev-cutout-prize  { top: 8%;  right: 1vw; }
-  .ev-cutout-team   { top: 8%;  left: 1vw; transform: scale(0.85); transform-origin: top left; }
-  .ev-cutout-free   { bottom: 28%; left: 1vw; }
-  .ev-cutout-venue  { bottom: 25%; right: 1vw; }
+  .ev-cutout-prize  { display: none; }
+  .ev-cutout-team   { display: none; }
+  .ev-cutout-free   { display: none; }
+  .ev-cutout-venue  { display: none; }
 }
 
 
@@ -293,12 +293,24 @@
 }
 
 .events-hero-word {
-  font-size: clamp(4rem, 10vw, 10rem);
+  font-size: clamp(2rem, 8vw, 10rem);
   font-weight: 900;
   color: #0A0C10;
   letter-spacing: -0.04em;
   line-height: 1;
   display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .events-hero-word {
+    font-size: 8.5vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .events-hero-word {
+    font-size: 7.5vw;
+  }
 }
 
 .events-hero-word.blue {

@@ -142,26 +142,21 @@ export default function HeroSection() {
           {/* LEFT SIDE: TEXT CONTENT */}
           <div style={{ flex: '1', minWidth: 0, display: 'flex', flexDirection: 'column', position: 'relative' }}>
             
-            <h1 style={{ fontSize: 'clamp(3rem, 4.5vw, 6rem)', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.03em', marginTop: '1vw' }}>
+            <span style={{ fontSize: '1vw', fontWeight: 700, color: '#2F80FF', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1vw', display: 'block' }}>HACKGYANVERSE COMMUNITY</span>
+            <h1 style={{ fontSize: 'clamp(3rem, 4vw, 5.5rem)', fontWeight: 500, color: '#1A1D20', lineHeight: 1.1, letterSpacing: '-0.03em' }}>
               
               {/* Interactive Mini Toggle */}
               <MiniToggle />
               
-              Empowering your 
+              The Community Where Students
               
               {/* Code Brackets Badge */}
               <motion.div animate={{ rotate: [0, 5, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} style={{ display: 'inline-flex', verticalAlign: 'middle', width: '2.5vw', height: '2.5vw', borderRadius: '8px', backgroundColor: '#F1F5F9', alignItems: 'center', justifyContent: 'center', margin: '0 0.8vw 0.5vw 0.8vw', border: '1px solid #E2E8F0', boxShadow: '0 4px 10px rgba(0,0,0,0.05)' }}>
                 <span style={{ fontSize: '1.2vw', fontWeight: 800, color: '#2F80FF' }}>{`</>`}</span>
               </motion.div>
 
-              journey 
+              Build Their Future.
               
-              <motion.div whileHover={{ scale: 1.05 }} animate={{ y: [0, -4, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5vw', padding: '0.5vw 1vw', border: '1px solid #1A1D20', borderRadius: '100px', fontSize: '1vw', verticalAlign: 'middle', margin: '0 1vw 0.5vw 1vw', cursor: 'pointer', backgroundColor: '#FFF' }}>
-                <Play size={12} fill="#1A1D20" /> Community
-              </motion.div>
-
-              from classroom to tech career
-
               {/* Mini Animated Activity Graph */}
               <motion.div style={{ display: 'inline-flex', verticalAlign: 'middle', width: '4vw', height: '2vw', backgroundColor: '#1A1D20', borderRadius: '8px', margin: '0 0.8vw 0.5vw 0.8vw', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
                 <svg width="3vw" height="1vw" viewBox="0 0 100 30">
@@ -183,22 +178,28 @@ export default function HeroSection() {
             
             {/* Subtext Paragraph */}
             <div style={{ marginTop: '2vw', paddingBottom: '1vw' }}>
-              <p style={{ fontSize: '0.9vw', color: '#1A1D20', fontWeight: 500, maxWidth: '80%', lineHeight: 1.5, marginBottom: '2vw' }}>
-                HackGyanVerse collaborates with professional-led organizations to foster the creation of innovative tech businesses.
+              <p style={{ fontSize: '1vw', color: '#1A1D20', fontWeight: 800, maxWidth: '80%', lineHeight: 1.4, marginBottom: '0.5vw' }}>
+                Classroom to Career — Together
+              </p>
+              <p style={{ fontSize: '0.9vw', color: '#475569', fontWeight: 500, maxWidth: '80%', lineHeight: 1.5, marginBottom: '1vw' }}>
+                A student-driven community building a bridge from classroom to career through technology, innovation, collaboration, events and real-world opportunities.
+              </p>
+              <p style={{ fontSize: '0.85vw', color: '#2F80FF', fontWeight: 700, maxWidth: '80%' }}>
+                Learn → Build → Collaborate → Lead → Grow
               </p>
             </div>
 
             {/* Buttons Row */}
             <div className="hero-buttons-row" style={{ marginTop: '1vw', display: 'flex', alignItems: 'center', gap: '2vw' }}>
-              <a href={communityData.whatsappLink} className="hgv-explore-btn" style={{ padding: '0.75vw 1.5vw', fontSize: '1.2vw' }}>
-                Join community
+              <a href="https://chat.whatsapp.com/BbMMWNI2uLGCUEKXzrub30" target="_blank" rel="noopener noreferrer" className="hgv-explore-btn" style={{ padding: '0.75vw 1.5vw', fontSize: '1.2vw' }}>
+                Join Our Community
                 <svg viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"></path>
                 </svg>
               </a>
               <motion.div whileHover={{ scale: 1.05, color: '#2F80FF' }} whileTap={{ scale: 0.95 }} style={{ display: 'inline-block' }}>
                 <Link href="/events" style={{ fontSize: '1vw', fontWeight: 600, color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '4px', display: 'inline-block' }}>
-                  Live events
+                  Explore Events
                 </Link>
               </motion.div>
             </div>
@@ -257,19 +258,19 @@ export default function HeroSection() {
                 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'auto', position: 'relative', zIndex: 2 }}>
                   <div style={{ padding: '0.4vw 1vw', backgroundColor: '#FFF', borderRadius: '100px', fontSize: '0.8vw', fontWeight: 700, color: '#1A1D20' }}>
-                    campuses
+                    reach
                   </div>
-                  <motion.div whileHover={{ scale: 1.15, rotate: 15 }} whileTap={{ scale: 0.9 }} style={{ width: '2.5vw', height: '2.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <motion.div whileHover={{ scale: 1.15, rotate: 15 }} whileTap={{ scale: 0.95 }} style={{ width: '2.5vw', height: '2.5vw', backgroundColor: '#FFF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowUpRight size={18} color="#1A1D20" strokeWidth={2.5} />
                   </motion.div>
                 </div>
 
                 <div style={{ position: 'relative', zIndex: 2, marginTop: '2vw' }}>
                   <h3 style={{ fontSize: '1.8vw', fontWeight: 500, color: '#FFF', lineHeight: 1.1, marginBottom: '1vw' }}>
-                    Active Student<br/>Chapters
+                    40+ College<br/>Reach
                   </h3>
                   <p style={{ fontSize: '0.8vw', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
-                    Collaborating across campuses to build the next generation of tech leaders.
+                    Connecting students across campuses through technology and innovation.
                   </p>
                 </div>
               </motion.div>
@@ -289,18 +290,16 @@ export default function HeroSection() {
                     members
                   </div>
                   <div style={{ display: 'flex' }}>
-                    {[1,2,3].map(i => (
-                      <img key={i} src={`https://i.pravatar.cc/100?img=${i+20}`} style={{ width: '2vw', height: '2vw', borderRadius: '50%', border: '2px solid #EFF6FF', marginLeft: i > 1 ? '-0.8vw' : '0', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }} alt="Avatar" />
-                    ))}
+                    {/* Replaced generic avatars with real-like or empty based on new directive, keeping empty circles to avoid AI generated people as requested, or use empty placeholders */}
                   </div>
                 </div>
 
                 <div style={{ position: 'relative', zIndex: 2, marginTop: '2vw' }}>
                   <h3 style={{ fontSize: '4vw', fontWeight: 500, color: '#1A1D20', lineHeight: 1, marginBottom: '0.5vw' }}>
-                    5K+
+                    1300+
                   </h3>
                   <p style={{ fontSize: '0.8vw', color: '#64748B', fontWeight: 500, lineHeight: 1.4 }}>
-                    Active members learning, building, and growing together in our community.
+                    Community members learning, building, and growing together.
                   </p>
                 </div>
               </motion.div>

@@ -3,46 +3,15 @@ export const ahgvData = {
   concept: "Problem → Idea → PPT → Prototype → Product",
   registrationLink: "https://unstop.com/o/Mz70soJ?lb=pX4EFBAh&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Anshufgs99609",
   rewards: [
-    {
-      title: "Winners",
-      description: "Exciting prizes, certificates, internship opportunities, and exclusive goodies await the top-performing teams!"
-    },
-    {
-      title: "Participation Certificate",
-      description: "Certificates for all participants"
-    },
-    {
-      title: "₹50K+",
-      description: "AI Credits"
-    },
-    {
-      title: "Premium Credits",
-      description: "Internship & Job Platform Premium Credits"
-    },
-    {
-      title: "Goodies",
-      description: "Exclusive Goodies for Winners"
-    },
-    {
-      title: "Internships",
-      description: "Internship Opportunities for Top Performers"
-    },
-    {
-      title: "Industry Exposure",
-      description: "Industry Problem Statement Exposure"
-    },
-    {
-      title: "Mentorship",
-      description: "Expert Guidance & Mentorship"
-    },
-    {
-      title: "Innovator Circle",
-      description: "HackGyanVerse Innovator Circle Membership for Top 10 Teams"
-    },
-    {
-      title: "More",
-      description: "More rewards to be revealed soon"
-    }
+    { title: "₹15,000", description: "Prize Money" },
+    { title: "₹50K+", description: "AI Credits" },
+    { title: "Premium Credits", description: "Internship & Job Platform Premium Credits" },
+    { title: "Goodies", description: "Exclusive Goodies for Winners" },
+    { title: "Internships", description: "Internship Opportunities for Top Performers" },
+    { title: "Industry Exposure", description: "Industry Problem Statement Exposure" },
+    { title: "Mentorship", description: "Expert Guidance & Mentorship" },
+    { title: "Innovator Circle", description: "HackGyanVerse Innovator Circle Membership for Top 10 Teams" },
+    { title: "More", description: "More rewards to be revealed soon" }
   ],
   benefits: [
     "Work on valuable Industry Problem Statements",
