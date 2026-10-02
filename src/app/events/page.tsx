@@ -532,7 +532,7 @@ export default function EventsPage() {
             FEATURED EVENT
         ══════════════════════════════════ */}
         {featuredEvent && (
-          <section className="events-featured">
+          <section id="ahgv-buildverse" className="events-featured">
             <div className="events-bg-grid" />
             <div className="events-section-inner" style={{ position: 'relative', zIndex: 2 }}>
               <motion.div

@@ -3,7 +3,7 @@ export const ahgvData = {
   concept: "Problem → Idea → PPT → Prototype → Product",
   registrationLink: "https://unstop.com/o/Mz70soJ?lb=pX4EFBAh&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Anshufgs99609",
   rewards: [
-    { title: "₹15,000", description: "Prize Money" },
+    { title: "₹13,000", description: "Prize Money" },
     { title: "₹50K+", description: "AI Credits" },
     { title: "Premium Credits", description: "Internship & Job Platform Premium Credits" },
     { title: "Goodies", description: "Exclusive Goodies for Winners" },
