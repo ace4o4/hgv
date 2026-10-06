@@ -228,6 +228,7 @@ export default function Footer() {
           <div style={{ display: 'flex', gap: '2rem' }}>
             <Link href="/privacy" className="bottom-link">Privacy Policy</Link>
             <Link href="/terms" className="bottom-link">Terms of Service</Link>
+            <Link href="/cookie-policy" className="bottom-link">Cookie Policy</Link>
           </div>
         </div>
       </div>

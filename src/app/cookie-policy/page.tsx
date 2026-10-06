@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | HackGyanVerse',
-  description: 'Privacy Policy for HackGyanVerse Community.',
+  title: 'Cookie Policy | HackGyanVerse',
+  description: 'Cookie Policy for HackGyanVerse Community.',
 };
 
-export default function PrivacyPolicy() {
+export default function CookiePolicy() {
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -19,7 +19,6 @@ export default function PrivacyPolicy() {
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Premium Background Glows */}
       <div style={{ position: 'absolute', top: '-10%', left: '20%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(147,51,234,0.12) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '10%', right: '-10%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(47,128,255,0.08) 0%, rgba(0,0,0,0) 70%)', filter: 'blur(120px)', zIndex: 0, pointerEvents: 'none' }} />
 
@@ -40,7 +39,7 @@ export default function PrivacyPolicy() {
           boxShadow: '10px 10px 30px rgba(0, 0, 0, 0.6), inset 1px 1px 2px rgba(255, 255, 255, 0.1)'
         }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, marginBottom: '1rem', color: '#FFFFFF', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Privacy Policy
+            Cookie Policy
           </h1>
           
           <p style={{ color: '#00F0FF', marginBottom: '3rem', fontSize: '1.1rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
@@ -50,35 +49,28 @@ export default function PrivacyPolicy() {
           <div style={{ display: 'grid', gap: '2rem' }}>
             <section style={{ background: 'rgba(255,255,255,0.02)', padding: 'clamp(1.5rem, 4vw, 2rem)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.03)' }}>
               <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 1.5rem)', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF', lineHeight: 1.3, wordBreak: 'break-word' }}>
-                <span style={{ color: '#3B82F6' }}>01.</span> Information We Collect
+                <span style={{ color: '#3B82F6' }}>01.</span> What Are Cookies
               </h2>
               <p style={{ lineHeight: 1.7, marginBottom: '1rem', color: '#94A3B8' }}>
-                We collect information you provide directly to us when you participate in HackGyanVerse events, join our community platforms (such as WhatsApp), or contact us for support.
-              </p>
-              <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                {['Name and contact data', 'Demographic data', 'Event registration information'].map(item => (
-                  <li key={item} style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#60A5FA', padding: '0.5rem 1rem', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 500, border: '1px solid rgba(59, 130, 246, 0.2)' }}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section style={{ background: 'rgba(255,255,255,0.02)', padding: 'clamp(1.5rem, 4vw, 2rem)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.03)' }}>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 1.5rem)', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF', lineHeight: 1.3, wordBreak: 'break-word' }}>
-                <span style={{ color: '#9333EA' }}>02.</span> How We Use Information
-              </h2>
-              <p style={{ lineHeight: 1.7, color: '#94A3B8' }}>
-                We use the information we collect to organize and manage events, communicate with our community members, and improve our services and programs.
+                Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide a better user experience.
               </p>
             </section>
 
             <section style={{ background: 'rgba(255,255,255,0.02)', padding: 'clamp(1.5rem, 4vw, 2rem)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.03)' }}>
               <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 1.5rem)', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF', lineHeight: 1.3, wordBreak: 'break-word' }}>
-                <span style={{ color: '#F43F5E' }}>03.</span> Information Sharing
+                <span style={{ color: '#9333EA' }}>02.</span> How We Use Cookies
               </h2>
               <p style={{ lineHeight: 1.7, color: '#94A3B8' }}>
-                We do not share your personal information with third parties except as necessary to organize events (e.g., sharing participant lists with venue partners) or when required by law.
+                We use cookies and similar tracking technologies to track the activity on our website and hold certain information. We use them for essential website functionality, analyzing site traffic (e.g., through Vercel Analytics), and improving our services.
+              </p>
+            </section>
+
+            <section style={{ background: 'rgba(255,255,255,0.02)', padding: 'clamp(1.5rem, 4vw, 2rem)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.03)' }}>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 1.5rem)', fontWeight: 700, marginBottom: '1rem', color: '#FFFFFF', lineHeight: 1.3, wordBreak: 'break-word' }}>
+                <span style={{ color: '#F43F5E' }}>03.</span> Your Choices
+              </h2>
+              <p style={{ lineHeight: 1.7, color: '#94A3B8' }}>
+                You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.
               </p>
             </section>
           </div>
