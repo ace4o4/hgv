@@ -133,7 +133,7 @@ export default function WhatWeDo() {
     overflow: 'hidden' as const,
     display: 'flex',
     flexDirection: 'column' as const,
-    transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease'
+    transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease'
   };
 
   const pillStyle = {

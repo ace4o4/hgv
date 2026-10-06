@@ -288,7 +288,7 @@ export default function Navbar() {
               initial={{ x: '120%', opacity: 0, scale: 0.95 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: '120%', opacity: 0, scale: 0.95 }}
-              transition={{ type: 'spring', damping: 30, stiffness: 200 }}
+              transition={{ type: 'spring', damping: 35, stiffness: 200, mass: 0.8 }}
               style={{
                 position: 'fixed',
                 top: '1rem',

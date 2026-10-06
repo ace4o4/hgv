@@ -114,7 +114,7 @@ export default function FinalCTA() {
                 justifyContent: 'center',
                 boxShadow: 'inset 0 -5px 10px rgba(0,0,0,0.1), 0 10px 20px rgba(74,222,128,0.2)',
                 cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                 transform: isHoveringArrow ? 'scale(1.05)' : 'scale(1)'
               }}
             >
@@ -160,7 +160,7 @@ export default function FinalCTA() {
                 justifyContent: 'center',
                 position: 'absolute',
                 left: isGradientToggleOn ? 'calc(100% - clamp(3rem, 6.5vw, 5rem) - 0.8rem)' : '0.8rem',
-                transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
               }}>
                 <div style={{ 
                   width: '40%', height: '40%', border: '3px solid #E2E8F0', borderRadius: '50%', 
@@ -234,7 +234,7 @@ export default function FinalCTA() {
                 borderRadius: '50%',
                 boxShadow: '0 10px 20px rgba(59,130,246,0.3)',
                 transform: isHoveringOrbs ? 'translateX(-10px) scale(1.05)' : 'translateX(0)',
-                transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
               }} />
               <div style={{ 
                 position: 'absolute', right: 0,
@@ -247,7 +247,7 @@ export default function FinalCTA() {
                 boxShadow: '0 10px 30px rgba(0,0,0,0.1), inset 0 2px 5px rgba(255,255,255,1)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transform: isHoveringOrbs ? 'translateX(10px) scale(1.05)' : 'translateX(0)',
-                transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
               }}>
                 <svg width="30%" height="30%" viewBox="0 0 24 24" fill="none" stroke="#1A1C20" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
                      style={{ transform: isHoveringOrbs ? 'rotate(90deg)' : 'rotate(0)', transition: 'transform 0.4s ease' }}
@@ -293,7 +293,7 @@ export default function FinalCTA() {
                 border: '4px solid #1A1C20',
                 boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 left: isHollowToggleOn ? 'calc(100% - clamp(2.5rem, 5vw, 4rem) - 8px)' : '4px',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
               }} />
             </div>
           </div>
@@ -355,7 +355,7 @@ export default function FinalCTA() {
           font-weight: 700;
           text-decoration: none;
           box-shadow: 0 10px 20px rgba(26, 28, 32, 0.2), inset 0 1px 1px rgba(255,255,255,0.2);
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1);'
           display: inline-block;
         }
         .premium-primary-btn:hover {

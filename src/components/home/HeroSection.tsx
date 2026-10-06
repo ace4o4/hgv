@@ -20,7 +20,7 @@ const MiniToggle = () => {
     >
       <motion.div 
         animate={{ x: isOn ? '1.5vw' : '0vw' }}
-        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 30, mass: 0.8 }}
         style={{ width: '1.4vw', height: '1.4vw', backgroundColor: '#FFF', borderRadius: '50%', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
       />
     </div>
@@ -212,8 +212,8 @@ export default function HeroSection() {
             
             {/* Top Card (Full width) */}
             <motion.div 
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-              whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.3)' }}
+              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ scale: 1.02, y: -4, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.3)' }}
               style={{ flex: '1.2', backgroundColor: '#2F80FF', borderRadius: '32px', padding: '3vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', cursor: 'pointer' }}
             >
               <h2 style={{ fontSize: '2.8vw', fontWeight: 500, color: '#FFF', lineHeight: 1.1, maxWidth: '80%', position: 'relative', zIndex: 2 }}>
@@ -249,8 +249,8 @@ export default function HeroSection() {
               
               {/* Bottom Left Card */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}
+                initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                whileHover={{ scale: 1.02, y: -4, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)' }}
                 style={{ flex: '1', backgroundColor: '#1A1D20', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
               >
                 {/* 3D Sphere BG */}
@@ -277,8 +277,8 @@ export default function HeroSection() {
 
               {/* Bottom Right Card */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                whileHover={{ scale: 1.02, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.15)' }}
+                initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                whileHover={{ scale: 1.02, y: -4, boxShadow: '0 20px 40px rgba(47, 128, 255, 0.15)' }}
                 style={{ flex: '1', backgroundColor: '#EFF6FF', borderRadius: '32px', padding: '2vw', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
               >
                 {/* Abstract shape BG */}
