@@ -173,40 +173,6 @@ export default function AboutHackGyanVerse() {
 
         <div style={{ flexBasis: '100%', height: '0' }} /> {/* Break line */}
 
-        {/* Interactive Element 4: Terminal Window */}
-        <motion.div variants={shapeVariants} onMouseEnter={() => setHoverTerminal(true)} onMouseLeave={() => setHoverTerminal(false)} whileHover={{ y: -5 }} style={{ width: 'clamp(9rem, 14vw, 16rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', borderRadius: '16px', backgroundColor: '#0F172A', border: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', padding: '10px 15px', position: 'relative', overflow: 'hidden', cursor: 'text', margin: '0 0.5vw', boxShadow: '0 20px 40px rgba(15,23,42,0.4)' }}>
-          <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#EF4444' }} />
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#F59E0B' }} />
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
-          </div>
-          <div style={{ color: '#10B981', fontSize: '0.9rem', fontFamily: 'monospace', fontWeight: 600, display: 'flex', alignItems: 'center' }}>
-            ~$ {hoverTerminal ? <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>npm start</motion.span> : <span style={{ opacity: 0 }}>_</span>}
-            <motion.div animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} style={{ width: '6px', height: '14px', backgroundColor: '#10B981', marginLeft: '4px' }} />
-          </div>
-        </motion.div>
-
-        {/* Interactive Element 5: Spinning Globe */}
-        <motion.div className="globe-element" variants={shapeVariants} style={{ width: 'clamp(3.5rem, 5.8vw, 5.8rem)', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', margin: '0 0.5vw', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <motion.div style={{ position: 'absolute', width: '100%', height: '100%', borderRadius: '50%', border: '2px dashed #3B82F6', rotate: rotateGlobe }} />
-          <div style={{ width: '80%', height: '80%', borderRadius: '50%', backgroundColor: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: 'inset 0 4px 10px rgba(59,130,246,0.2)' }}>
-            <Globe size={28} color="#3B82F6" />
-          </div>
-        </motion.div>
-
-        {/* Interactive Element 6: Toggle Switch */}
-        <motion.div className="tools-network-toggle" variants={shapeVariants} onClick={() => setIsToggled(!isToggled)} style={{ display: 'flex', alignItems: 'center', padding: '6px', height: 'clamp(3.5rem, 5.8vw, 5.8rem)', width: 'clamp(12rem, 16vw, 18rem)', backgroundColor: isToggled ? '#1A1D20' : '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '100px', margin: '0 0.5vw', cursor: 'pointer', position: 'relative', boxShadow: '0 15px 35px rgba(0,0,0,0.08)', transition: 'background-color 0.4s' }}>
-          <motion.div animate={{ x: isToggled ? '100%' : '0%' }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} style={{ width: '50%', height: '100%', backgroundColor: isToggled ? '#FFFFFF' : '#10B981', borderRadius: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 10px rgba(0,0,0,0.1)', zIndex: 2 }}>
-            <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#1A1D20' : '#FFF' }}>{isToggled ? 'LEARN' : 'GROW'}</span>
-          </motion.div>
-          <div style={{ position: 'absolute', right: '15%', zIndex: 1 }}>
-             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#FFF' : '#94A3B8' }}>{isToggled ? '' : 'LEARN'}</span>
-          </div>
-          <div style={{ position: 'absolute', left: '15%', zIndex: 1 }}>
-             <span style={{ fontSize: '0.9rem', fontWeight: 800, color: isToggled ? '#94A3B8' : '#FFF' }}>{isToggled ? 'GROW' : ''}</span>
-          </div>
-        </motion.div>
-
         {/* Interactive Element 7: Glowing Neon Pill */}
         <motion.div variants={shapeVariants} whileHover={{ scale: 1.05 }} animate={{ boxShadow: ['0 0 20px rgba(59,130,246,0.4)', '0 0 50px rgba(59,130,246,0.8)', '0 0 20px rgba(59,130,246,0.4)'] }} transition={{ duration: 2, repeat: Infinity }} style={{ height: 'clamp(3.5rem, 5.8vw, 5.8rem)', padding: '0 clamp(1.5rem, 3vw, 3rem)', borderRadius: '100px', background: 'linear-gradient(90deg, #2563EB 0%, #06B6D4 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 0.5vw', cursor: 'pointer' }}>
           <span style={{ color: '#FFF', fontSize: 'clamp(1.3rem, 2.2vw, 2.5rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>TOGETHER.</span>

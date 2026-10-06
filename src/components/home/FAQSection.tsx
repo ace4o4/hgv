@@ -122,7 +122,7 @@ export default function FAQSection() {
         </div>
 
         <div style={{ position: 'relative', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: '#111111', margin: 0, letterSpacing: '-0.04em' }}>
+          <h2 className="faq-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, color: '#111111', margin: 0, letterSpacing: '-0.04em' }}>
             Common Questions
           </h2>
           
@@ -146,7 +146,7 @@ export default function FAQSection() {
             return (
               <div 
                 key={index}
-                className="faq-item-card"
+                className={`faq-item-card ${isOpen ? 'is-open' : ''}`}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 style={{
                   width: '100%',
@@ -188,7 +188,7 @@ export default function FAQSection() {
                     >
                       {index + 1}
                     </span>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 600, color: '#111111', margin: 0, letterSpacing: '-0.01em' }}>
+                    <h3 className="faq-question-text" style={{ fontSize: '1.15rem', fontWeight: 600, color: '#111111', margin: 0, letterSpacing: '-0.01em' }}>
                       {faq.question}
                     </h3>
                   </div>
@@ -223,8 +223,8 @@ export default function FAQSection() {
                   }}
                 >
                   <div style={{ overflow: 'hidden' }}>
-                    <div style={{ paddingTop: '1.5rem', paddingLeft: '3.25rem' }}>
-                      <p style={{ color: '#64748B', lineHeight: 1.7, fontSize: '1rem', margin: 0, opacity: isOpen ? 1 : 0, transition: 'opacity 0.4s ease', transitionDelay: isOpen ? '0.1s' : '0s' }}>
+                    <div className="faq-answer-container" style={{ paddingTop: '1.5rem', paddingLeft: '3.25rem' }}>
+                      <p className="faq-answer-text" style={{ color: '#64748B', lineHeight: 1.7, fontSize: '1rem', margin: 0, opacity: isOpen ? 1 : 0, transition: 'opacity 0.4s ease', transitionDelay: isOpen ? '0.1s' : '0s' }}>
                         {faq.answer}
                       </p>
                     </div>
@@ -247,9 +247,32 @@ export default function FAQSection() {
       {/* CSS Styles for Interactive Animations */}
       <style dangerouslySetInnerHTML={{__html: `
         @media (max-width: 768px) {
+          .faq-section-wrapper {
+            padding: 4rem 1.5rem !important;
+          }
           .faq-container {
-            padding: 3rem 1.5rem !important;
-            border-radius: 24px !important;
+            padding: 3rem 1.25rem !important;
+            border-radius: 20px !important;
+          }
+          .faq-item-card {
+            padding: 1.25rem !important;
+          }
+          .faq-item-card.is-open {
+            padding: 1.5rem 1.25rem !important;
+          }
+          .faq-question-text {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+          }
+          .faq-answer-container {
+            padding-top: 1rem !important;
+            padding-left: 0 !important;
+          }
+          .faq-answer-text {
+            font-size: 0.95rem !important;
+          }
+          .faq-title {
+            font-size: 2.2rem !important;
           }
         }
         
