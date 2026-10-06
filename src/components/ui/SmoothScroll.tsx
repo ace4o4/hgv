@@ -6,11 +6,12 @@ import { useEffect } from 'react';
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.08, // Adjust for premium smoothness. Lower = smoother/heavier
+      wheelMultiplier: 1, // Normal scroll speed
       orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5, // Slightly softer on touch
       infinite: false,
     });
 

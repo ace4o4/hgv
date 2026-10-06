@@ -42,7 +42,7 @@ export default function AboutHackGyanVerse() {
       filter: 'blur(0px)', 
       rotateX: 0,
       scale: 1,
-      transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
     }
   };
 
@@ -53,7 +53,7 @@ export default function AboutHackGyanVerse() {
       scale: 1, 
       filter: 'blur(0px)', 
       y: 0,
-      transition: { duration: 2, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
+      transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } 
     }
   };
 

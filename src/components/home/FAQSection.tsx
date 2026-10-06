@@ -254,7 +254,7 @@ export default function FAQSection() {
         }
         
         .faq-item-card {
-          transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background-color 0.4s ease, padding 0.4s ease !important;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background-color 0.4s ease, padding 0.4s ease !important;
         }
         .faq-item-card:hover {
           box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
