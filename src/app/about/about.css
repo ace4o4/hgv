@@ -751,6 +751,89 @@
 }
 
 /* ─────────────────────────────────────────── */
+/*  ECOSYSTEM LIST (WHO WE ARE)                */
+/* ─────────────────────────────────────────── */
+.ecosystem-list-container {
+  margin-top: 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ecosystem-list-item {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ecosystem-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #2F80FF 0%, #A78BFA 100%);
+  border-radius: 4px 0 0 4px;
+  opacity: 0.8;
+  transition: opacity 0.4s ease, width 0.4s ease;
+}
+
+.ecosystem-list-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(47,128,255,0.08);
+  border-color: #BFDBFE;
+}
+
+.ecosystem-list-item:hover::before {
+  opacity: 1;
+  width: 6px;
+}
+
+.ecosystem-item-title {
+  color: #0A0C10;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  padding-left: 0.5rem;
+}
+
+.ecosystem-item-desc {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-left: 0.5rem;
+}
+
+.important-distinction {
+  margin-top: 3vw;
+  padding: 1.5rem 2rem;
+  background: rgba(47,128,255,0.05);
+  border-left: 4px solid #2F80FF;
+  border-radius: 0 16px 16px 0;
+}
+
+.important-distinction p {
+  margin: 0;
+  color: #1A1D20;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.important-distinction strong {
+  color: #2F80FF;
+}
+
+/* ─────────────────────────────────────────── */
 /*  MOBILE RESPONSIVE                          */
 /* ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -773,4 +856,13 @@
   .about-what-grid { grid-template-columns: 1fr; }
   .about-journey-wrap { grid-template-columns: repeat(2, 1fr); }
   .about-mission-grid { grid-template-columns: 1fr; }
+  
+  .ecosystem-list-container {
+    margin-top: 2rem;
+  }
+  
+  .important-distinction {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
 }

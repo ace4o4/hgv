@@ -1019,24 +1019,24 @@ export default function AboutPage() {
                   HackGyanVerse Community focuses on bringing students together through technology, innovation, events, learning, collaboration and opportunities.
                   Alongside the community, HackGyanVerse is building a broader ecosystem around the journey from college to industry.
                 </motion.p>
-                <motion.div variants={fadeUp()} style={{ marginTop: '2vw', display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
-                  <div style={{ display: 'flex', gap: '1vw' }}>
-                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Industry Connection:</span>
-                    <span style={{ color: '#64748B' }}>The broader HackGyanVerse vision is to help bridge the gap between college students and industry.</span>
+                <motion.div variants={fadeUp()} className="ecosystem-list-container">
+                  <div className="ecosystem-list-item">
+                    <span className="ecosystem-item-title">Industry Connection</span>
+                    <span className="ecosystem-item-desc">The broader HackGyanVerse vision is to help bridge the gap between college students and industry.</span>
                   </div>
-                  <div style={{ display: 'flex', gap: '1vw' }}>
-                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Mentorship:</span>
-                    <span style={{ color: '#64748B' }}>When students need relevant guidance, HackGyanVerse aims to connect them with mentors based on their needs and areas of interest.</span>
+                  <div className="ecosystem-list-item">
+                    <span className="ecosystem-item-title">Mentorship</span>
+                    <span className="ecosystem-item-desc">When students need relevant guidance, HackGyanVerse aims to connect them with mentors based on their needs and areas of interest.</span>
                   </div>
-                  <div style={{ display: 'flex', gap: '1vw' }}>
-                    <span style={{ color: '#2F80FF', fontWeight: 700 }}>Startup / Builder Direction:</span>
-                    <span style={{ color: '#64748B' }}>The broader HackGyanVerse ecosystem also explores how students can move from learning and ideas toward building real-world solutions and startup journeys.</span>
+                  <div className="ecosystem-list-item">
+                    <span className="ecosystem-item-title">Startup / Builder Direction</span>
+                    <span className="ecosystem-item-desc">The broader HackGyanVerse ecosystem also explores how students can move from learning and ideas toward building real-world solutions and startup journeys.</span>
                   </div>
                 </motion.div>
                 
-                <motion.div variants={fadeUp()} style={{ marginTop: '3vw', padding: '1.5vw 2vw', backgroundColor: 'rgba(47,128,255,0.05)', borderLeft: '4px solid #2F80FF', borderRadius: '0 12px 12px 0' }}>
-                  <p style={{ margin: 0, color: '#1A1D20', fontSize: '1.1rem', fontWeight: 500 }}>
-                    <strong style={{ color: '#2F80FF' }}>Important distinction:</strong> HackGyanVerse Community is the student community. HackGyanVerse Startup / Platform is a separate ecosystem initiative.
+                <motion.div variants={fadeUp()} className="important-distinction">
+                  <p>
+                    <strong>Important distinction:</strong> HackGyanVerse Community is the student community. HackGyanVerse Startup / Platform is a separate ecosystem initiative.
                   </p>
                 </motion.div>
               </motion.div>
