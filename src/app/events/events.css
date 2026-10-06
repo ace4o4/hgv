@@ -935,7 +935,7 @@
 
 @media (max-width: 768px) {
   .events-hero { padding: 100px 5vw 60px; }
-  .events-hero-word { font-size: clamp(3rem, 14vw, 6rem); }
+  .events-hero-word { font-size: clamp(2rem, 9vw, 6rem); }
   .events-hero-pill, .events-hero-chip, .events-hero-date-pill {
     font-size: clamp(1rem, 5vw, 2rem);
     height: clamp(3rem, 10vw, 5rem);
