@@ -634,6 +634,9 @@ export default function EventsPage() {
                         Register Free →
                       </a>
                     )}
+                    <Link href="/events/ahgv-buildverse-2026" className="events-btn-primary">
+                      Explore Hackathon
+                    </Link>
                   </div>
 
                   {/* Event Partners */}

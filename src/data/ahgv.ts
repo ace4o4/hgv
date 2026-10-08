@@ -1,17 +1,36 @@
 export const ahgvData = {
   name: "AHGV BUILDVERSE 2026",
-  concept: "Problem → Idea → PPT → Prototype → Product",
+  concept: "Build Beyond the Idea",
+  tagline: "An 8-hour offline hackathon where students and builders turn real problems and innovative ideas into functional prototypes.",
+  presentedBy: "HackGyanVerse Community",
+  coPresentedBy: "Avaroite",
+  poweredBy: "Unstop",
+  coPoweredBy: "Work2Hire",
   registrationLink: "https://unstop.com/o/Mz70soJ?lb=pX4EFBAh&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Anshufgs99609",
+  pptDeadline: "16 October 2026, 11:59 PM",
+  prototypeWindow: "13–18 October 2026",
+  pivotWindow: "13–18 October 2026",
+  finalPrototypePreparation: "By 18 October 2026",
+  grandFinaleDate: "24 October 2026 — Saturday",
+  eventFormat: "8-Hour Offline Hackathon",
+  eventDuration: "8-hour hackathon",
+  location: "Delhi NCR",
+  venue: "To be announced separately",
+  teamSize: "2–4 members",
+  mode: "Offline",
+  registration: "Free",
+  pptSubmission: "Free",
+  prototypeDevelopment: "Free",
+  links: {
+    ps1: "https://drive.google.com/file/d/1Nz1RfH-B5IVTkVd_d5bmkkxWYpIb2A8R/view?usp=drivesdk",
+    ps2: "https://drive.google.com/file/d/1b812MjxpRnOftVYVSF9j__tPJmUbhBnC/view?usp=drivesdk",
+    community: "https://chat.whatsapp.com/BbMMWNI2uLGCUEKXzrub30"
+  },
   rewards: [
-    { title: "₹13,000", description: "Prize Money" },
-    { title: "₹50K+", description: "AI Credits" },
-    { title: "Premium Credits", description: "Internship & Job Platform Premium Credits" },
-    { title: "Goodies", description: "Exclusive Goodies for Winners" },
-    { title: "Internships", description: "Internship Opportunities for Top Performers" },
-    { title: "Industry Exposure", description: "Industry Problem Statement Exposure" },
-    { title: "Mentorship", description: "Expert Guidance & Mentorship" },
-    { title: "Innovator Circle", description: "HackGyanVerse Innovator Circle Membership for Top 10 Teams" },
-    { title: "More", description: "More rewards to be revealed soon" }
+    { title: "🏆 Winner", description: "PPO Opportunity" },
+    { title: "💰 Cash Prize", description: "₹13,000" },
+    { title: "☁️ Platform Credits", description: "₹50K+ Worth" },
+    { title: "🎁 Goodies", description: "Goodies & More" }
   ],
   benefits: [
     "Work on valuable Industry Problem Statements",
@@ -24,63 +43,60 @@ export const ahgvData = {
   ],
   details: {
     grandFinale: "24 October 2026",
-    venue: "TBA | Delhi NCR",
+    day: "Saturday",
+    venue: "To be announced separately",
     teamSize: "2–4 Members",
     participation: "FREE",
     format: "Offline",
-    duration: "8-hour hackathon"
+    duration: "8-hour hackathon",
+    location: "Delhi NCR"
   },
+  highlights: [
+    "24 October 2026",
+    "8-Hour Offline Hackathon",
+    "Delhi NCR",
+    "Team Size: 2–4",
+    "Free Registration",
+    "₹13,000 Cash Prize",
+    "₹50K+ Worth Platform Credits",
+    "PPO Opportunity for Winner",
+    "Goodies & More"
+  ],
   timeline: [
-    {
-      date: "16 September 2026",
-      title: "Industry Problem Statement Release"
-    },
-    {
-      date: "25 September 2026",
-      title: "PPT Submission Starts"
-    },
-    {
-      date: "25 September – 10 October 2026",
-      title: "PPT Submission Window"
-    },
-    {
-      date: "10 October 2026",
-      title: "PPT Deadline"
-    },
-    {
-      date: "11 October 2026",
-      title: "Shortlisting Results"
-    },
-    {
-      date: "15–19 October 2026",
-      title: "Prototype Round"
-    },
-    {
-      date: "24 October 2026",
-      title: "Grand Finale"
-    }
+    { date: "Live", title: "Registration", status: "Live" },
+    { date: "16 October 2026, 11:59 PM", title: "PPT Submission", status: "Deadline" },
+    { date: "13–18 October 2026", title: "Prototype Development", status: "Build phase" },
+    { date: "13–18 October 2026", title: "Pivoting / Refinement", status: "Refine phase" },
+    { date: "By 18 October 2026", title: "Final Prototype Preparation", status: "Ready" },
+    { date: "24 October 2026 — Saturday", title: "Grand Finale", status: "Finale" }
   ],
   problemStatements: [
     {
-      title: "PS 1",
-      description: "Active Industry Problem Statement.",
+      title: "PS1",
+      label: "Industry Problem Statement",
+      description: "Official industry-provided problem statement.",
       status: "Active",
-      link: "#",
-      weight: "70%"
+      link: "https://drive.google.com/file/d/1Nz1RfH-B5IVTkVd_d5bmkkxWYpIb2A8R/view?usp=drivesdk",
+      weight: "70%",
+      cta: "View PS1"
     },
     {
-      title: "PS 2",
-      description: "Coming Soon.",
-      status: "Coming Soon",
-      link: null,
-      weight: "20%"
+      title: "PS2",
+      label: "Second Problem Statement",
+      description: "Build an innovative solution on the selected problem statement and validate the right user pain points.",
+      status: "Active",
+      link: "https://drive.google.com/file/d/1b812MjxpRnOftVYVSF9j__tPJmUbhBnC/view?usp=drivesdk",
+      weight: "20%",
+      cta: "View PS2"
     },
     {
-      title: "Open Innovation",
-      description: "Build an innovative solution to any real-world problem.",
-      status: "Active",
-      link: "#",
-      weight: "10%"
+      title: "PS3 — Open Innovation",
+      label: "Open Innovation",
+      description: "Build your own innovative solution around relevant technology and emerging innovation areas.",
+      status: "Open",
+      link: "#open-innovation",
+      weight: "10%",
+      cta: "Explore Open Innovation"
     }
   ],
   selectionCriteria: {
@@ -89,34 +105,89 @@ export const ahgvData = {
     ps2: "20%",
     openInnovation: "10%"
   },
+  buildAreas: [
+    "Generative AI",
+    "LLM Applications",
+    "AI Agents",
+    "Agentic AI",
+    "AI Automation",
+    "Machine Learning",
+    "Predictive Analytics",
+    "Recommendation Systems",
+    "Computer Vision",
+    "NLP",
+    "Data-driven Applications",
+    "Full-Stack Applications",
+    "REST APIs",
+    "Databases",
+    "Cloud",
+    "Emerging Technologies"
+  ],
+  participants: [
+    "College Students",
+    "Developers",
+    "AI/ML Enthusiasts",
+    "Full-Stack Developers",
+    "Data Science Enthusiasts",
+    "Designers",
+    "Innovators",
+    "Tech Enthusiasts",
+    "Aspiring Entrepreneurs",
+    "Student Builders"
+  ],
+  journey: [
+    { step: "01", title: "Register", description: "Register on Unstop and form a team of 2–4." },
+    { step: "02", title: "Understand the Problem", description: "Understand the selected problem statement and identify the real user/problem." },
+    { step: "03", title: "Prepare PPT", description: "Explain the problem, solution, innovation, technology and implementation." },
+    { step: "04", title: "Build", description: "Develop a functional prototype." },
+    { step: "05", title: "Test & Refine", description: "Test, fix, improve and remove unnecessary features." },
+    { step: "06", title: "Grand Finale", description: "Shortlisted teams participate in the 8-hour offline finale." },
+    { step: "07", title: "Demo", description: "Present the working product and explain the technical implementation." },
+    { step: "08", title: "Build Beyond the Idea", description: "Turn the idea into something demonstrable and useful." }
+  ],
   pptRequirements: [
+    "Project Name",
+    "Selected Track",
+    "Problem Statement",
     "Problem Understanding",
     "Proposed Solution",
     "Innovation / USP",
     "Target Users",
     "Core Features",
     "Technology Stack",
-    "AI/ML/Agentic AI Implementation",
-    "System / Solution Architecture",
+    "AI/ML/Agentic AI Component",
+    "System Architecture",
     "Implementation Approach",
     "Feasibility",
     "Scalability",
+    "Real-World Applicability",
     "Expected Impact",
     "Future Scope",
     "Team Details"
   ],
   buildComponents: [
-    "Frontend",
-    "Backend",
-    "Database",
-    "AI/ML",
-    "Agentic AI",
-    "APIs",
-    "Integrations",
-    "Core Features",
-    "Functional User Flow",
-    "Deployment / Runnable Setup",
-    "Documentation",
-    "Presentation / Demo Readiness"
+    "Functional prototype",
+    "Core features",
+    "Technical implementation",
+    "AI/ML where applicable",
+    "Testing",
+    "UX refinement",
+    "Demo preparation"
+  ],
+  evaluationCriteria: [
+    "Problem Understanding",
+    "Problem-Solution Fit",
+    "Innovation",
+    "Technical Implementation",
+    "Functional Completeness",
+    "AI/ML Implementation where applicable",
+    "Technology Choice",
+    "UI/UX",
+    "Feasibility",
+    "Scalability",
+    "Real-World Applicability",
+    "Impact",
+    "Presentation & Demo",
+    "Product Readiness"
   ]
 };
